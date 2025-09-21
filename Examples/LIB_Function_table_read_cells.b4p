@@ -17,7 +17,7 @@ c[] = table read cells( t, { canada, 'swit*' }, ignore case );
 echo ("All countries except USA: ", c[]);
 
 c[] = table read cells in columns( t, City, '*Z*rich*' );
-echo ("All Cities sounding 'swiss', point on countries: ",c[]);
+echo ("All Cities sounding 'Zürich', 'Zuerich', point on countries: ",c[]);
 
 c[] = table read cells selected rows in columns( t, [Country]==Canada, State, ON, {once,left} );
 echo ("1st Ontario match, point on city: ", c[]);

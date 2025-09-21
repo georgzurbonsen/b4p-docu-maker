@@ -15,7 +15,7 @@
        // '*' in 3rd function parameter selects all columns except 'Name'.
        // In this case, the 6 consolidation actions apply to the 6 columns from left to right.
 
-       c[] = table consolidate              ( t, Name,'*', {max, append, sum, average, append once, count}, ", " );
+       c[] = table consolidate              ( t, Name ,'*', {max, append, sum, average, append once, count}, ", " );
        echo("All rows consolidated (", c[], " rows removed):");
        table list ( t );
 

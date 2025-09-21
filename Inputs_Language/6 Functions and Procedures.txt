@@ -1,7 +1,7 @@
  //
 B4PDOCU.START
 
-"Functions and Procedures" :
+"Procedures, Functions, Control Flow" :
 {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "Functions and Procedures" ],
@@ -330,7 +330,8 @@ B4PDOCU.START
 	Softquoted string	| The content of the entire string is interpreted as one header name, even if it contains numbers. <br>\
 				  Empty strings ('') refer to the first column with blank header name.<br>\
 				  __shifted table column specifications__ are allowed here to reference neighboring columns.<br>\
-				  Two consecutive points ('..') define <b>column ranges</b> in order to cover multiple consecutive columns<br>\
+				  Two consecutive points ('..') define <b>column ranges</b> in order to cover multiple consecutive columns.<br>\
+				  Some functions permit asterisks ('*') to select all columns.  The asterisk must be used alone and without combination with other column names and/or numbers.<br>\
 				  Some function-specific exceptions may apply and are explicitly documented in the function library documentation. | 'Last,First Name' refers to one header name<br>'' is a blank header name
 	Set			| Sets contain a collection of header names and/or column numbers 	 | { 1, Last Name, first Name, "Value [EUR]" }
 	===
@@ -346,8 +347,9 @@ B4PDOCU.START
 	* <b>'..', <i>Column</i></b> includes the first column till the specified column.
 	* <b><i>Column A</i>, '..', <i>Column B</i></b> specifies all columns between and including the specified columns.  If the first column lies further to the right to the second column, then no columns will be included.
 	* Multipe column ranges are allowd, e.g. <b>{ a, '..', b, c, '..', d }</b>.
+	* Some functions allow <b>'*'</b> (asterisk as softquoted string) to select all columns as specified in the header row.  In this case, the table column parameter must only contain '*' as a single value. Otherwise it looks for the header named '*'.
 	<br>
-	Items to watch out for.
+	Items to watch out for:
 	<br>
 	* Two consecutive ranges <b>{ a, '..' ,'..', b }</b> are not permiited and result in exceptions.
 	* Ranges on both sides of a specified column <b>{ a, '..', 'b', '..', 'c'}</b> are not permitted and flag exceptions.

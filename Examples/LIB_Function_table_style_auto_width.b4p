@@ -6,7 +6,7 @@
 
        table style auto width ( t1 );
 
-       // Example with customized paramters (narrowed intentionally).
+       // Example with customized parameters (narrowed intentionally).
 
        table style auto width ( t2, quantile, 0.9, wrap text, table, starting column, 0, stopping column, -3 );
        table style auto width ( t2, min, 20, max, 30, starting column, -2 );

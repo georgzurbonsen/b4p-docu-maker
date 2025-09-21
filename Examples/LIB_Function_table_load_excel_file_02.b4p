@@ -1,0 +1,11 @@
+﻿#!/usr/local/bin/b4p
+       table load excel file( {t1, t2, t3}, "Tables.xlsx", { Sheet 1, Names, 'Sheet 1/PivotTable1'} );
+
+       echo("Whole sheet:");
+       table list( t1 );
+
+       echo(new line, "Table 'Names':");
+       table list( t2 );
+
+       echo(new line, "Pivot Table 'PivotTable1':");
+       table list( t3 );

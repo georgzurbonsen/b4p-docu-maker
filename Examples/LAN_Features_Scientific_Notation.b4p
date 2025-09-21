@@ -6,4 +6,5 @@ a[num  1] = num(1E03);
 a[num  2] = num('1E+03'); // Quotation marks required because of plus symbol (confuses with addition)
 a[milli ] = num('1e-3');
 a[wrong ] = num('1E 03'); // Space inside.  Only 1st digit will be recgnized 
-see(a[])
+see(a[]);
+echo("Outputing scientific notation: ", scientific(0.001/7) );

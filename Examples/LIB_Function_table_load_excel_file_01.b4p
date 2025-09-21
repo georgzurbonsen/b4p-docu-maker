@@ -1,6 +1,6 @@
 ﻿#!/usr/local/bin/b4p
 
-       table load excel file( table, "Formulas_Inside.xlsx", 0, formulas, formula table);
+       table load excel file( table, "Formulas_Inside.xlsx", 1, formula table);
 
        echo("Values: ");
        table list( table );

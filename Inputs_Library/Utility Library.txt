@@ -336,7 +336,7 @@ Chosen file is: REF_Function_week.b4p
 		  "Description"::
 			Numerals, strings, date, Booleans, etc. are treated as text and scalers which can be used to create formulas consisting
 			of both matrices and formula elements, for example constants, variables and operators.<br>
-			Paramter sets are treated as matrices:<br>
+			Parameter sets are treated as matrices:<br>
 			* { 1, 2, 3 } translates to a vertical matrix.
 			* {{ 1, 2, 3 } tranlates to a horziontal matrix.
 			* { {1}, {2}, {3} } translates to a vertical matrix.

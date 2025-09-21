@@ -3,55 +3,151 @@ B4PDOCU.START
 
 
 
-"The Language" :
+"Language Guide" :
 {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "Language Guide", "B4P Language" ],
     "Description 01:Overview"::
 
-	The B4P language is designed to solve problems with as few clearly understandable statements as possible, allowing to keep the number of statements,
-	variables and loops as low as possible.
+	The language pyramid provides an overview of the different level of abstractions which constitute this programming language,
+	with basic elements at the bottom such as text, numbers and comments, and the <i>whole program</i> at the top.
 
 	<br/><br/><img src="Images/LAN_Pyramid.png" alt="B4P Language Pyramid"><br/>
 
-	We will elaborate the pyramid from the bottom up
-	* Continue at the bottom level beginning how to formulate numbers and text, followed by basic data types (e.g. numerals, strings)
-	* Address the main object types __variables__ and __tables__
-	* Covering the remaining middle layers language features.
-	* And concluding at the top to explain the __blocks__ and __statements__
-
+	The next sections will provide more details, beginning at the bottom and then working the way up.
 	+++
 },
 
 
 
-"Basics" :
+"Fundament" :
 {
     "Documentation":		"General Description", // Required value
-    "Feature Names":		"Basic language elements",
+    "Feature Names":		"Fundamental language elements",
     "Keywords":			["Values"],
-    "Description 01:Language Pyramid Context"::
+    "Description 01:Introduction"::
 
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Basics.png" alt="B4P Language Pyramid - Basics"></a><br/>
-	
-
-    "Description 02:Introduction"::
-
-	The language consist of following basic elements:
+	B4P buils on the following fundamental language elements, making use of the full __UNICODE__ character set.
 
 	=== 200, 800, noframe_1stcolbold, noheader
-	__Text__	| Any form of text with and without quotation marks around
 	__Numbers__	| Any numeric representations
-	__Symbols__	| All language specific symbols (e.g. operators, assignment symbols)
-	__Comments__	| Contents not to be considered for program execution
+	__Text__	| Any form of alphanumeric contents with and without quotation marks around them
+	__Symbols__	| All language specific symbols (e.g. operators, assignment symbols, parentheses, etc.)
+	__Comments__	| Useful for documentation and no impact on program execution
 	===
 
-	Details about the __characters__ used in B4P, including UNICODE and special input and output
-	characters for special keys and console formatting features are addressed afterwardsx
+	A dedicated section exists on addressing the __UNICODE__ character space used by B4P.
 
 	+++
 },
+
+
+"Numbers" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Number", "Numbers" ],
+    "Description 01:Introduction"::
+
+	B4P considers theb following numbers:
+
+	* It must contain at least one digit (<b>0..9</b>)
+	* Negative numbers must precede with a minus sign (see also: __unary operators__)
+	* One decimal point per number may be used:
+	** <b>.1</b> represents the same value as <b>0.1</b>
+	** <b>1.</b> represents the same value as <b>1</b>
+	** A lone decimal point <b>.</b> is interpreted as __text__.
+	* The synatx itself does not foresee __scientific notation__ and thousand sparators or spaces between digits.  There are other ways to specify them, \
+	  for example with dedicated functions.
+
+
+	=== 250, 250, 250, 250
+	Good Examples 			| Interpretation			| Bad Examples 		| Interpretation
+	12				| Number				| 1 2			| Text "1 2"
+	1234.50				| Number				| 1,234.50		| Syntax error (comma)
+	.1				| Number (0.1)				| .			| Text (point)
+	num(1.2E3)			| Use function for scientifi notation	| 1.2E3			| Text "1.2E3"
+	===
+
+	<br>
+
+	+++,
+    "Examples 02:"::
+	echo( 1 );                   // Simple numeral
+	echo( 1 1 + 2 2 );           // Attention: These two numbers are strings : '1 12 2' is returned, not '33' or '3 3'
+	echo( 123.45 );
+	echo( 0123.450 );            // Same value as above.  B4P retains the original "look" if no calculations are applied.
+	echo( 0123.450 *1);          // Operation applied (multplied by 1), therefore text representation has been dropped
+	+++,
+    "Output 02:":		"automatic",
+    "See also": [ "Numerals", "Scientific Notation" ]
+
+},
+
+
+
+"Scientific Notation" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Scientific Notation" ],
+    "Description 01:Introduction"::
+
+	Scientific notation is advantageous, but has some drawbacks.  Imagine your data contains chapter and section
+	numbers like "<b>2D-1</b>", "<b>2E-1</b>" (chapter 2, sections D and E, subsction 1) and confusion happens.
+	For this reason, scientific notation can only be specified indirectly:
+
+	* Use the __num(__) or __clean num(__) function where a string with scientific notation is converted into a numeric value
+	* When reading numbers from __tables__, you can activate scientific notation with the function __table configure(__)
+	* The function __scientific(__) is requred to output values or convert values into strings containing scientific notation. \
+	  In order to preserve the full accuracy and precision, all numbers come with 16 digits behind the decimal point.
+
+	Following rules apply to scientific notation:
+	* The letter <b>E</b> or <b>e</b> must be added behind the number, followed by the exponent.
+	* Optional plus (<b>+</b>) and minus signs (<b>-</b>) before the exponent are allowed
+	* No spaces between mantissa and exponent are allowed
+	* Exponents are integers.  Decial points and contents afterwards are ignored. 
+
+	+++,
+    "Examples 01:"::
+a[] = 1000;
+a[text 1] = 1E03;
+a[text 2] = '1e+03';  // Put into quotation marks to avoid adding 3 to '1e'
+a[num  1] = num(1E03);
+a[num  2] = num('1E+03'); // Quotation marks required because of plus symbol (confuses with addition)
+a[milli ] = num('1e-3');
+a[wrong ] = num('1E 03'); // Space inside.  Only 1st digit will be recgnized 
+see(a[]);
+echo("Outputing scientific notation: ", scientific(0.001/7) );
+	+++,
+    "Output 01:":		"automatic",
+
+    "Description 02:Scientific Notation in Tables"::
+
+	By default, scientific notation in tables will be recognized as text.  However, the function __table configure(__) allows you to activate
+	recognition of scientific notation.
+
+	+++,
+    "Examples 02:"::
+table create( table );
+with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 0
+{
+    [.] = '1.24E-05';
+    echo( [.],   '&tab12;Type: ', subtype([.]),   '&tab40;Note: Read in as text into a string' );
+
+    table configure( table, scientific notation, yes );
+    echo( [.],   '&tab24;', subtype([.]),   '&tab40;Original text representation is still preserved' );
+    echo( [.]+0, '&tab24;', subtype([.]+0), '&tab40;Text representation destroyed by calculation, but same value' );
+    echo( [.]+0, '&tab24;', subtype([.]+0), '&tab40;See above' );
+    echo( scientific([.]+0), '&tab24;', subtype(scientific([.]+0)), '&tab40;Forced use of scientific notation' );
+
+    // Note: Explanatory text uses tabulation using dedicated character entities.
+}
+	+++,
+    "Output 02:":		"automatic"
+
+},
+
+
+
 
 
 
@@ -62,28 +158,29 @@ B4PDOCU.START
     "Feature Names":		[ "Text" ],
     "Description 01:Introduction"::
 
-	The B4P language supports 3 different forms of text contents:
+	The B4P language supports 3 variants of text contents:
 
 	* __Plain text__, which is, unique to B4P, any text <u>with and without spaces</u>.
-	* __Text inside single quotation marks__, using apostrophes ( ANSI/UNICODE 39: ') as single quotation mark symbols
-	* __Text inside double quotation marks__, using double quotation marks ( ANSI/UNICODE 34: ")
+	* __Text inside single quotation marks__, using apostrophes ( ANSI/UNICODE 39: <b>'</b>) as single quotation mark symbols
+	* __Text inside double quotation marks__, using double quotation marks ( ANSI/UNICODE 34: <b>"</b>)
 
 	These text items can be used for following purposes:
 
 	=== 250, 250, 250, 250
-	Usage of string constants		| Plain text				 	| Text inside single quotation marks	| Text inside double quotation marks
-	String values				| example					| 'example'				| "example"
+	Usage of string constants			| Plain text				 	| Text inside single quotation marks	| Text inside double quotation marks
+	String values					| example					| 'example'				| "example"
 	__Base variable__ names (see <sup>1</sup>)	| example[]					| 'example'[]				| "example"[]
-	__Member variable__ names (see <sup>1</sup>)| example[example 2, ...]			| 'example'['example 2', ...]		| "example"["example 2", ...]
-	__Table names__				| [example:...]					| ['example':...]			| ["example":...]
+	__Member variable__ names (see <sup>1</sup>)	| example[example 2, ...]			| 'example'['example 2', ...]		| "example"["example 2", ...]
+	__Table names__					| [example:...]					| ['example':...]			| ["example":...]
 	__Function names__, called as procedures	| example;<br>example(...);			| (Not supported)			| (Not supported)
 	__Function names__, called as functions in expressions\
-						| = ... example();<br>= ... example(...);	| (Not supported)			| (Not supported)
-	__Reserved keywords__			| true, false, else, tab, escape, new line	| (Not reserved if in quotation marks)	| (Not reserved if in quotation marks)
+							| = ... example();<br>= ... example(...);	| (Not supported)			| (Not supported)
+	__Reserved keywords__				| true, false, else, tab, escape, new line	| (Not reserved if in quotation marks)	| (Not reserved if in quotation marks)
 	===
 
-	<sup>1</sup> <u>Attention</u>: Different from other programming languages, __variables__ in B4P are always specified by strings (or __expressions__ returning strings) followed by a <b>[]</b> or <b>[...]</b> sequence.
-	It appears outlandish, but has some key advantages which are described later in this manual.
+	<sup>1</sup> <u>Attention</u>: Different from other programming languages, __variables__ in B4P are always specified by strings (or __expressions__ returning strings) 
+	followed by brackets <b>[ ]</b> or further contents inside brackets <b>[...]</b>.
+	This appears outlandish, provides some key language specific advanctages described later.
 
 	+++
 },
@@ -96,9 +193,16 @@ B4PDOCU.START
     "Feature Names":		[ "Plain Text" ],
     "Description 01:Introduction"::
 
-	In B4P, plain text is any kind of text which is specified without any quotation marks.  Such text contents are limited to one line and the
-	character set is limited to avoid confusion with B4P specific symbols such as operators, for example text hyphens with minus signs.
-	Plain text may contains spaces, however multiple consecutive spaces and tabs are condensed to one space.
+	In B4P, plain text is any kind of text which is specified without quotation marks.  Such text contents are limited to one line 
+	and all characters are allowed except B4P specific symbols such as operators and various forms of parentheses / brackets.
+
+
+    "Description 02:Spaces"::
+
+	Plain text may contains spaces, however multiple consecutive spaces and tabs are interpreted as single spaces.<br>
+	<b>Hello&nbsp;&nbsp;&nbsp;World</b> is the same as <b>Hello World</b>. Leading and trailing spaces are ignored.
+
+    "Description 03:Uses"::
 
 	Plain text can be used for
 	* <b>String values</b>
@@ -108,33 +212,38 @@ B4PDOCU.START
 	* __Reserved keywords__ (true, false, else, tab, escape, new line) <br>\
 	  These reserved keywords must always be formulated with lower-case characters, otherwise they are treated as plain text.
 
-    "Description 02:Rules"::
+    "Description 04:Rules"::
 
 	Following rules apply for plain text:
 	* Choice of characters
-	** Alphabetic letters, including foreign letters and characters
-	** All characters which do not interfere with B4P code elements and symbols such as mathematical operators.  A single point (.) is OK, however hyphens, \
-	   parentheses, brackets, commas create issues as they are interpreted as B4P symbols.
-	** Numerals only OK if combined with spaces or letters or other characters described above.
-	** Good example: <b>A.1</b> (The single point is not a dedicated B4P symbol).
-	** Bad example: <b>Baden-Baden</b> (The hyphen is interpreted as a minus sign and results in a successful string subtraction.  The outcome would be a blank string.
+	** Alphabetic letters, including foreign letters and characters used around the world
+	** All characters which do not interfere with B4P code elements and symbols such as mathematical operators, parentheses, brackets, etc..
 	* The text may contain white <i>white spaces</i> (space bar, tab, etc.)
-	** Example 1: <b>4200 Pennsylvania Avenue</b> or <b>Number 1</b>
-	** Example 2: <b>555 1212</b> (phone number is a text and not a __number__ because of the space inside)
-	** Example 3: <b>1.234.567</b> (multiple decimal points between numeric digits constitute a text)
+	* A single point (.) is OK as long not used as decimal point in numbers.  But 2 consecutive points (..) are not OK as they are __ranges__.
 	* The text must be on the same line.
 	* Multiple consecutive white spaces inside the text are interpreted as one single space character.
-	** Example: <b>Hello&nbsp;&nbsp;&nbsp;World</b> is the same as <b>Hello World</b>.
-	* Leading and trailing spaces are ignored.
-	** Example: <b>echo(Hello World)</b> outputs the same as <b>echo(&nbsp;&nbsp;Hello World )</b>.
 	* A lone point (<b>.</b>) specified without quotation marks is also interpreted as a string containing this one character as long it is not a decimal point in a numeral.
-	** The lone point is also used to reference a current column in __partial table specifications__.
-	** Note: Two consecutive points are used for __value ranges__ and do not consitute text contents.
-	* Reserved keywords are automatically interpreted as part of the B4P syntax, e.g. <b>true</b> as Boolean <i>true</i>, and __else__ is also part of the B4P language.
+	* __Reserved keywords__ are automatically interpreted as part of the B4P syntax, e.g. <b>true</b> as Boolean <i>true</i>, and __else__ is also part of the B4P language.
 	* If the text is assigned to B4P variables or used inside expressions, then the variable assumes the type __string__ and subtype __softquoted string__.
 
+
+	=== 250, 250, 250, 250
+	Good Examples 			| Interpretation			| Bad Examples 		| Interpretation
+	Hello World			| Text					| Baden-Baden		| Minus sign: Text subtraction. Returns blank.
+	555 1212			| Text and not number			| 1.2			| This is a number
+	1.234.567			| Text (multiple points)		| 1,234.567		| Comma is a B4P specifc symbol
+	_1				| Text					| -1			| This is a number
+	10 Main St.			| Text					| 10..12 Main St.	| '..' describes __ranges__
+	25.12.2024			| Text (not a B4P __date__)		| 25-12-2024		| Two subtractions, results in 2011
+	true				| Boolean value				|			|
+	True				| Text					|			|
+	===
+
+	<br><br>
+
+
 	+++,
-    "Examples 02:Examples"::
+    "Examples 04:Examples"::
 	echo( Hello World );
 	echo(   Hello   World   );  // Same as above (Spaces outside the strings are ignored, so are multiple spaces inside)
 	echo( One + One );          // + sign is an operator, result is 'OneOne'
@@ -152,7 +261,7 @@ B4PDOCU.START
 	echo( '..' );               // This one is OK
 	echo( new line, Line 1, new line, Line 2 ); 
 	+++,
-    "Output 02:": "automatic",
+    "Output 04:": "automatic",
     "See also": [ "Text inside single quotation marks", "Text inside double quotation marks" ]
 },
 
@@ -166,29 +275,49 @@ B4PDOCU.START
 	Text inside quotation marks allows practically all characters except the same single quotation mark symbol inside the text.
 	If this is needed, you put the __text inside double quotation marks__ instead.
 
-	<br><br>
 
-	Text inside single quotation marks can be used for
+    "Description 02:Spaces"::
+
+	The text may contain any number of leading, trailing and inside spaces.<br>
+	<b>'Hello&nbsp;&nbsp;&nbsp;World'</b> differs from <b>'Hello World'</b>.
+
+    "Description 03:Uses"::
+
+	Plain text can be used for
 	* <b>String values</b>
 	* __Variable names__
 	* __Table names__
 
-    "Description 02:Rules"::
+    "Description 04:Rules"::
+
+
 	* Use single quotation marks (apostrophes) <b>' ... '</b> to enclose the text.
 	* Inside the quotation marks, all characters are fine, except the single quotation mark which delimits the text.
 	* All white spaces, including multiple consecutive spaces preserved.
-	** Example 1: <b>'Hello&nbsp;&nbsp;&nbsp;World'</b> is not equal to <b>'Hello World'</b>
-	** Example 2: <b>'Hello World'</b> is not equal to <b>'  Hello World  '</b>
 	* The text must fit on the same line.
 	** Exception: Use  __multi-line text__ using 3 consecutive quotation marks ''' (apostrophes) as delimiatersto formulate a text requiring multiple lines.
 	* Reserved keywords inside quotation marks are treated as text, e.g. 'true'.
-	* Various functions and comparisons support __wildcard symbols__
-	** Example 1: <b>ABC = 'A*'</b> returns true.
+	* Various functions and comparisons support __wildcard symbols__, e.g. <b>ABC = 'A*'</b> returns true.
 	* __Character entities__ like &amp;euro; or &amp;#x20ac; for the EURO symbol &euro; are supported.  They are converted quasi at compile time to target characters.
 	* If the text is assigned to B4P variables or used inside expressions, then the variable assumes the type __string__ and subtype __softquoted string__.
 
+
+	=== 250, 250, 250, 250
+	Good Examples 			| Interpretation			| Bad Examples 		| Interpretation
+	'Hello World'			| Text					| 'Hello World"		| Delimits with wrong quotation mark
+	'123'				| Text					| &apos;123		| Not properly delimited
+	' Hello&nbsp;&nbsp;World '	| Text (2 spaces inside)		|			|
+	''				| Text (blank value)			|			|
+	'100 &amp;euro;'		| Text (100 &euro;)			| 100 &amp;euro;	| Syntax error: & abd ; are B4P symbols
+	'-'				| Text					|			|
+	'true'				| Text					|			|
+	'"Hi!"'				| Text, "Hi!"				|			|
+	===
+
+	<br><br>
+
 	+++,
-    "Examples 02:Examples"::
+    "Examples 04:Examples"::
 	echo( 'Hello World' );
 	echo( '  Hello   World  ' );
 	echo( 'One + One' );
@@ -198,7 +327,7 @@ B4PDOCU.START
 	echo( 'A cheap way to continue on&#10;the next line' ); // Not recommended. Use '...', new line, '...' instead.
 	echo( new line, 'Line 1', new line, 'Line 2' ); 
 	+++,
-    "Output 02:": "automatic",
+    "Output 04:": "automatic",
     "See also": [ "Plain text", "Text inside double quotation marks", "Multi-line text", "softquoted strings" ]
 },
 
@@ -213,14 +342,19 @@ B4PDOCU.START
 	Text inside quotation marks allows practically all characters except the same double quotation mark symbol inside the text.
 	If this is needed, you put the __text inside double quotation marks__ instead.
 
-	<br><br>
+    "Description 02:Spaces"::
+
+	The text may contain any number of leading, trailing and inside spaces.<br>
+	<b>"Hello&nbsp;&nbsp;&nbsp;World"</b> differs from <b>"Hello World"</b>.
+
+    "Description 03:Uses"::
 
 	Text inside double quotation marks can be used for
 	* <b>String values</b>
 	* __Variable names__
 	* __Table names__
 
-    "Description 02:Rules"::
+    "Description 04:Rules"::
 	* Use double quotation marks <b>" ... "</b> to enclose the text.
 	* Inside the quotation marks, all characters are fine, except the double quotation mark which delimits the text.
 	* All white spaces inside the text inside quoatation marks are preserved.
@@ -228,14 +362,26 @@ B4PDOCU.START
 	** Example 2: <b>"Hello World"</b> is not equal to <b>"  Hello World  "</b>
 	* The text must fit on the same line.
 	** Exception: Use  __Multi-line text__ using 3 consecutive quotation marks """ as delimiatersto formulate a text requiring multiple lines.
-	* Reserved keywords inside quotation marks are treated as text, e.g. 'true'.
-	* Various functions and comparisons support __wildcard symbols__
-	** Example 1: <b>ABC = "A*"</b> returns false.
+	* Reserved keywords inside quotation marks are treated as text, e.g. "true".
+	* No interpretation of selected characters as wildcard symbols when comparing, e.g. <b>ABC = "A*"</b> returns false.
 	* __Character entities__ are not supported in texts inside double quotation marks.  Any such specification is part of the quoted text.
 	* If the text is assigned to B4P variables or used inside expressions, then the variable assumes the type __string__ and subtype __quoted string__.
 
+	=== 250, 250, 250, 250
+	Good Examples 			| Interpretation			| Bad Examples 		| Interpretation
+	"Hello World"			| Text					| "Hello World		| Delimits with wrong quotation mark
+	"123"				| Text					| &quot;123		| Not properly delimited
+	"Hello&nbsp;&nbsp;World"	| Text (2 spaces inside)		| "100 &amp;euro;"	| Entity will not be decoded into &euro;
+	""				| Text (blank value)			|			|
+	"+"				| Text 					|			|
+	"true"				| Text					|			|
+	"'Hi!'"				| Text, 'Hi!'				|			|
+	===
+
+	<br><br>
+
 	+++,
-    "Examples 02:Examples"::
+    "Examples 04:Examples"::
 	echo( "Hello World" );
 	echo( "  Hello   World  " );
 	echo( "One + One" );
@@ -245,7 +391,7 @@ B4PDOCU.START
 	echo( "A cheap way to continue on&#10;the next line" ); // No translation of entitites here
 	echo( new line, "Line 1", new line, "Line 2" ); 
 	+++,
-    "Output 02:": "automatic",
+    "Output 04:": "automatic",
     "See also": [ "softquoted strings", "Plain text", "Text inside single quotation marks", "Multi-line text" ]
 },
 
@@ -258,7 +404,7 @@ B4PDOCU.START
     "Keywords":			[ "reserved keyword", "escape", "tab" ],
     "Description 01:Introduction"::
 	B4P has only six reserved symbols which must be specified as __plain text__ using lower-case letters.  Different from other languages, 
-	flow control terminology like __if(__), __switch(__) and __while(__) are __function__ names and not reserved keywords.
+	control flow terminology in B4P such as __if(__), __switch(__) and __while(__) are __function__ names and not reserved keywords.
 
 	=== 150, 150, 700, bold_column_1
 	Reserved Keyword 	| Meaning 		| Description
@@ -283,8 +429,7 @@ B4PDOCU.START
 	echo( 1st line, new line, 2nd line );
 	echo( true = false ); // Outputs 'false' (Boolean comparison)
 	+++,
-    "Output 01:":		"automatic",
-    "See also": [ "quoted strings", "Plain text", "Text inside single quotation marks", "Multi-line text" ]
+    "Output 01:":		"automatic"
 
 },
 
@@ -381,104 +526,6 @@ for all variables( example[], ex[] )
 },
 
 
-"Numbers" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Number", "Numbers" ],
-    "Description 01:Introduction"::
-
-	In the B4P language, numbers are numeric values which optionally contain decimal points.  The same applies to reading numbers from __tables__.
-	Following rules apply:
-
-	* It must contain at least 1 digit (0..9)
-	* Negative numebers start with a minus sign (see: __unary operators__)
-	* The number must not contain spaces and/or thousand separator symbols.  Use __clean num(__) to remove such symbols automatically.
-	* At most one decimal point may be used.  More points inside make the value look like a __plain text__.
-	** A lone decimal describes a __plain text__ containing one character.
-	** At least one digit must be added before or after the decimal point, e.g. <b>5.</b> or <b>.5</b> are OK, specifying 5 and 0.5.
-	* Leading zeros in front and trailing zeros after the digits after the comma are OK
-	* __Scientific notation__: Not supported for the reason that some coded data (e.g. special abbreviations) may look similar to scientific notation. See next section for more details..
-	**  However, use __num(__) or __clean num(__) to specify scientific notations.
-	** Exceptions: Table entries may contain numbers in scientific notation, but use __table configure(__) to activate reading scientific notation.
-	** Scientific notation is also supported in numbers in JSON files.  See __variable load(__) to load JSON files.
-
-	+++,
-    "Examples 01:"::
-	echo( 1 );                   // Simple numeral
-	echo( 1 1 + 2 2 );           // Attention: These two numbers are strings : '1 12 2' is returned, not '33' or '3 3'
-	echo( 123.45 );
-	echo( 0123.450 );            // Same value as above
-	echo( 0123.450 *1);          // Operation applied (multplied by 1), therefore text representation has been dropped
-	+++,
-    "Output 01:":		"automatic",
-    "See also": [ "Numerals", "Scientific Notation" ]
-
-},
-
-
-
-"Scientific Notation" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Scientific Notation" ],
-    "Description 01:Introduction"::
-
-	Scientific notation is not foreseen in the B4P language itself, i.e. by specifying something like <b>1.5E-01</b> because various active
-	data sets, for example section and code numbers would be misinterpreted.  However, B4P provides following workarounds by using the __num(__)
-	or __clean num(__) function.  
-
-	<br><br>
-	How to formulate scientific notation:
-	* The letter <b>E</b> or <b>e</b> must follow the mantissa value (a value with or without the using decimal point) without spaces
-	* Adding a <b>+</b> behind is optional.  For negativ exponents, add a <b>-</b>.
-	* Then conclude the value with 
-
-	+++,
-    "Examples 01:"::
-a[] = 1000;
-a[text 1] = 1E03;
-a[text 2] = '1e+03';  // Put into quotation marks to avoid adding 3 to '1e'
-a[num  1] = num(1E03);
-a[num  2] = num('1E+03'); // Quotation marks required because of plus symbol (confuses with addition)
-a[milli ] = num('1e-3');
-a[wrong ] = num('1E 03'); // Space inside.  Only 1st digit will be recgnized 
-see(a[])
-	+++,
-    "Output 01:":		"automatic",
-
-    "Description 02:Scientific Notation in Tables"::
-
-	By default, scientific notation in tables will be recognized as text.  However, the function __table configure(__) allows you to activate
-	recognition of scientific notation.
-
-
-	+++,
-    "Examples 02:"::
-table create( table );
-with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 0
-{
-    [.] = '1.24E-05';
-    echo( [.],   '&tab12;Type: ', subtype([.]),   '&tab40;Note: Read in as text into a string' );
-
-    table configure( table, scientific notation, yes );
-    echo( [.],   '&tab12;Type: ', subtype([.]),   '&tab40;Note: Text representation still preserved' );
-    echo( [.]+0, '&tab12;Type: ', subtype([.]+0), '&tab40;Note: Text representation destroyed by calculation' );
-
-    // Note: Explanatory text uses tabulation using dedicated character entities.
-}
-	+++,
-    "Output 02:":		"automatic",
-
-    "Description 03:Scientific Notation JSON files"::
-
-	Unfortunately, JSON numbers do not support scientific notation by standard.
-	Consider handling them as text and use __num(__) to convert them to numbers.
-
-    +++
-},
-
-
-
 
 "Symbols" :
 {
@@ -486,44 +533,37 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Feature Names":		[ "Symbols" ],
     "Description 01:Overview of B4P Symbos"::
 
-	B4P makes use of the following symbols:
-
 	=== 150, 250, 600, bold_column_1
 	Symbols		| Description			| Explanation
-	{ }		| Braces			| Specify program __blocks__ <br>\
-							  Defines sets __sets__ <br>\
-							  __Indexing strings__ and __indexing sets__ <br>\
-							  __Slicing strings__ and __slicing sets__
-	( )		| Parentheses			| Describes __function parameters__ <br>\
-							  Calculate contents in parentheses first
+	{ }		| Braces			| Specify program __blocks__, __sets__, __indexing strings__, __slicing strings__, __indexing sets__ and __slicing sets__ <br>
+	( )		| __Parentheses__		| Describes __function parameters__ <br>\
+							  Calculate contents inside parentheses first
 	[  ]		| Brackets			| __Variables__: Opening bracket symbol <u>must follow</u> after the variable name, where further hierarchical member names and array indexes can be specified <br> \
-							  __Table references__: Tables do always begin and end with brackets
+							  __Table references__: Tables do always begin and end with brackets.
+	.		| Point				| Inside numbers: decimal point<br>\
+							  __Partial table specifications__: Lone point specifies current column given the __table context__ is provided. \
+							  Otherwise the lone point is treated as plain __text__.
 	,		| Comma				| Separates elements in __sets__, values in __function parameters__, etc.
 	;		| Semicolon			| Concludes and separates __statements__
-	+ - * / 	| __Arithmetic operators__	| Used as __binary operators__, and some as unary and assignment operators
-	&amp; &#124; !	| __Logical operators__		| Used as __binary operators__, and some as unary and assignment operators
+	+ - * / 	| __Arithmetic operators__	| Used as __binary operators__, and some as __unary operators__ and __assignment operators__.
+	&amp; &#124; !	| __Logical operators__		| See above.
 	&lt; &lt;= == &gt;= &gt; != | __Comparison operators__ | Compares one value at the left-hand side of this symbol with <u>exactly</u> one value at the right-hand side
-	= &lt; &gt;	| __Comparison operators__	| Compares one value at the left-hand side with a __selection of multiple values__ or __value ranges__ at the right-hand side
-	=		| __Assignment symbol__		| Inside __statements__, equal signs are interpreted as assignment symbols.  <br>Example: <b>a[] = b[] = c[]</b><br>First equal sign is the assignment symbol.  The 2nd equal sign compares two variables for being equal.
+	= &lt;&gt;	| __Comparison operators__	| Compares one value at the left-hand side with a __selection of multiple values__ or __value ranges__ at the right-hand side
+	=		| __Assignment symbol__		| Inside __statements__, equal signs are interpreted as assignment symbols.
 	..		| Range				| Used for __slicing strings__, __slicing sets__, and specifying __value ranges__
-	~		| Other operators		| Used as unary operators
+	~		| Other operators		| Used as __unary operators__
 	++ -- **	| __Ad-hoc operators__		| Used to increment, decrement and scale variables and table entries
-	:		| Colon				| Separates __else__ from subsequent statement <br>\
-							  Repeat operator for set elements<br>\
-							  Instructs to access multiple table entries
+	:		| Colon				| Separates __else__ from subsequent statement, __Value repetitions__ in sets<br> and accessing __tables__
 	^		| Deep prefix/postfix symbol	| __Deep operators__ for calculating with sets, vectors and matrices<br>\
 							  __Variable references__ <br>\
 							  __Nested partial table specifications__<br>\
 							  __Transactions__: Skip the __base variables__.
-	/* */ //	| Comments			| __Comment blocks__ and __line comments__.
+	/* */<br>//	| Comments			| __Comment blocks__ and __line comments__.
 	&lt;== &lt;&lt;= &lt;=&gt; | __Transaction operators__ | Used for __transactions__
 	===
 
 	Various symbols can be combined, for example for the __assignment operator__ <b>+=</b> to add the calculated result of an expression to the destination.
 
-	<br><br>
-	<u>Note:</u> The single point (<b>.</b>) is interpreted as part of a __number__ (decimal point) if the whole item constitutes a legitimate number, or part of a __text__.
-	Inside __table references__, single points, as long they are not in double quotation marks, may refer to current columns if a __table context__ for __partial table specifications__ with column informaiton is provided.
 	+++
 
 },
@@ -541,11 +581,9 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	=== 150, 150, 700, bold_column_1 bold_column_2
 	Comment Types	| Examples | Description
 	Line comment	| // | Comment starting with double slashes and effective until end of line. The symbols for comment blocks /* and */ are ignored inside line comments.
-	Comment block	| /* ... */ | Commented code section. <br/>/* begins commented section<br/>*/ ends commented sections<br/>Commented section is not ended prematurely with line comments.<br/>Nested comments are not supported, e.g. /* … /* … */ … */
+	Comment block	| /* ... */ | Commented code section, max include multiple lines. Nested comments are not supported, e.g. /* … /* … */ … */.
 	===
 
-	You may wonder why obvious names such as 'if', 'while' and 'for' are not considered as similar reserved keywords.  In B4P, the control flow statements
-	are actually procedure names which then influence executing further statements or blocks.  Therefore, you can actually use 'if' as the given function.
 	+++,
     "Examples 01:"::
 	// This is a commment
@@ -762,23 +800,9 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
     "Description 01:Console Output"::
 
-	Good news: The consoles under Windows, LINUX and MacOS support full UNICODE.<br>
-	Bad news: Most console and terminal programs do not display all available UNICODE characters properly
-
-	<br><br>
-
-	All consoles support the ANSI (formerly: ASCII) chracter set.  Most consoles support additional character sets such as 
-
-	* Basic Latin
-	* Latin-1 Supplement (To ensure Düsseldorf is not written as Dusseldorf - translated as "village of fools")
-	* Latin Extended A
-	* Greek (for language enthsiasts and fraternity/sorority members in North America)
-	* Cyrillic (Russian)
-	* A set of additional symbols (also found in win1252 character set) including the Euro currency sign
-
-	Some modern console programs support an increasing number of UNICODE symbols, including various Asian fonts and emojies.
-	Unsupported symbols will automatically be shown using question marks or placeholder boxes.
-
+	The consoles make use of the UNICODE character set.  Some older or specialized consoles may not support
+	all characters found in the UNIOCDE space and may output placeholders or substitute characters.
+	Some modern consoles support the extended multilingual planes which include emojies.
 	+++,
 
     "Description 02:Console Input"::
@@ -1379,33 +1403,27 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 
 
-"Basic Data Types" :
+"Data Types" :
 {
     "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Basic data types", "Types", "Subtypes" ],
-    "Description 01:Language Pyramid Context"::
-
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Basic_Types.png" alt="B4P Language Pyramid - Basic Data Types"></a><br/>
-
-    "Description 02:Overview"::
+    "Feature Names":		[ "Data types", "Types", "Data type", "Subtypes" ],
+    "Description 01:Overview"::
 
 	B4P supports six basic data types for doing calculations in __expressions__ and storing data in __variables__.
 	However, __tables__ store all data in text form, including __numbers__.  Numerals written to tables are converted into numbers in text form, and
 	numbers read are converted into numerals.
 
 	<br><br>
-	Strings, numerals and dates are also categorized in two subtypes each which are desribed in the following sections.
+	Strings and numerals are also categorized in two subtypes each which are desribed in the following sections.
 
+	* __Numerals__
+	** __Numerals__ with associated text representations
+	** __Plain numerals__
 	* __Strings__
 	** __Softquoted strings__
 	** __Quoted strings__
-	* __Numerals__
-	** __Numerals__ with preserved text representations
-	** __Plain numerals__
-	* __Dates__, able to contain dates, times or both
-	** __Dates__ with preserved text representations
-	** __Plain dates__
+	* __Dates__
+	** This type can contain dates, times, combination of both, and blank dates.
 	* __Booleans__
 	* __Sets__
 	** They contain multiple elements of values of any data type, including nested sets.  Empty sets (0 elements) are supported.
@@ -1416,6 +1434,55 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 
 
+
+  "Numerals" :
+  {
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "data types numerals" ],
+    "Keywords":			[ "numeral", "numerals", "plain numeral", "plain numerals"  ],
+    "Description 01:Introduction"::
+
+	B4P handles all numerals as double precision floating point numbers, regardless how they are used, ranging from loop
+	indexing to performing scientific calculations.  Two subtypes are suppported:
+
+	* <b>Numerals</b> with associated text represenatations
+	* <b>Plain numerals</b>
+
+	Numbers parsed in B4P program code text or read from tables come with both numeric values and associated text presentation.  Following rules apply:
+
+	* Text representations will be <u>discareded</u> when any form of calculations are applied, included adding 0 or multiplying by 1, e.g. <b>1*012.340</b> results in <b>12.34</b>.
+	* __Parentheses__ preserve the text representations, e.g. <b>(007)</b>
+	* __Assignments__ (e.g. <b>a[] = 007.00</b>) and __transactions__ (e.g. <b>a[] <== 007.00</b>) will not discard the text representations, too.
+	* Various string functions, such as __str(__), __left(__), etc. utilize the text representation of the numbers if they are still available. \
+	  You can recover the original string representation using the __str(__) or __vstr(__) function, as long it has not been discarded.
+	* The function __subtype(__) returns <b>numeral</b> if the text representation is still existing, or <b>plain numeral</b> if this is not or no longer the case.
+
+	+++,
+    "Examples 01:"::
+	a[0] = 123.45;
+	a[1] = 007;
+	a[2] = 20.20;
+	a[3] = num( '1.5E-3' ); // String representation will not be included here
+	a[4] = 0.00;
+
+	for all variables( a[], b[] )
+	{
+	    c[] = str(b[]);  // Recover string representation
+	    d[] = b[] + 0;       // String representation gets dropped because a calculation has been made
+	    e[] = str(d[]);  // Convert back to string representation
+
+	    echo;
+	    echo("For following numeral        : ", b[], " subtype: ", subtype(b[]) );
+	    echo("   String representation     : ", c[], " subtype: ", subtype(c[]) );
+	    echo("   Converted to plain numeral: ", d[], " subtype: ", subtype(d[]) );
+	    echo("   Back to string again      : ", e[], " subtype: ", subtype(e[]) );
+	}
+	+++,
+    "Output 01:":		"automatic"
+
+  },
+
+
   "Strings" :
   {
     "Documentation":		"General Description", // Required value
@@ -1424,10 +1491,9 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Description 01:Introduction"::
 
 	Strings in B4P consist of 0, 1 or any number of UNICODE characters.  Every character counts as 1 character, regardless if it is an ANSI or
-	non-ANSI (e.g. foreign) character.  The string length is limited to a specific value, but only by the available system memory.
+	non-ANSI (e.g. foreign) character.  The string length is only limited to the available system memory.  Unlike other programming languages,
+	B4P supports two string subtypes where differences in interpreting the contents apply:
 
-	<br><br>
-	B4P supports following two subtypes:
 	* __Quoted strings__, and
 	* __Softquoted strings__.
 
@@ -1444,16 +1510,16 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Keywords":			[ "Softquoted string", "Softquoted strings" ],
     "Description 01:Introduction"::
 
+	The data subtype <b>softquoted string</b> is applied in following cases:
 
-	The data subtype <b>quoted string</b> is applied in following cases:
-
-	* __Plain text__ or __text inside single quotation marks__ is written into B4P __variables__.
-	* __Plain text__ or __text inside single quotation marks__ is used in B4P __expressions__ and __comparisons__.
+	* __Plain text__ assigned into variables or used in any kind of __expressions__
+	* __Text inside single quotation marks__, same is applicable.
 
 	Following features apply to <b>softquoted strings</b> only:
 
 	* Symbols like '*' or '?' are treated as __wildcards__ for __comparisons__ and when the equal sign = or not-equal sign &lt;&gt; is used<br> \
 	  <u>Note:</u> This is not the case for the other comparison operators such as  == and !=.
+	* __Character entities__ are supported: Common ones like foreign characters and symbols, and proprietary ones like changing text color
 	* __Accessing tables__: A single point may be used to access the current coolumn if the __table context__ allows this.
 	* __Shifted table column specifications__: Table header names may be prefixed with one or more &lt; or &gt; to access neighboring columns.
 	* Some functions support dedicated values in place of column header names in their parameters, e.g. <b>'#row'</b> or <b>'*'</b> in specific function parameters such as in __table lookup(__) and __table consolidate(__).
@@ -1514,10 +1580,9 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 	The data subtype <b>quoted string</b> is applied in following cases:
 
-	* __Text inside double quotation marks__ is written into B4P __variables__.
-	* __Text inside double quotation marks__ is used in B4P __expressions__ and __comparisons__.
+	* __Text inside double quotation marks__ is written into B4P __variables__ and used in any __expressions__.
 	* Unless specified otherwise, almost all B4P functions which return values of type __string__ are of subtype <b>quoted strings</b>.
-	* The contents in quoted strings are always considered as given , including:
+	* The contents in quoted strings are always considered and interpreted as literally given:
 	** No symbols like '*' or '?' are treated as wildcard symbols for comparisons
 
    "Examples 01:With Text Inside Double Quotation Marks"::
@@ -1603,96 +1668,39 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 
 
-  "Numerals" :
-  {
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "data types numerals" ],
-    "Keywords":			[ "numeral", "numerals", "plain numeral", "plain numerals"  ],
-    "Description 01:Introduction"::
-
-	B4P handles all numerals as double precision floating point numbers, regardless of the uses, ranging from loop
-	indices to scientific calculations.  Two subtypes are suppported:
-
-	* <b>Numerals</b> with preserved text represenatations
-	* <b>Plain numerals</b>
-
-	Numerals picked up from the B4P program code or read in from tables will initially carry along their original
-	text representations, for example 0123.40. They are useful in case the leading and trailing zeros in numbers (like in postal codes and 
-	section numbers in document structures) need to be preserved.  The string representation will be discarded immediately when any kind
-	of algorithmic operations is applied, for exmaple additions (including adding 0), negations and mathematical functions.  In all these cases, the
-	subtype changes from <b>numeral</b> to <b>plain numeral</b>.  No discardings take place on direct __assignments__
-	and __transactions__ without calculations done, e.g. <b>a[] = b[];</b>.
-
-
-
-	+++,
-    "Examples 01:"::
-	a[0] = 123.45;
-	a[1] = 007;
-	a[2] = 20.20;
-	a[3] = num( '1.5E-3' ); // String representation will not be included here
-	a[4] = 0.00;
-
-	for all variables( a[], b[] )
-	{
-	    c[] = str(b[]);  // Recover string representation
-	    d[] = b[] + 0;       // String representation gets dropped because a calculation has been made
-	    e[] = str(d[]);  // Convert back to string representation
-
-	    echo;
-	    echo("For following numeral        : ", b[], " subtype: ", subtype(b[]) );
-	    echo("   String representation     : ", c[], " subtype: ", subtype(c[]) );
-	    echo("   Converted to plain numeral: ", d[], " subtype: ", subtype(d[]) );
-	    echo("   Back to string again      : ", e[], " subtype: ", subtype(e[]) );
-	}
-	+++,
-    "Output 01:":		"automatic"
-
-  },
-
-
   "Dates" :
   {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "data types dates" ],
-    "Keywords":			[ "date", "dates", "plain date", "plain dates"  ],
+    "Keywords":			[ "date", "dates"],
     "Description 01:Introduction"::
 
 	The date type can store the following:
-	* Dates (beginning 1990-01-01) only,
-	* Times of day (hours, minutes and seconds),
-	* Combination of date and time, and
-	* Empty values, referred to as <b>blank dates</b>.
+	* Dates (beginning 1990-01-01)
+	* Times of day: hours, minutes and seconds (but no further breakdown of seconds)
+	* Combination of date and time
+	* Blank dates (neither date nor time specified)
 
-	Internally B4P handles dates and times as separate variable, which is different from Excel where time is coded as the fractional part
-	of the date.  Similar to __numerals__, two subtypes are suppported:
 
-	* Dates with preserved text represenatations
-	* Plain dates (don't confuse with blank dates)
+	<br>
 
-	This data type can store pure dates (beginning 1990-01-01), time of day (down to the second), combination of both date and time of day, or <i>blank dates</i> which 
-	are blank values neither containing dates or times.
-
-	<br><br>
-
-	Dates read in from tables (must activate it with calling the function __table configure(__)) will automatically include their
-	text representations.  The string representation will be discarded immediately when any kind of algorithmic operation
-	is applied, even if 0 days are added.  No discardings take place on direct __assignments__
-	and __transactions__ without calculations done, e.g. <b>a[] = b[];</b>.
-
-	In B4P code, dates are created using the following functions listed below and the dates are created as plain dates without memorized text representation.
+	In B4P code, dates are created using the following functions listed below.
 
 	=== 200, 800, noframe_1stcolbold
 	Function name 	| Description
 	__date(__)    	| Depending on the string value provided, it returns a date, date and time, time only, or blank date.
-	__pure date(__) | Works like date, but ignores any time of day information.  Output is either a date or blank date.
+	__pure date(__) | Works like date, but discards thhe time information. Output is either a date or blank date.
 	__date time(__) | Works like date.  If input is not a blank, and if no time of day is provided, then 00:00:00 (midnight) is assumed as time of day.
-	__time(__)	| This function will only use the time information.  If the paramter contains a date only, then a blank date wil be returned.
+	__time(__)	| This function discards and returns the time only.  A blank date (and not 00:00:00) is returned if the input is a blank date.
 	===	
 
 	Simple and valid examples are: <b>date( 14.07.2020 ), date( "2020-07-04" ), date( today )</b>. The values provided in the date functions are string constants.
 	Please note that quotation marks (no matter if single or double) are required for the 2nd example because of the hyphens which would otherwise be treated as
 	minus signs where 7 and 4 are subtracted from 2020.
+
+	<br><br>
+
+	Reading dates from tables as dates and not as strings can be activated using the function call __table configure(__).
 
 	+++,
 
@@ -1707,8 +1715,6 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 	for all variables( a[], b[] )
 	{
-	    // The 'date' function converts input strings (text) into plain dates without preserving text
-
 	    c[] = date( b[] ); 
 	    d[] = pure date( b[] );
 	    e[] = time ( b[] );
@@ -1805,19 +1811,15 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Keywords":			[ "Sets"  ],
     "Description 01:Sets"::
 
-	Sets are used to store multiple basic data items, known as elements, into a single variable.  Every element may consist of numerals, strings, dates, booleans, voids
-	and sets as well.  The embedded sets are also known as nested sets and are useful to create and process multi-dimensional vectors and matrices.
-
-	<br><br>
-
-	Sets are coded with elements inside braces and separated with commas, e.g. <b>{ ape, bee, cat }</b>.	
+	Sets consist of any number of elements, where the elements can be of any __data type__ including nested sets. 
+	Sets are coded with elements inside braces and separated with commas, e.g. <b>{ ape, bee, cat, dog, elk, fox, gnu, hen }</b>.	
+	Following rules apply:
 
 	<br>
 
 	=== 250, 750, noframe_1stcolbold, noheader
-	Number of elements		| At least zero (empty set)
 	Empty sets			| Empty sets <b>{ }</b> are not the same as blank or void values
-	Mixed data types		| A set may contain data of different types, e.g. <b>{ 1, Abc, true, date(31.12.2020) }</b>
+	Mixing data types		| A set may contain data of different types, e.g. <b>{ 1, Abc, true, date(31.12.2020) }</b>
 	Nesting				| Sets support nesting, e.g. <b>{ { 1, 2 }, { 3, 4 }, 5 }</b>
 	Nested empty sets		| Nested empty sets are allowed.  E.g. <b>{ {} }</b> is not the same as <b>{ }</b> or <b>{ { {} } }</b>.
 	Sequence of elements		| The sequence of elements is preserved, i.e. <b>{a,b,c,d}</b> and <b>{d,c,b,a}</b> are different.<br>Comparing them with '=' returns true (ordering does not care), but with '==' returns false (elements must be in same order).
@@ -1826,8 +1828,9 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	__Indexing Sets__		| One element can be extracted by indexing.  1st element begins wtih 0. Example:  <b>a[] = {a,b,c,d}{1};</b> Here, the 1st element is accessed, a[] gets value 'b'.
 	__Negative indexing__		| Negative indexing supported here. <b>a[] = { a,b,c,d,e }{-2}</b> assigns 'd' to a[].
 	__Slicing Sets__		| Specify multiple index values and __ranges__ to extract subsets.
-	Arithmetics			| A broad range of arithmetic operators are available to manipulate sets, for example intersections and unions.
-	===	
+	Arithmetics			| A broad range of __arithmetic operators__ are available to manipulate sets, for example intersections and unions.
+	__Assignments__			| Assignments are possible on individual elememnts in existing sets, see __assignments into sets__.
+	===
 	+++,
 
     "Examples 01:"::
@@ -1844,7 +1847,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "data types sets indexing" ],
     "Keywords":			[ "Indexing sets", "Indexing elements", "Length of sets" ],
-    "Description 01:Sets - Simple Indexing"::
+    "Description 01:Introduction"::
 
 	<i>Simple indexing</i> is used to retrieve single elements from the set.  Indexing begins with 0 which refers to the 1st
 	set element.  The index value is specified in braces and shall not be confused with a set as such.
@@ -1900,7 +1903,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Feature Names":		[ "Slicing Sets" ],
 
 
-    "Description 01:Sets - Extracting Subsets"::
+    "Description 01:Introduction"::
 
 	Instead of specifying single index values to retrieve single elements, subsets can be retrieved by listing muliple values and/or __ranges__.
 	In some other programming langauges, this feature is known as slicing.
@@ -1933,15 +1936,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "Data types sets value ranges" ],
     "Keywords":			[ "ranges"],
-    "Description 01:Sets - Simple Values"::
-
-	Simple set values are 0, 1 or more values of any types, regardless if values, variables, expressions or subsets, embedded inside braces
-	and separated with commas. Example: <b>{ }</b> (empty set),  <b>{ 1, a, {} }</b> (contains 2 values and nested a empty set), and <b>{ {1,2},{3,4} }</b> describing a
-	nested set which looks like a 2-dimensional matrix and can be used as such.
-	+++,
-
-
-    "Description 02:Sets - Value Ranges (Numerals)"::
+    "Description 01:Value Ranges using Numbers"::
 
  	Simple sets become cumbersome when describing a sequence of incrementing values, e.g. <b>{ 1,2,3,4,5,6,7,8,9,10 }</b>, especially much bigger
 	ones.  One way to do this is with a loop, but is cumbersome.  Alternatively, value ranges can be specified.  A range consists of a starting value
@@ -1952,7 +1947,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	A mixup of numerals and other types inside a range specification is invalid.
 	+++,
 
-    "Examples 02:"::
+    "Examples 01:"::
 	print("Start with the classic way : ");
 	a[] = {};
 	for (i[]=1, i[]<=10, i[]++) a[] += {i[]};
@@ -1966,10 +1961,10 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	echo("Build a 3x3 matrix         : ", {{11..13},{21..23},{31..33}} );
 	+++,
 
-    "Output 02:":		"automatic",
+    "Output 01:":		"automatic",
 
 
-    "Description 03:Sets - Value Ranges (Strings)"::
+    "Description 02:Value Ranges using Strings"::
 
 	Value ranges are also supported for strings.  The string values may consist of one or more characters.  The intial value, optionally <i>second value</i>
 	and final values must contain strings with same number of characters and <u>only one character in the same position changing</u>.
@@ -1985,7 +1980,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	<br>{Point -3 .. Point 3  } fails because minus sign is an extra character.
 	<br>Valid examples: See below
 
-    "Examples 03:"::
+    "Examples 02:"::
 	echo("Start simple               : ", {a..z});
 	echo("Every 2nd letter           : ", {a..c..z});
 	echo("1 letter in string         : ", {'Article A:' .. 'Article F:'} );
@@ -1994,10 +1989,10 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	echo("Numbers in strings         : ", {'Chapter 09:' .. 'Chapter 12:'} );
 	+++,
 
-    "Output 03:":		"automatic",
+    "Output 02:": "automatic",
 
 
-    "Description 04:Sets - Value Ranges (Dates)"::
+    "Description 03:Vlaue Ranges using Dates"::
 
 	Unique to Beyodn4P, Value ranges are also supported for dates and times.  If the value consists of
 	both date and time value, then the range may only be applied either on the date (with time kept
@@ -2009,7 +2004,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 	across midnights to cover additional days.
 
 
-    "Examples 04:"::
+    "Examples 03:"::
 	echo("Dates                       : ", { date(30.03.2016) .. date(02.04.2016) });
 	echo("Dates, 3 day intervals      : ", { date(01.04.2016) .. date(04.04.2016) .. date(10.04.2016) });
 	echo("Today to yesterday - bad    : ", { date(today) .. date(today)-1 });
@@ -2024,7 +2019,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 	+++,
 
-    "Output 04:":		"automatic"
+    "Output 03:":		"automatic"
 
   },
 
@@ -2034,7 +2029,7 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "data types sets value repetitions" ],
     "Keywords":			[ "set value repetitions", "value repetition", "value repetitions"],
-    "Description 01:Sets - Value Repetitions"::
+    "Description 01:Introduction"::
 
 	Large sets with same values repeating can be built up with value repetitions.  Repetitions are specified by numeric values following
 	a colon symbol and following the paramter set element to repeat.  Multiple repetitions may be specified inside a set value.
@@ -2061,74 +2056,11 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
 
 
 
-"Data Storage Model" :
+"Language Framework" :
 {
     "Documentation":		"General Description", // Required value
-    "Feature Names":		"Data Storage Model",
-    "Keywords":                 [ "Variables and Tables" ],
-    "Description 01:Language Pyramid Context"::
-
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Data_Storage.png" alt="Programs"></a><br/>
-
-    "Description 02:Overview"::
-
-	B4P provides two abstractions for data storage:
-
-	* __Variables__, which are traditional storage abstractions found in all programming language.  B4P supports __Structures__ with named members and __Arrays__ with indexed members.
-	* __Tables__, which are unique to B4P and describe globally accessible storage objects for managing 2-dimensional tabular data of any width and length.
-
-	In contrast to other programming languages, B4P's key focus is on __Tables__, and provides an extensive function library with
-	both basic and advanced tabular data processing functions.
-
-	<br><br>
-	Dedicated top-level chapters have been devoted to variables and tables.
-
-	+++,
-    "See also": [ "Tables", "Variables", "Arrays", "Structures"  ]
-},
-
-
-
-
-
-"Programs" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		"Programs",
-    "Keywords":                 [ "Program", "B4P Program", "B4P Programs" ],
-    "Description 01:Language Pyramid Context"::
-
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Programs.png" alt="Programs"></a><br/>
-
-    "Description 02:Overview"::
-
-	Whole B4P program files (or code entered interactively in __interactive mode__) constitute the top level of the B4P programming language.
-	These are either user-written B4P programs or function libraries, either user-written or part of the B4P delivery.  Library files are called up
-	using the __include(__) function.  Some library files are already loaded automatically in order to minimize code bureaucracy.
-
-	<br><br>
-	The B4P programs consist of at least one or more __Statements__ or __blocks__ which are described in the next sections.
-	+++,
-
-    "See also": [ "Blocks and Statements", "Blocks", "Statements" ]
-
-},
-
-
-
-
-"Blocks and Statements" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		"Blocks and Statements",
-    "Description 01:Language Pyramid Context"::
-
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Blocks.png" alt="Programs"></a><br/>
-
-    "Description 02:Introduction"::
+    "Feature Names":		"Language Framework",
+    "Description 01:Introduction"::
 
 	All B4P programs contain one or more of the following:
 
@@ -2199,14 +2131,9 @@ echo( One );                                 // Single statement
     "Documentation":		"General Description", // Required value
     "Feature Names":		"Statements",
     "Keywords":			[ "Statement" ],
-    "Description 01:Language Pyramid Context"::
+    "Description 01:Overview"::
 
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Statements.png" alt="Programs"></a><br/>
-
-    "Description 02:Overview"::
-
-	Statements are standalone instructions in programming languages.  All statements are delimited with semicolons.  Multiple statements may be writtin on the
+	Statements are standalone instructions in programming languages.  All statements are delimited with semicolons.  Multiple statements may be written on the
 	same line.  Also, individual statements may take multiple lines, without need of any dedicated <i>continue on the next line</i> character as required by
 	some other programming languages. B4P supporst 5 different variants of statements described below.
 
@@ -2232,6 +2159,100 @@ echo( One );                                 // Single statement
 
 
 
+
+"Language Pitfalls" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Language pitfalls", "Hijacking parameters", "Hijack" ],
+    "Description 01:Introduction"::
+
+	The syntactic and semantic structure of B4P allow powerful features such as multiple-word naming for variables, functions and tables, as well as
+	other benefits.  However, even experienced programmers trip into some pitfalls.  This section makes you aware of the most the most common pitfalls.
+
+    "Description 02:Brackets follow Variable Names"::
+
+	In regular programming languages, keywords are treated as reserved keywords or variables.  In B4P, they are __plain text__.  To use these strings
+	to access variables, do not forget to add <b>[]</b> behind it.  No differnece applies if you access a subscript of an array or a structure, e.g. <b>a[10]</b>.
+
+
+    "Description 03:For loops - Different from C/C++ and Java"::
+
+	In conventional languages, the three key statements inside for loops are separated by semicolons, e.g. <b>for( a = 1; a < 10; a++ )</b>.  To make things
+	even worse, multiple statements inside the three statements are separted by commas.
+
+	<br><br>
+
+	In B4P, __for(__) is treated like a __procedure call__ where parameters are separated with commas and not with semicolons.  This function accepts
+	__code pieces__ as parameters.  Multiple statements inside a parameter are separated with semicolons. Right formulation: <b>for ( a[]=1, a[]<10, a[]++)</b>.
+
+    "Description 04:Comparison Operators Hijack Parameters"::
+
+	If you are comparing things using the <b>=</b> or <b>&lt;&gt;</b> symbols, note that these two __comparison operators__ (but not <b>==</b> and <b>!=</b>) can expect
+	more than 1 operand.  For example, <b>a[] = 2,3,5,7,11 </b> is a legitimate expression to compare a[] with five different prime numbers.
+
+	<br><br>
+
+	With b[] = 6, the expression <b>a[] = { 1, b[]=5, 6, 7, 8 }</b> is actually resulting <b>{ 1, true }</b> because the comparison has hijacke the remaining
+	parameters in the set.  Add parenthese to avoid this, e.g. <b>a[] = { 1, (b[]=5), 6, 7, 8 }</b> which returns <b>{1, false, 6, 7, 8}</b>.
+
+
+    "Description 05:Memory Effect on Table Headers"::
+
+	Please see the details on the __Memory Effect__	when referencing table heades with string values as they are normally
+	checked once and the column number will be memorized for future use in order accelerate performance significantly.
+
+
+    "Description 06:Forgetting colon before 'else'"::
+
+	Since B4P's unique cababilties of supporting multi-word identifiers for variables, tables and function names, one drawback needs to be covercome:
+	Whenever single __statements__ follows __else__, then a colon is needed to keep them separated.  
+	* Correct: <b>... else : a[] = 1;</b>
+	* Misleading: <b>... else a[] = 1;</b> Here, 1 is assigned to a variable called <b>else a</b>.
+	* No issues with __blocks__: <b>... else { a[] = 1; } </b>
+
+    "Description 07:Error message refers to end of program unexpectedly"::
+
+	You may likely have forgotten a closing parenthesis after the function beginning with <b>table process ...</b> and other functions which expect
+	a code piece in the last parameter.  With the missing closing parameter, B4P tries to include the entire remaining code into that function
+	parameter.
+
+	<br><br>
+	Action: Go back to that function call and ensure that all closing parentheses are included. Example:<br><br>
+	<b>table process selected rows(table, [sine] = sin( [angle] );   </b> // Attention: One parenthesis is missing!<br>
+	<b>table process selected rows(table, [sine] = sin( [angle] ) ); </b> // This one is OK
+
+	+++
+},
+
+
+
+
+
+
+
+"Programs, Files" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		"Programs",
+    "Keywords":                 [ "Program", "B4P Program", "B4P Programs" ],
+    "Description 01:Overview"::
+
+	Whole B4P program files (or code entered interactively in __interactive mode__) constitute the top level of the B4P programming language.
+	These are either user-written B4P programs or function libraries, either user-written or part of the B4P delivery.  Library files are called up
+	using the __include(__) function.  Some library files are already loaded automatically in order to minimize code bureaucracy.
+
+	<br><br>
+	The B4P programs consist of at least one or more __Statements__ or __blocks__ which are described in the next sections.
+
+	<br><br>
+	The next sections address aspects of file storage, particularly naming paths and files as seen by B4P with focus on interoperability across
+	different operating systems.
+
+	+++,
+
+    "See also": [ "Language Framework", "Blocks", "Statements" ]
+
+},
 
 
 
@@ -2301,7 +2322,7 @@ echo( One );                                 // Single statement
     "Feature Names":		[ "loading files" ],
     "Description 01:Introduction"::
 
-	Beyond4P checks all files (programs and data) opened for <i>Byte Order Marks</i> (BOM) at the beginning of the file.  The BOM is a UNICODE character and used to differentiate between
+	B4P checks all files (programs and data) opened for <i>Byte Order Marks</i> (BOM) at the beginning of the file.  The BOM is a UNICODE character and used to differentiate between
 	UTF-16 big endian, UTF-16 little endian and UTF-8 file formats.  All formats are supported, whereas UTF-8 is by far the most common UNICODE data storage format
 	as it is compatible to various legacy systems supporing 8-byte character sets only.
 
@@ -2389,7 +2410,7 @@ echo( One );                                 // Single statement
     "Description 01:CSV File Format"::
 
 	The CSV (Comma Separated Values) is a simple structured text file format existing since the nostalgic 1970's along with the introduction of FORTRAN 77 and is supported by
-	Beyond4P, along with HTML/MHTML, XML and JSON.
+	B4P, along with HTML/MHTML, XML and JSON.
 
 	<br><br>
 	THe biggest drawback is the ignorance towards country specific __locales__.  CSV generated from Excel files use symbols such as
@@ -2397,7 +2418,7 @@ echo( One );                                 // Single statement
 	* Decimal point (as used in US, GB, CH) or decimal comma (as used in DE)
 	* Thousand separator (various symbols and blanks exist)
 
-	The files can be loaded with and without specifying the list separators.  If no list separator is specified, then Beyond4P tries to automatically detect the
+	The files can be loaded with and without specifying the list separators.  If no list separator is specified, then B4P tries to automatically detect the
 	applicable separators by checking for commas, semicolons and tabs.
 
 	Regarding decimal symbols, the standard function __table load(__) will check for numerals in text and CSV files (but not HMTL files and likes) with decimal 
@@ -2488,7 +2509,7 @@ echo( One );                                 // Single statement
     "Keywords":			[ "list of Locales", "locale" ],
     "Description 01:Introduction"::
 
-	Beyond4P is able to support different locales (regional and language specific settings) which are managed in 
+	B4P is able to support different locales (regional and language specific settings) which are managed in 
 	a file called "List of locales.csv".  This file comes along with the installation package and will be referenced automatically
 	whenever locale information is needed to carry out a particular function, e.g. converting a __date__ to a __string__.
 
@@ -2604,79 +2625,7 @@ echo( One );                                 // Single statement
 	* Further information on intermediate processing steps inside selected functions, e.g. __table merge(__)
 
 	+++
-},
-
-
-
-
-"Language Pitfalls" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Language pitfalls", "Hijacking parameters", "Hijack" ],
-    "Description 01:Introduction"::
-
-	The syntactic and semantic structure of B4P allow powerful features such as multiple-word naming for variables, functions and tables, as well as
-	other benefits.  However, even experienced programmers trip into some pitfalls.  This section makes you aware of the most the most common pitfalls.
-
-    "Description 02:Brackets follow Variable Names"::
-
-	In regular programming languages, keywords are treated as reserved keywords or variables.  In B4P, they are __plain text__.  To use these strings
-	to access variables, do not forget to add <b>[]</b> behind it.  No differnece applies if you access a subscript of an array or a structure, e.g. <b>a[10]</b>.
-
-
-    "Description 03:For loops - Different from C/C++ and Java"::
-
-	In conventional languages, the three key statements inside for loops are separated by semicolons, e.g. <b>for( a = 1; a < 10; a++ )</b>.  To make things
-	even worse, multiple statements inside the three statements are separted by commas.
-
-	<br><br>
-
-	In B4P, __for(__) is treated like a __procedure call__ where parameters are separated with commas and not with semicolons.  This function accepts
-	__code pieces__ as parameters.  Multiple statements inside a parameter are separated with semicolons. Right formulation: <b>for ( a[]=1, a[]<10, a[]++)</b>.
-
-    "Description 04:Comparison Operators Hijack Parameters"::
-
-	If you are comparing things using the <b>=</b> or <b>&lt;&gt;</b> symbols, note that these two __comparison operators__ (but not <b>==</b> and <b>!=</b>) can expect
-	more than 1 operand.  For example, <b>a[] = 2,3,5,7,11 </b> is a legitimate expression to compare a[] with five different prime numbers.
-
-	<br><br>
-
-	With b[] = 6, the expression <b>a[] = { 1, b[]=5, 6, 7, 8 }</b> is actually resulting <b>{ 1, true }</b> because the comparison has hijacke the remaining
-	parameters in the set.  Add parenthese to avoid this, e.g. <b>a[] = { 1, (b[]=5), 6, 7, 8 }</b> which returns <b>{1, false, 6, 7, 8}</b>.
-
-
-    "Description 05:Memory Effect on Table Headers"::
-
-	Please see the details on the __Memory Effect__	when referencing table heades with string values as they are normally
-	checked once and the column number will be memorized for future use in order accelerate performance significantly.
-
-
-    "Description 06:Forgetting colon before 'else'"::
-
-	Since B4P's unique cababilties of supporting multi-word identifiers for variables, tables and function names, one drawback needs to be covercome:
-	Whenever single __statements__ follows __else__, then a colon is needed to keep them separated.  
-	* Correct: <b>... else : a[] = 1;</b>
-	* Misleading: <b>... else a[] = 1;</b> Here, 1 is assigned to a variable called <b>else a</b>.
-	* No issues with __blocks__: <b>... else { a[] = 1; } </b>
-
-    "Description 07:Error message refers to end of program unexpectedly"::
-
-	You may likely have forgotten a closing parenthesis after the function beginning with <b>table process ...</b> and other functions which expect
-	a code piece in the last parameter.  With the missing closing parameter, B4P tries to include the entire remaining code into that function
-	parameter.
-
-	<br><br>
-	Action: Go back to that function call and ensure that all closing parentheses are included. Example:<br><br>
-	<b>table process selected rows(table, [sine] = sin( [angle] );   </b> // Attention: One parenthesis is missing!<br>
-	<b>table process selected rows(table, [sine] = sin( [angle] ) ); </b> // This one is OK
-
-	+++
 }
-
-
-
-
-
 
 
 B4PDOCU.STOP

@@ -1,0 +1,3 @@
+﻿#!/usr/local/bin/b4p
+               t[] = excel list tables( "Tables.xlsx" );
+               echo("Found following table(s): ", t[] );       

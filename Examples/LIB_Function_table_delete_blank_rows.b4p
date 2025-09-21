@@ -1,5 +1,5 @@
 ﻿#!/usr/local/bin/b4p
-       table initialize( t,
+table initialize( t,
                { {  Last Name,    First Name,    Favorite Sports },
                  {  Adams,        Andy,          American Football },
                  {  "  ",         "",            Baseball },
@@ -12,9 +12,14 @@
 echo ("Original table:");
 table list(t);
 
-echo ("Demonstrate deleting all rows:");
+echo ("Demonstrate deleting all blank rows:");
 table copy table        ( t, u );
 table delete blank rows ( u );
+table list              ( u );
+
+echo ("Demonstrate deleting all blank rows, same result:");
+table copy table        ( t, u );
+table delete blank rows ( u, 0, blank fields, '*' );
 table list              ( u );
 
 echo (new line, "Demonstrate deleting all rows without names");

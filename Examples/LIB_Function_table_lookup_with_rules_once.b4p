@@ -17,9 +17,9 @@
                        { { Size,     Speed,     Movement,  Leg count,  Surface,    Special Skills, Animal   },
                          { '*',      ':mod([.],40)=0','*', '*',        '*',        '*'              }, // Speed divisible by 40 -> Owl
                          { small,    '20..30',  '*',       '*',        Hair,       '*'              }, // Dog
-                         { small,    '20..30',  '*',       '*',        Hair,       '*'              }, // Dog
-                         { small,    '20..30',  '*',       '*',        Hair,       '*'              }, // Dog
-                         { '*',      '<1',      '*',       '*',        '*',        '*'              } } );
+                         { small,    '20..30',  '*',       '*',        Hair,       '*'              }, // Cat
+                         { small,    '20..30',  '*',       '*',        Hair,       '*'              }, // Fox
+                         { '*',      '<1',      '*',       '*',        '*',        '*'              } } ); // Worm
 
        echo("Target table before lookup:");
        table list( target );

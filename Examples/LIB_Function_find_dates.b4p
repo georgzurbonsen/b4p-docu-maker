@@ -1,0 +1,17 @@
+﻿#!/usr/local/bin/b4p
+
+       a[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, all );
+       b[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, date );
+       c[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, time );
+       d[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, date time );
+       e[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, contains date );
+       f[]= find dates( { "2025-08-01", date(''), Coffee time, date(today), time("10:15:30"), date("2025-03-03 12:01:02") }, contains time );
+
+       echo("any:           ", a[]);
+       echo("date:          ", b[]);
+       echo("time:          ", c[]);
+       echo("date time:     ", d[]);
+       echo("contains date: ", e[]);
+       echo("contains time: ", f[]);
+
+

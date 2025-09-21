@@ -2,30 +2,6 @@
 B4PDOCU.START
 
 
-
-"Assignments and Expressions" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Assignments and expressions" ],
-    "Description 01:Language Pyramid Context"::
-
-	<a href="LAN_Features_Language_Guide.html">
-	<img src="Images/LAN_Pyramid_Assgts_Expressions.png" alt="B4P Language Pyramid - Assignments and Expressions"></a><br/>
-
-    "Description 02:Overview"::
-
-	This section addresses the following B4P building blocks:
-
-	* __Assignments__ which are stand-alone statements where a specified, retrieved or calculated value is assigned to a variable or table entry
-	* __Expressions__, which break down into
-	** __Left-Hand Side Expressions__ (LHS Expressions) to specify destination variables and table entries, and
-	** __Right-Hand Side Expressions__ (RHS Expressions) to specify, retrieve and/or calculate return values.
-
-	+++,
-    "See also": [ "Assignments", "LHS Expressions", "RHS Expressions" ]
-
-},
-
 "Assignments" :
 {
     "Documentation":		"General Description", // Required value
@@ -38,15 +14,21 @@ B4PDOCU.START
 	further array and/or structure members.
 
 	All assignments consist of 3 elements:
-	* A __LHS Expression__ located on the <i>Left-Hand Side</i> of the assignment symbol or __assignment operator__, followed by
+	* A __LHS expression__ located on the <i>Left-Hand Side</i> of the assignment symbol or __assignment operator__, followed by
 	* the <b>assignment symbol</b> <b>=</b> or a valid __assignment operator__, and concluded by
-	* a __RHS Expression__ located on the <i>Right-Hand Side</i>.
+	* a __RHS expression__ located on the <i>Right-Hand Side</i>.
+
+	In addition, stand-alone __ad-hoc operators__ can be applied on __LHS expressions__ without a dedicated assignment.  Example: <b>a[]++;</b>
+
+	<br><br>
 
 	__LHS Expressions__ specify destination locations in variables and tables, while __RHS Expressions__ return specified, retrieved, or
 	calculated values.
 
+
 	<br/><img src="Images/LAN_Assignments.png" alt="Assignments"><br/>
 
+	<br/>
 
      +++,
     "Examples 01:Examples"::
@@ -64,6 +46,193 @@ B4PDOCU.START
     "See also": [ "Expressions", "Transactions" ]
 
 },
+
+
+"Assignment operators" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Assignment operator", "Assignment operators" ],
+    "Description 01:Introduction"::
+
+	Similar to C/C++, B4P supports assignment operators as listed in the table below. An assignment operator such as <b>a[]+=3</b>; 
+	is equivalent to <b>a[]=a[]+3</b>, making use of the same type checking and conversion rules.  Spaces between the assignment operator and
+	the equal sign are allowed.  The execution performance of assignment operators is faster than conventional formulation because fewer
+	language elements (symbols, names, values) are interpreted, e.g. from 9 (<b>a[]=a[]+3</b>) to 6 (<b>a[]+=3</b>).
+
+	=== 100, 200, 700, bold_column_1
+	Operator	| Examples				| Equivalent traditional formulation
+	+=		| a[] += 3;<br>a[] += ' km/h';		| a[] = a[] + 3;<br>a[] = a[] + ' km/h';
+	-=		| a[] -= 4;<br>a[] -= {'1','2'};	| a[] = a[] - 4;<br>a[] = a[] - { '1','2' };
+	*=		| a[] *= 5;<br>				| a[] = a[] * 5;
+	/=		| a[] /= 2;<br>a[] /= '.';		| a[] = a[] / 2;<br>a[] = a[] / '.';
+	&amp;=		| a[] &amp;= b[];			| a[] = a[] &amp; b[];
+	&vert;=		| a[] &vert;= b[];			| a[] = a[] &vert; b[];
+	== =		| a[] == = b[];				| a[] = a[] == b[];
+	!= =		| a[] != = b[];				| a[] = a[] != b[];
+	===
+	In the last two rows, the symbols may be written together, but have been shown separately for better clarity.<br><br>
+
+	In the destination variable is not existing yet and an assignment operator is applied, then the destination variable will
+	be initialized implicitly with following values:
+
+	=== 200, 100, 200, 500, bold_column_1
+	Type		| Value		| Examples		| Equivalen traditional formulation
+	Numeral		| 0		| a[] += 5;		| a[] = 0; a[] = a[] + 5; 
+	String		| '' (blank)	| a[] += 's';		| a[] = ''; a[] = a[] + 's';
+	Date		| (blank date)	| a[] += date(today);	| a[] = date(''); a[] = a[] + date(today);
+	Boolean		| false		| a[] &vert;= b[];	| a[] = false; a[] = a[] &vert; b[];
+	set	| {} (empty set)| a[] &vert;= {1,2};	| a[] = {}; a[] = a[] &vert; {1,2};
+	===
+
+	+++,
+    "Examples 01:"::
+	// Implicit initialization cases
+
+	a[0] += 3;
+	a[1] += 'Hello';
+	a[2] += date("2020-10-12");
+	a[3] |= false;
+	a[4] |= { 1,2,3 };
+	a[5] += true;   // Arithmetic operator converts true to 1 first
+	a[6] = ''; a[6] -= 1; // a[] = '' - 1 is legitimate because arithmetic calculation 
+	// of numbers with blank strings is valid where blanks are treated as zero.
+
+	// Doing some calculations
+
+	a[0] *= 2;      // 3 --> 6
+	a[1] -= llo;    // Hello --> He
+	a[2] += 1;      // Next day
+	a[3] |= true;	// true
+	a[4] *= 2;      // { 1,2,3, 1,2,3 }
+	a[5] /= 2;      // 1 -> 0.5	
+
+	for all variables( a[], x[] ) echo ( x[] );
+	+++,
+    "Output 01:": "automatic",
+    "Description 02:Assignment operators on table cells"::
+
+	Using assignment operators on tables is supported to a limited extent since the type of the destination is either a string or
+	numeral (legitimate positive or negative number with or without decimal point recognized) unless the table has been configured
+	differently using the __table configure(__) function.
+	+++,
+    "Examples 02:"::
+	include( Support Library );
+	table create ( a );
+
+	[a:0,0] += 1;
+	[a:0,1] += 'Hello';
+	[a:0,1] -= 'llo';
+	[a:0,1] += 'y'; // Hey
+	[a:0,2] = true; // converts to string
+	[a:0,2] += ' false'; // 'true false'
+
+	table list(a);
+	+++,
+    "Output 02:": "automatic",
+    "See also": "Deep assignment operators"
+},
+
+
+
+
+"Deep Assignment Operators" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "deep assignment operators" ],
+    "Description 01:Introduction"::
+	Like with regular __binary operators__, __deep binary operators__ can also be formulated as deep __assignment operators__,
+	both with and without __repetition suffix__.
+
+	+++,
+    "Examples 01:"::
+	echo(new line, "Example on vectors:");
+	include(Utility Library);
+	a[] = { 8, 4, 2, 1 };
+	b[] = { 1, 2, 3, 4 };
+	c[] = { 10, 11 };
+	d[] = c[];
+	e[] = c[];
+
+	a[] -^= b[]; // { 7, 2, -1, -3 }
+	echo(a[]);
+
+	c[] +^= b[]; // {11, 13, 3, 4}
+	echo(c[]);
+
+	d2[] +^:= b[]; // With repetition suffix: {11, 13, 13, 15}
+	echo(d[]);
+
+	e[] /^= 2; // With a scalar:  { 5, 5.5 }
+	echo( e[] );
+
+	echo(new line, "Example on matrices:");
+
+	a[] =  { { 8, 7, 6 }, { 1, 2, -1 }, { -5, 4, 6 } };
+	a orig[] = a[];	
+
+	a[] -^^= 1; // Subtract 1 from all elements
+
+	echo matrix( "0", 3, " | ", a orig[], " - 1 = ", a[] ); 
+
+	a[] = a orig[];
+	b[] = { { 1,1,1}, {2,2,2}, {3,3,3} };
+	a[] *^^= { { 1,1,1}, {2,2,2}, {3,3,3} };
+
+	echo matrix( "0", 3, " | ", a orig[], " * ", b[], " = ", a[] ); 
+	+++,
+    "Output 01:": "automatic",
+    "Description 02:Deep Operators on Table Cells"::
+	Deep assignment operators are not possible on table cells if they are targets because with standard
+	table configuration settings: Strings and numerals.  It works if the left-hand value is a numeral and the right-hand value
+	a set.  In this case, the set will then be converted to a string representation and written to the
+	table cell.
+	+++,
+    "Examples 02:"::
+	include ( Support Library );
+
+	table create( t );
+
+	[t:0,0] = 10;
+	[t:0,1] = "Hi ";
+
+	[t:0,0] *^= { 5, 6, 7, 8 };
+	[t:0,1] +^= { volks, everyone, to all of you };
+
+	table list ( t ); // Sets have been converted to strings.
+	+++,
+    "Output 02:": "automatic",
+    "See also": "Assignment operators"
+},
+
+
+
+"Assignments into Sets" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Assignments into sets" ],
+    "Description 01:Overview"::
+
+	If the destination variable is a set, then assignments can be applied on specific elements, or one element can be appended.
+	If the set is (still) empty, then element 0 can be assigned (<b>a[]{0} = ... </b>) to append the first element.  Going beyond
+	results in errors
+
+
+     +++,
+    "Examples 01:Examples"::
+	a[] = { 0,1,2,3,4,5 };
+	a[]{1} = 11; // Replace an element
+	a[]{6} = 6; // Append an element
+	echo(a[]);
+
+	+++,
+    "Output 01:": "automatic",
+    "See also": [ "Sets" ]
+
+},
+
+
+
+
 
 
 
@@ -215,15 +384,21 @@ B4PDOCU.START
 
 
 
-"Calculations" :
+"Calculations, Comparisons" :
 {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "Calculations" ],
     "Keywords":			[ "Calculation" ],
     "Description 01:Overview"::
 
-	Calculations are seen as part of __RHS expressions__ where a calculation is applied on 1 or more values using
-	__operators__ or __function calls__ are made.
+	Calculations include the following:
+	* __Arithmetic calculations__ and __Logical calculations__ using __operators__
+	* __Comparisons__
+	* __Parentheses__
+
+	Calculations are seen as part of __RHS expressions__ where operations as listed above are applied on pme or more values.
+	Thes values can be, amongst others, simple __values__, __variables__, __table references__ and values returned from __function calls__.
+
 
      +++,
 
@@ -273,10 +448,9 @@ B4PDOCU.START
     "Keywords":			[ "Precedence", "Parentheses" ],
     "Description 01:Overview"::
 
-	B4P applies meaningful <b>operator precedence</b> rules when carrying out calculations with
-	unary and binary operators.  For calculation examples, do the multiplications and divisions
-	first, and then the additions and subtractions (briefly said in German: <i>Punktrechnung vor Strichrechnung</i>).
-	Use parentheses to influence the precedence rules.
+	B4P applies commonly practiced <b>operator precedence</b> rules when carrying out calculations with
+	unary and binary operators.  For example, multiplications and divisions are performed first before
+	continuing with additions and subtractions.
 
 	=== 100, 200, 700, bold_column_1 bold_column_2
 	Precedence	| Symbols	| Description
@@ -362,7 +536,7 @@ echo( 3 + (2 >= 2) + 2 );   // 6 (True in middle converts to 1)
 {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "arithmetic operator" ],
-    "Keywords":			[ "arithmetic operators" ],
+    "Keywords":			[ "arithmetic operators", "arithmetic calculations" ],
     "Description 01:Introduction"::
 	Arithmetic operators cover the four basic mathematical operations:
 	* __addition__
@@ -573,8 +747,7 @@ echo( 3 + (2 >= 2) + 2 );   // 6 (True in middle converts to 1)
 	* <b>&gt;</b> Greater than
 	* <b>&gt;=</b> Greater than or equal to
 	* <b>=</b> Equal to, expecting 1 or more operands separated by comma (comparing with a <b>selection of multiple values</b> separated with commas) and/or <b>ranges</b>.
-	* <b>&lt;&gt;</b> Not equal to, expecting 1 or more operands separated by comma (comparing with a <b>selection of multiple values</b> separated with commas) and/or 
-	<b>ranges</b>.
+	* <b>&lt;&gt;</b> Not equal to, expecting 1 or more operands separated by comma (comparing with a <b>selection of multiple values</b> separated with commas) and/or <b>ranges</b>.
 	* <b>==</b> __strictly Equal to__, expecting 1 operand only
 	* <b>!=</b> __strictly not equal to__, expecting 1 operand only
 
@@ -583,14 +756,15 @@ echo( 3 + (2 >= 2) + 2 );   // 6 (True in middle converts to 1)
 
 
 	+++,
-    "Description 02:Attention! = and &lt;&gt; may Hijack Parameters"::
+    "Description 02:Attention!&nbsp;&nbsp;= and &lt;&gt; may Hijack Parameters"::
 
 	<u>Attention</u>: As the two comparison operators <b>=</b> and <b>&gt;&lt;</b> expect 1 or more operands on the right hand side,
 	you may risk situations where the comparison hijacks the remaining comma-separated values on the right-hand-side typically encountered
 	in function parameters and values in sets.  To avoid this, put the comparison into parentheses, or use the <b>==</b> and <b>!=</b>
-	symbols.
+	symbols.  See also the section on __language pitfalls__.
 	+++,
-    "Examples 02"::
+
+    "Examples 02:Typical Pitfalls"::
 	b[] = 12; 
 	// Want to compare b[] == 9 and include the result in the set between 'false' and 12
 	// Good luck!
@@ -1129,7 +1303,7 @@ table initialize ( demo wildcards,
 "Logical Operators" :
 {
     "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "logical operators" ],
+    "Feature Names":		[ "logical operators", "logical calculations" ],
     "Description 01:Introduction"::
 	Logical operators cover the follwoing two operators:
 	* __logical and__
@@ -1304,91 +1478,6 @@ table initialize ( demo wildcards,
     "Output 04:": "automatic"
 },
 
-
-
-"Assignment operators" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "Assignment operator", "Assignment operators" ],
-    "Description 01:Introduction"::
-
-	Similar to C/C++, B4P supports assignment operators as listed in the table below. An assignment operator such as <b>a[]+=3</b>; 
-	is equivalent to <b>a[]=a[]+3</b>, making use of the same type checking and conversion rules.  Spaces between the assignment operator and
-	the equal sign are allowed.  The execution performance of assignment operators is faster than conventional formulation because fewer
-	language elements (symbols, names, values) are interpreted, e.g. from 9 (<b>a[]=a[]+3</b>) to 6 (<b>a[]+=3</b>).
-
-	=== 100, 200, 700, bold_column_1
-	Operator	| Examples				| Equivalent traditional formulation
-	+=		| a[] += 3;<br>a[] += ' km/h';		| a[] = a[] + 3;<br>a[] = a[] + ' km/h';
-	-=		| a[] -= 4;<br>a[] -= {'1','2'};	| a[] = a[] - 4;<br>a[] = a[] - { '1','2' };
-	*=		| a[] *= 5;<br>				| a[] = a[] * 5;
-	/=		| a[] /= 2;<br>a[] /= '.';		| a[] = a[] / 2;<br>a[] = a[] / '.';
-	&amp;=		| a[] &amp;= b[];			| a[] = a[] &amp; b[];
-	&vert;=		| a[] &vert;= b[];			| a[] = a[] &vert; b[];
-	== =		| a[] == = b[];				| a[] = a[] == b[];
-	!= =		| a[] != = b[];				| a[] = a[] != b[];
-	===
-	In the last two rows, the symbols may be written together, but have been shown separately for better clarity.<br><br>
-
-	In the destination variable is not existing yet and an assignment operator is applied, then the destination variable will
-	be initialized implicitly with following values:
-
-	=== 200, 100, 200, 500, bold_column_1
-	Type		| Value		| Examples		| Equivalen traditional formulation
-	Numeral		| 0		| a[] += 5;		| a[] = 0; a[] = a[] + 5; 
-	String		| '' (blank)	| a[] += 's';		| a[] = ''; a[] = a[] + 's';
-	Date		| (blank date)	| a[] += date(today);	| a[] = date(''); a[] = a[] + date(today);
-	Boolean		| false		| a[] &vert;= b[];	| a[] = false; a[] = a[] &vert; b[];
-	set	| {} (empty set)| a[] &vert;= {1,2};	| a[] = {}; a[] = a[] &vert; {1,2};
-	===
-
-	+++,
-    "Examples 01:"::
-	// Implicit initialization cases
-
-	a[0] += 3;
-	a[1] += 'Hello';
-	a[2] += date("2020-10-12");
-	a[3] |= false;
-	a[4] |= { 1,2,3 };
-	a[5] += true;   // Arithmetic operator converts true to 1 first
-	a[6] = ''; a[6] -= 1; // a[] = '' - 1 is legitimate because arithmetic calculation 
-	// of numbers with blank strings is valid where blanks are treated as zero.
-
-	// Doing some calculations
-
-	a[0] *= 2;      // 3 --> 6
-	a[1] -= llo;    // Hello --> He
-	a[2] += 1;      // Next day
-	a[3] |= true;	// true
-	a[4] *= 2;      // { 1,2,3, 1,2,3 }
-	a[5] /= 2;      // 1 -> 0.5	
-
-	for all variables( a[], x[] ) echo ( x[] );
-	+++,
-    "Output 01:": "automatic",
-    "Description 02:Assignment operators on table cells"::
-
-	Using assignment operators on tables is supported to a limited extent since the type of the destination is either a string or
-	numeral (legitimate positive or negative number with or without decimal point recognized) unless the table has been configured
-	differently using the __table configure(__) function.
-	+++,
-    "Examples 02:"::
-	include( Support Library );
-	table create ( a );
-
-	[a:0,0] += 1;
-	[a:0,1] += 'Hello';
-	[a:0,1] -= 'llo';
-	[a:0,1] += 'y'; // Hey
-	[a:0,2] = true; // converts to string
-	[a:0,2] += ' false'; // 'true false'
-
-	table list(a);
-	+++,
-    "Output 02:": "automatic",
-    "See also": "Deep assignment operators"
-},
 
 
 
@@ -1710,7 +1799,7 @@ table initialize ( demo wildcards,
 "Deep Binary Operators" :
 {
     "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "deep binary operators" ],
+    "Feature Names":		[ "deep binary operators", "repetition suffix" ],
     "Description 01:Introduction"::
 
 	All valid __binary operators__ can be applied as deep operators in order to address the set elements directly.
@@ -1843,79 +1932,9 @@ echo matrix( "0", 3, " | ", "a[] +^^ b[] = ",  a[] +^^ b[] );
 
 	<br/><img src="Images/Description_Formulas_Matrix_Operations_Summary.jpg" alt="Matrix Operations"><br/>
 	+++
-},
-
-
-
-
-"Deep Assignment Operators" :
-{
-    "Documentation":		"General Description", // Required value
-    "Feature Names":		[ "deep assignment operators" ],
-    "Description 01:Introduction"::
-	Like with regular __binary operators__, __deep binary operators__ can also be formulated as deep __assignment operators__,
-	both with and without __repetition suffix__.
-
-	+++,
-    "Examples 01:"::
-	echo(new line, "Example on vectors:");
-	include(Utility Library);
-	a[] = { 8, 4, 2, 1 };
-	b[] = { 1, 2, 3, 4 };
-	c[] = { 10, 11 };
-	d[] = c[];
-	e[] = c[];
-
-	a[] -^= b[]; // { 7, 2, -1, -3 }
-	echo(a[]);
-
-	c[] +^= b[]; // {11, 13, 3, 4}
-	echo(c[]);
-
-	d2[] +^:= b[]; // With repetition suffix: {11, 13, 13, 15}
-	echo(d[]);
-
-	e[] /^= 2; // With a scalar:  { 5, 5.5 }
-	echo( e[] );
-
-	echo(new line, "Example on matrices:");
-
-	a[] =  { { 8, 7, 6 }, { 1, 2, -1 }, { -5, 4, 6 } };
-	a orig[] = a[];	
-
-	a[] -^^= 1; // Subtract 1 from all elements
-
-	echo matrix( "0", 3, " | ", a orig[], " - 1 = ", a[] ); 
-
-	a[] = a orig[];
-	b[] = { { 1,1,1}, {2,2,2}, {3,3,3} };
-	a[] *^^= { { 1,1,1}, {2,2,2}, {3,3,3} };
-
-	echo matrix( "0", 3, " | ", a orig[], " * ", b[], " = ", a[] ); 
-	+++,
-    "Output 01:": "automatic",
-    "Description 02:Deep Operators on Table Cells"::
-	Deep assignment operators are not possible on table cells if they are targets because with standard
-	table configuration settings: Strings and numerals.  It works if the left-hand value is a numeral and the right-hand value
-	a set.  In this case, the set will then be converted to a string representation and written to the
-	table cell.
-	+++,
-    "Examples 02:"::
-	include ( Support Library );
-
-	table create( t );
-
-	[t:0,0] = 10;
-	[t:0,1] = "Hi ";
-
-	[t:0,0] *^= { 5, 6, 7, 8 };
-	[t:0,1] +^= { volks, everyone, to all of you };
-
-	table list ( t ); // Sets have been converted to strings.
-	+++,
-    "Output 02:": "automatic",
-    "See also": "Assignment operators"
 }
+
+
 
 
 

@@ -210,9 +210,122 @@ B4PDOCU.START
 
 	+++
 
+},
+
+"Release 12.01" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Release 12.01 - The Last Duck" ],
+
+    "Description 01:Overview"::
+
+	<b>Release 12.01, issued 2025-07-27, "The Last Duck"</b><br>
+	<i>On 27. July 1990, precisely 35 years ago, Citroen has assembled the very last 2CV compact car.  In Germany, this
+	car bears the nickname "Ente" (duck), probably the short form of "Stud<b>ENTE</b>nauto", a car university students could afford.</i>
+	
+
+    "Description 02:Bugfixes"::
+
+	* __table rename(__) did not delete the table if a table with the same new name is existing.  Has been fixed.
+	* __column ranges__: Range of same column name 'A'..'A' returned column 'A' twice and not once.  Has been fixed.
+
+
+    "Description 03:New Functions"::
+
+	* __excel list tables(__) lists all Excel tables by name
+	* __excel list pivot tables(__) lists all Excel pivot tables, returning sheet name + "/" + pivot table name
+	* __table summarize(__) generates pivot table like summaries
+	* __table summarize selected rows(__) similar, able to filter on rows of interest
+
+
+    "Description 04:Improvements in Existing Functions"::
+
+	* __table load excel file(__) now supports loading multiple sheets, tables and pivot tables with one function call
+
+    "Description 05:New Language Features (e.g. syntax and semantics)"::
+
+
+    "Description 06:Other new Features"::
+
+
+    "Description 07:Clean-ups and Streamlining"::
+
+	* Improved navigation bar for the online documentation
+
+    "Description 08:Performance Improvements"::
+
+	* Much faster to load multiple tables from one Excel file with __table load excel file(__)
+
+    "Description 09:Depreciated and retired features"::
+
+	* <b>for all parameters</b>() is replaced by __for all(__)  (Still existing, but no longer recommended to use)
+
+	+++
+
+},
+
+
+"Release 12.02" :
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Release 12.02 - The Last Duck" ],
+
+    "Description 01:Overview"::
+
+	<b>Release 12.02, issued 2025-09-21, "Hermann Minkowski"</b><br>
+	<i>On 21. September 1908, Hermann Minkowski introduced the space time model (4 dimensions) which served
+	as a base for Albert Einstein's Theory of Relativity.</i>
+	
+
+    "Description 02:Bugfixes"::
+
+
+	* Some error messages were wrong and have been corrected, particularly showing wrong function parameter names \
+	  if errors are recognized there.
+
+    "Description 03:New Functions"::
+
+	* __table extend(__) extends tables by breaking apart data in selected columns, e.g. comma separated contents
+	* __scientific(__) converts a numeral into a string containing scientific notation representation (16 decimal digits to preserve full precision)
+	* __working days(__), __holidays(__), __working day holidays(__), weekend days(__), weekend holidays(__) count number of days between \
+	  two different dates, taking into acout configurable working days, workload percentage, full-day and half-day holidays.
+	* __find dates(__) looks for dates in unstructured contents. Useful to retrieve dates from tables, etc.
+
+
+    "Description 04:Improvements in Existing Functions"::
+
+	* __table copy table(__) now supports making more than two tables at once
+	* For several functions '*' can be used to specify all table headers instead of naming all of them, or using <b>[table name:..,0]</b>.
+	* Additional table functions support '..' in parameters asking for table columns.
+	* __table existing(__) supports __vectorization__ so the check can be applied on multiple tables at once.
+	* __table style columns(__) and __table style cells(__): Supports '*' and '..' when specifying multiple table columns
+
+    "Description 05:New Language Features (e.g. syntax and semantics)"::
+
+
+    "Description 06:Other new Features"::
+
+
+    "Description 07:Clean-ups and Streamlining"::
+
+
+	* Data type __date__ does no longer distinguish between <b>date</b> containing original text format (for example if read from tables) \
+	  and <b>plain date</b> without original text.  As of now, the new __date__ format is like the old <b>plain date</b> format. \
+	  The term <b>plain date</b> has been dropped entirely.
+	* Improved overall document structure
+
+
+    "Description 08:Performance Improvements"::
+
+    "Description 09:Depreciated and retired features"::
+
+	* <b>for all parameters</b>() is replaced by __for all(__)  (Still existing, but no longer recommended to use)
+
+	+++
+
+
+
 }
-
-
 
 
 

@@ -9,8 +9,6 @@
 
        for all variables( a[], b[] )
        {
-           // The 'date' function converts input strings (text) into plain dates without preserving text
-
            c[] = date( b[] ); 
            d[] = pure date( b[] );
            e[] = time ( b[] );

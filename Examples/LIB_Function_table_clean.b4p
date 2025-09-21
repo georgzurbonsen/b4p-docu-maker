@@ -19,10 +19,18 @@
        table process cells ( clean, [.] = "'" + [.] + "'" ); // Put some quotation marks around to see the true extent of the contents
        table list          ( clean );
 
-       echo("As a final step, demonstrate a good clean-up task:");
+       echo("As a further step, demonstrate a good clean-up task:");
 
        table copy table    ( dirty, clean );
        table clean         ( clean, {trim spaces, line breaks to spaces, remove adjacent spaces} );
+       table process cells ( clean, [.] = "'" + [.] + "'" ); // Put some quotation marks around to see the true extent of the contents
+       table list          ( clean );
+
+       echo("As a final step, demonstrate a good clean-up task on columns 2 and 3:");
+
+       table copy table    ( dirty, clean );
+       table clean         ( clean ); // All columns - clean exitoc spaces and line breaks
+       table clean         ( clean, {trim spaces, line breaks to spaces, remove adjacent spaces}, {2,3} );
        table process cells ( clean, [.] = "'" + [.] + "'" ); // Put some quotation marks around to see the true extent of the contents
        table list          ( clean );
 

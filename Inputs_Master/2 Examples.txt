@@ -23,7 +23,7 @@ B4PDOCU.START
 	+++
 },
 
-"Different data from different sources" :
+"Different Data From Different Sources" :
 {
     "Documentation":		"General Description", // Required value
     "Feature Names":		[ "Use case - Different data from different sources" ],

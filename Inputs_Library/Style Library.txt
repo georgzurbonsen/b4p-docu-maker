@@ -16,7 +16,7 @@ B4PDOCU.START
 
 	B4P provides 3 ways to specify text and cell colors in the tables:
 	* Specifying the RGB value directly, e.g. <b>{ 255, 192, 0 }</b> for orange
-	* Specifying the RGB value wiht a hexadecimal code as practiced in HTML files, e.g. <b>'#FFC000'</b> for orange
+	* Specifying the RGB value with a hexadecimal code as practiced in HTML files, e.g. <b>'#FFC000'</b> for orange
 	* Specifying a color name from the __color palette__
 
 	B4P provides a decent palette of color names which includes the circle of vivid colors (red - orange - yellow - green - cyan - blue - purple - magenta),
@@ -856,7 +856,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -932,7 +932,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1020,7 +1020,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1113,7 +1113,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1316,7 +1316,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1349,7 +1349,7 @@ B4PDOCU.START
 
 	table style auto width ( t1 );
 
-	// Example with customized paramters (narrowed intentionally).
+	// Example with customized parameters (narrowed intentionally).
 
 	table style auto width ( t2, quantile, 0.9, wrap text, table, starting column, 0, stopping column, -3 );
 	table style auto width ( t2, min, 20, max, 30, starting column, -2 );
@@ -1443,7 +1443,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1551,7 +1551,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""
@@ -1577,7 +1577,7 @@ B4PDOCU.START
 	"Parameters":
 	[
 		{ "Number": "1, 2, etc.",
-		  "Name": "Name fo existing table",
+		  "Name": "Name of existing table",
 		  "Direction": "input",
 		  "Types": [ "string" ],
 		  "Description": ""

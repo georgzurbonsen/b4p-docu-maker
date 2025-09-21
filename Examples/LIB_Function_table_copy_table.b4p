@@ -1,4 +1,18 @@
 ﻿#!/usr/local/bin/b4p
        table initialize( t, {{ Name, Age }, { Ann, 45 }, { Dan, 35 }} );
-       table copy table ( t, u );
+       table copy table ( t, u, v );
+
+       echo("Listing tables u and v");
        table list ( u );
+       table list ( v );
+
+       // Do the same with multiple table names in parameters
+
+       table copy table( t, {a, b}, c, {d, e} );
+
+       echo("List one table: e");
+       table list ( e );
+
+       echo("Checkif tables a...f are existing");
+       echo( table existing( {a..f} ) );
+

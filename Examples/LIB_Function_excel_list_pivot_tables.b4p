@@ -1,0 +1,3 @@
+﻿#!/usr/local/bin/b4p
+               t[] = excel list pivot tables( "Tables.xlsx" );
+               echo("Found following pivot table(s): ", t[] );         

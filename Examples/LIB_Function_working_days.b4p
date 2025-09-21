@@ -1,0 +1,69 @@
+﻿#!/usr/local/bin/b4p
+
+table initialize( fd holidays, // Applicable to Zürich / Switzerland
+{ { fd holidays,    Dates },
+  { New Year,             "2025-01-01", "2025-01-02", "next year:", "2026-01-01", "2026-01-02" },
+  { Easter Weekend,       "2025-04-18", "2025-04-20", "2025-04-21", "2026-04-03", "2026-04-05", "2026-04-06"  },
+  { Labor Day,            "2025-05-01", "",           "",           "2026-05-01" },
+  { Pentecost Weekend,    "2025-06-08", "2025-06-09", "... and",    "2026-05-24", "2026-05-25" },
+  { Ascension Day,        "2025-05-29", "",           "",           "2026-05-14" },
+  { National Holiday,     "2025-08-01", "",           "",           "2026-08-01" },
+  { Christmas,            "2025-12-25", "2025-12-26", "",           "2026-12-25", "2026-12-26" } } );
+
+table initialize( hd holidays,
+{ { hd holidays,     Dates },
+  { Zürich City Holidays, "2025-04-28", "2025-09-15", "... and",    "2026-04-17", "2026-09-14" },
+  { Year-End Holidays,    "2025-12-24", "2025-12-31", "",           "2026-12-24", "2026-12-31" } } ) ;
+
+table list( fd holidays );
+table list( hd holidays );
+
+//          Full year     Easter weeks  City holiday  6 days        7 days        H'day on THU, Christmas   , previous year
+start[] = { "2025-01-01", "2025-04-14", "2025-04-28", "2025-09-01", "2025-09-01", "2025-05-26", "2025-12-01", "2024-01-01" };
+end  [] = { "2025-12-31", "2025-04-27", "2025-04-28", "2025-09-06", "2025-09-07", "2025-06-01", "2025-12-01", "2024-12-31" };
+
+mon_thru_fri[] = { 5:1,2:0 };
+mon_wed_fri[]  = { 1,0,1,0,1,0,0 };
+50 pct[]       = { 5:0.5,2:0 };
+
+// [full day holdays:,] references the entire table where the dates are extracted automatically.  All text contents are ignored.
+// For simplicity, the functions below are called with vectorization to process several dates at once.
+
+echo("Working days               : ", working days        ( start[], end[], mon_thru_fri[] ) );
+echo("Weekend days               : ", weekend days        ( start[], end[], mon_thru_fri[] ) );
+echo("Weekend days (same qty)    : ", weekend days        ( start[], end[], mon_thru_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Working days minus holidays: ", working days        ( start[], end[], mon_thru_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("All holidays               : ", holidays            ( start[], end[], mon_thru_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Holidays on working days   : ", working day holidays( start[], end[], mon_thru_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Holidays on weekend days   : ", weekend holidays    ( start[], end[], mon_thru_fri[], [fd holidays:,], [hd holidays:,] ) );
+
+echo(new line, "And a part time model: Mon + Wed + Fre only: " );
+
+echo("Working days w/o  holidays : ", working days        ( start[], end[], mon_wed_fri[] ) );
+echo("Weekend days               : ", weekend days        ( start[], end[], mon_wed_fri[] ) );
+echo("Weekend days (same qty)    : ", weekend days        ( start[], end[], mon_wed_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Working days minus holidays: ", working days        ( start[], end[], mon_wed_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("All holidays               : ", holidays            ( start[], end[], mon_wed_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Holidays on working days   : ", working day holidays( start[], end[], mon_wed_fri[], [fd holidays:,], [hd holidays:,] ) );
+echo("Holidays on weekend days   : ", weekend holidays    ( start[], end[], mon_wed_fri[], [fd holidays:,], [hd holidays:,] ) );
+
+echo(new line, "And a part time model: Mon-Fre half days only: " );
+
+echo("Working days w/o  holidays : ", working days        ( start[], end[], 50 pct[], '', '', partial ) );
+echo("Weekend days               : ", weekend days        ( start[], end[], 50 pct[], '', '', partial ) );
+echo("Weekend days (same qty)    : ", weekend days        ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], partial ) );
+echo("Working days minus holidays: ", working days        ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], partial ) );
+echo("All holidays               : ", holidays            ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], partial ) );
+echo("Holidays on working days   : ", working day holidays( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], partial ) );
+echo("Holidays on weekend days   : ", weekend holidays    ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], partial ) );
+
+echo(new line, "And a part time model: Mon-Fre half days only, but treated as full days: " );
+
+echo("Working days w/o  holidays : ", working days        ( start[], end[], 50 pct[], '', '', partial ) );
+echo("Weekend days               : ", weekend days        ( start[], end[], 50 pct[], '', '', partial ) );
+echo("Weekend days (same qty)    : ", weekend days        ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], full ) );
+echo("Working days minus holidays: ", working days        ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], full ) );
+echo("All holidays               : ", holidays            ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], full ) );
+echo("Holidays on working days   : ", working day holidays( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], full ) );
+echo("Holidays on weekend days   : ", weekend holidays    ( start[], end[], 50 pct[], [fd holidays:,], [hd holidays:,], full ) );
+

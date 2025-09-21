@@ -1,23 +1,35 @@
 ﻿#!/usr/local/bin/b4p
-       table load                     ( countries, temp.csv); // Hide!  Step 6 begins
-       languages in focus[]           = { Chinese, English, French, Spanish, German, Russian, Hindi };
-       table keep selected rows       ( countries, (tokenize( [Languages], {}, {' ',','} ) & languages in focus[]) != {} );
 
-       table insert columns           ( countries, languages in focus[] );
-        table process cells in columns ( countries, languages in focus[], if ([Languages] = '*'+soft([.,0])+'*') [.]=1; );
+       table load                     ( c1, temp1.csv); // Hide!  Step 6 begins
 
-       table list( countries, briefly, 8 ); // List first and last 8 rows only
+// Create a histogram distribution across number of inhabitants and density
 
-       table delete columns           ( countries, {'Alpha-2 code', Languages} );
+intervals[inhabitants]          
+  = {  1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000, 1000000000 };
+intervals[density]              = { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000 };
+intervals[]                     = { intervals[inhabitants], intervals[density] }; // Combine them in 1 set
 
-       table copy table               ( countries, summary );
-       table keep columns             ( summary, languages in focus[] );
-        table consolidate              ( summary, {}, languages in focus[], sum );
-       table transpose                ( summary );
-       table insert rows              ( summary, 0 );
-       [ summary: ..,0]               = { Language, '# Countries' };
-       table sort rows                ( summary, '# Countries', numeric down);
+table histogram                 ( c1, histo, {Population,Inhabitants per km2}, intervals[] );
+table process selected rows     ( histo, is numeric([Intervals]), [Intervals] = ">=" + str([Intervals], "#,##0", local ) );
+table process selected columns  ( histo, 0, is numeric([.]), [.] = ">=" + str([.], "#,##0", local ) );
 
-       echo ("Brief summary on key languages:");
-       table list ( summary );
-       table save                     ( countries, temp.csv); // Hide!
+// Remove the 'Others' as not needed.
+
+table delete columns           ( histo, Others );
+table delete selected rows     ( histo, [Intervals]=Others );
+
+// Provide consolidated info by continent
+
+table copy table                ( c1, c2 );
+table consolidate               ( c2, Continent, { Area, Population}, sum); // Consolidate by continent
+table process                   ( c2, [Inhabitants per km2]   = [Inhabitants] / [Area];
+                                      [Inhabitants Variation] = ([Inhabitants] - [Population])/[Inhabitants];
+                                      [Country] = "All countries in " + [Continent] );
+for all ( {c1, c2}, table[])   table delete columns( table[], Inhabitants);
+table merge                     ( c2, c1 );
+
+echo("Histogram generated:");
+table list ( histo );
+
+       table save                     ( c1, temp1.csv); // Hide!  Step 6 ends
+       table save                     ( histo, temp2.csv); // Hide!  Step 6 ends

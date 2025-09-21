@@ -1,6 +1,5 @@
 
 
-
 B4PDOCU.START
 
 
@@ -42,7 +41,7 @@ B4PDOCU.START
     "Feature Names":		[ "Control flow functions", "Control flow statements" ],
     "Description 01:Introduction"::
 
-	Flow control covers programming language features like branches (if ... lese), loops, etc.
+	Flow control covers programming language features like branches (if ... else), loops, etc.
 	Unlike in other common programming langauges, control flow in B4P is implmented as functions which are then
 	called as procedures which will then determine whether to execute the subsequent statements or blocks or not.
 
@@ -1143,6 +1142,75 @@ B4PDOCU.START
 },
 
 
+
+"Collecting Lookup Feedback Information":
+{
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "Lookup Feedback Information" ],
+    "Description 01:Introduction"::
+
+	Most table lookup functions such as __table lookup(__), __table integrate(__), etc. provide optional feedback information how the lookup
+	process has proceeded.  The feedback mechanism helps to answer following questions:
+
+	* Which of the rows in the lookup table have actually been accessed and how frequently?	
+	* Which rows in the target table underwent a successful lookup or even multiple lookups (when using __table digest(__))
+	* Did the lookup result to contents changed in the target table, and which ones?
+	* Does the lookup table contain rows which are lookedup but the contents are actually the same as in the target table, so the rows could possible \
+	  be removed.  Very useful when maintinaing temporary correction tables until the corrections are no longer needed.
+	
+	The feedback information mechanism can be specified in the last funtion parameter where up to six parameters can be provided. The last parameter may be of following types:
+
+	* Numeral or string: Specifies one column being the first parameter as described below.
+	* Empty set: Zero parameters are assumed, so no table feedback information will be provided.
+	* Set containing 1 - 4 elements which correspond to providing 4 additional parameters.  5 or more elements flag error messages.
+	* Empty sets are allowed to skip parameters, e.g. <b>{ {}, {}, Changes }</b> specifies the 3rd parameter only, skipping the first two.
+
+
+	All non-existing columns will be created and added automatically to the right hand side of the tables.
+
+	=== 50, 200, 750, noframe_1stcolbold
+	Nr.	| What is specified		| Purpose
+	1	| Lookup table column		| Counts the number of lookups made from.
+	2	| Target table column		| Counts the number of lookups made to. Typically counted only once unless __table integrate(__) is used.
+	3	| Lookup table column		| Counts the number of lookups made where the contents in the target table has actually changed, i.e. value looked up was equal the to value before.
+	alt. 3	| Lookup table column prefix	| Specify a column name with '*' inside as softquoted string which is used to insert the output columns into the '*' in the lookup table with the prefix in front in order to count individual changes made.
+	4	| Target table column		| Like above, but on the target table.  Typically counted only once unless __table integrate(__) is used.
+	alt. 4	| Target table column prefix	| Specify a column name with '*' inside as softquoted string which is used to insert the result columns into the  '*' in the target table with the prefix in front in order to count individual changes made.
+	===
+
+	<br><br>
+	<u>Note regarding 3rd and 4th parameter:</u> If the specified header name is of type softquoted string and contains an asterisk symbol '*', then the output columns in the lookup table
+	(applicable for the 3rd parameter) or the destination columns in the target table (applicalbe for the 4th parameter) will be inserted into the '*' being
+	the placeholder symbol for the column name.  2nd and further asterisk symbols remain untouched.
+
+	<br<br>
+
+	For example, if <b>'Count * up'</b> is spedified in the 3rd parameter, and the output headers in the lookup table contain <b>{City, Country}</b>, then 2 additional
+	columns named <b>Count City up</b> and <b>Count Country up</b> will be created if not yet existing.
+	<br><br>
+
+	<u>Note:</u> The asterisk will only work if provided as a softquoted string.  <b>'Count *'</b> is OK, but <b>"Count *"</b> will be interpreted as a plain string, looking for or
+	creating one column literally containing <b>Count *</b>.
+
+	<br><br>
+
+	<u>Note:</u> The prefix will only work if the headers of the output resp. destination columns are not blank and unique. Otherwise, the column created will be overwritten, i.e. incremented multiple times.
+
+	<br><br>
+	If the columns are already existing, along with numbers inside, then the existing numbers will be incremented (adding 1). If the contents are blank or non-numeric, then counting begins with 1.
+
+	<br><br>
+	This new feature is backward compatable to earlier B4P Versions (up to V12.0) where only a <i>modification counter</i> can be specified in the lookup table.  It corresponds to the 1st function parameter.
+	
+
+	+++
+},
+
+
+
+
+
+
 "Combining Multiple Tables":
   {
     "Documentation":		"General Description", // Required value
@@ -1732,7 +1800,7 @@ B4PDOCU.START
 	* Blank dates come first.
 	* If year is missing, current year is assumed.
 	* If day is missing, the 1st day of month is assumed.
-	* Month names in key languages like "Jan", "feb", "März", "avril", "May", "juni", etc. are recognized as months and sorted accordingly.
+	* Month names in key languages like "Jan", "feb", "M&auml;rz", "avril", "May", "juni", etc. are recognized as months and sorted accordingly.
 	* Local settings are used as rules to resolve country dependent date formats like 01/02/2015 (day and month ordering: 2. Jan 2015 or 1. Feb 2015).  Local settings are in the system variables and can be changed.
 	* Time values in the date are ignored.  E.g. "14.07.2016 10:00" and "14.07.2016 11:00" are treated as identical values
 
@@ -1772,7 +1840,7 @@ B4PDOCU.START
     "Feature Names":		[ "consolidation actions" ],
     "Description 01:Introduction"::
 
-	The sorting options are used (amongst others) by following functions:
+	The consolidation actions are used (amongst others) by following functions:
 	* __table consolidate(__)
 	* __table merge(__) function family
 
@@ -1826,7 +1894,85 @@ B4PDOCU.START
 
 	+++
 
+  },
+
+
+
+"Summarizing Actions":
+  {
+    "Documentation":		"General Description", // Required value
+    "Feature Names":		[ "summarizing actions" ],
+    "Description 01:Introduction"::
+
+	The summarizing actions are used by following functions:
+	* __table summarize(__)
+	* __table summarize selected rows(__)
+
+	+++,
+    "Description 02:Overview of Available Consolidation Actions"::
+
+	The summarizig actions define the calculations to be applied to condense the base data in the iput table and provide summarized values in pivot tables.
+	Both numeric (e.g. counting, adding) and string functions (e.g. alphabetic minimum and maximum) are provided.
+
+	<br><br>
+
+	<u>Note:</u> Numbers, as described below, refer to integers, real numbers and numbers <u>with scientfic notation</u>, both positive and negative.
+	Calculated values are not stored back using scientific notation but as real numbers.
+
+	<br>
+
+	=== 200, 800, bold_column_1
+	Summarizing Action		| Description
+	sum				| Sums all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.
+	sum numbers			| Sums all numbers.  Blank and non-numeric values are ignored, even though the result is the same sum as above.
+	sum ignore zero			| Sums all non-zero numbers.  0 are ignored, even though the result is the same as above.
+	min				| Finds the lowest number.  Blank values are ignored. All non-numeric values are treated as 0.
+	min numbers			| Finds the lowest number.  Blank and non-numeric values are ignored.
+	min ignore zero			| Finds the lowest non-zero number, ignoring 0 and non-numeric values.
+	max				| Finds the highest number.  Blank values are ignored. All non-numeric values are treated as 0.
+	max numbers			| Finds the highest number.  Blank and non-numeric values are ignored.
+	max ignore zero			| Finds the highest non-zero number, ignoring 0 and non-numeric values.
+	product				| Multiplies all non-blank contents.  Blank values are ignored. All non-numeric values are treated as 0, which results in a product equal to 0.
+	product numbers			| Multiplies all numbers.  Blank and non-numeric values are ignored.
+	product ignore zero		| Multiplies all non-zero numbers. ignoring p and non-numeric values.
+	count				| Counts all non-blank values.  Blank values are ignored.
+	count numbers			| Counts all numbers.  Blank and non-numeric values are ignored.
+	count ignore zero		| Sums all non-zero numbers.  0 are ignored.
+	average				| Calculates the average of all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.
+	average numbers			| Calculates the average of all numbers.  Blank and non-numeric values are ignored
+	average ignore zero		| Calculates the average of all non-zero numbers.  0 are ignored
+	rms				| Calculates the root mean square of all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.
+	rms numbers			| Calculates the root mean square of all numbers.  Blank and non-numeric values are ignored
+	rms ignore zero			| Calculates the root mean square of all non-zero numbers.  0 are ignored
+	geometric mean			| Calculates the geometric mean of all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.
+	geometric mean numbers		| Calculates the geometric mean of all numbers.  Blank and non-numeric values are ignored
+	geometric mean ignore zero	| Calculates the geometric mean of all non-zero numbers.  0 are ignored
+	harmonic mean ignore zero	| Calculates the harmonic mean of all non-zero numbers.  0 are ignored.  See <sup>1</sup>
+	parallel ignore zero		| Calculates the parallel resistance fromula (Sum of inverse vaules, and inverted at the end) of all non-zero numbers.  0 are ignored.  See <sup>1</sup>
+	variance			| Calculates the variance of all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.  See <sup>2</sup>
+	variance numbers		| Calculates the variance of all numbers.  Blank and non-numeric values are ignored  See <sup>2</sup>
+	variance ignore zero		| Calculates the variance of all non-zero numbers.  0 are ignored  See <sup>2</sup>
+	deviation			| Calculates the standard deviation of all non-blank values.  Blank values are ignored.  All non-numeric values are treated as 0.  See <sup>2</sup>
+	devation numbers		| Calculates the standard deviation of all numbers.  Blank and non-numeric values are ignored  See <sup>2</sup>
+	deviation ignore zero		| Calculates the standard deviation of all non-zero numbers.  0 are ignored  See <sup>2</sup>
+	min abc				| Finds the lowest alphabetic string value.  Blank values are considered, and per se the smallest value overall.
+	min abc ignore blanks		| Finds the lowest alphabetic string value, but blank values are ignored.
+	max abc				| Finds the highest alphabetic string value.  
+	append				| Appends all string values using the data separator string provided (for example a comma) to separate the values.
+	append ignore blanks		| Same as above, but blank values are ignored
+	append once			| Appends all string values using the data separator string provided (for example a comma) to separate the values, but only 1 occurence per values.  No repetitions.
+	append once ignore blanks	| Same as above, but blank values are ignored
+	===
+
+	<sup>1</sup>For the actions 'harmonic mean ignore zero' and 'parallel ignore zore', 0 as inputs are pr se not possible.<br>
+	<sup>2</sup>Calculating variance and deviation requires at least two (2) data samples.  Otherise a division-by-zero note will be retuned in the result.
+
+	+++
+
   }
+
+
+
 
 
 

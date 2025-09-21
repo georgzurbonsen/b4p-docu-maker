@@ -507,11 +507,12 @@ define procedure ( create navigator from revolving TOC )
 {
 	echo(new line, "Step 7: Create the navigator (to be integrated in HTML files) from revolving TOC", new line );
 
-	first html link[] = [RTOC:Category,Body,HTML File Name];
+	first html link[] = [RTOC:Level,'1',HTML File Name];
 //	echo( first html link[] ); interactive;
 
 
 	head[] = '<div class="booktitle_field">' + '<a style="color:white;" href="' + first html link[] + '">' + chosen book[title] + '</a></div>'; // Book title on top left of navigator.
+	head[] = '';
 	table initialize( navigator, { { head[], Level, HTML File Name, Section Name}, { "<ul>" } } );
 	level[] = 1; // Initial level
 
@@ -519,16 +520,13 @@ define procedure ( create navigator from revolving TOC )
 		next level[] = select if( [Level]=='', 1, [Level] );
 		while (next level[] < level[])  { table append( navigator, {{ "</ul></li>", level[]-- }} );  }
 		while (next level[] > level[])  { table append( navigator, {{ '<li class="navi"><ul>',   ++level[] }} );  }
-		section nr[] = replace all( right([Section Nr],' '), ".0", "."); // Change 4.02.01 to 4.2.1, etc.  This 2-digit format was needed to keep function lists in sorted order.
 		if ([HTML File Name] != '')
 		{
-//			table append( navigator, { { '<li class="navi">' + '<a href="' + [HTML File Name] + '"><div class="navi">' + section nr[] + " " + [Section Name] + " </div></a></li>", level[], [HTML File Name], [Section Name] } } );
-			table append( navigator, { { '<li class="navi">' + '<a href="' + [HTML File Name] + '"><div class="navi">' + " " + [Section Name] + " </div></a></li>", level[], [HTML File Name], [Section Name] } } );
+			table append( navigator, { { '<li class="navi">' + '<a href="' + [HTML File Name] + '"><div class="navi">' + " " + [Section Name] + " </div></a></li>", [Level], [HTML File Name], [Section Name] } } );
 		}
 		else
 		{
-//			table append( navigator, { { '<li class="navi"><div>' + section nr[] + " " + [Section Name] + " </div></li>", level[] } } );
-			table append( navigator, { { '<li class="navi"><div>' + " " + [Section Name] + " </div></li>", level[] } } );
+			table append( navigator, { { '<li class="navi"><div>' + " " + [Section Name] + " </div></li>", [Level] } } );
 		} );
 	while (1 < level[])  { table append( navigator, { "</ul></li>" } ); level[]--; } // Close all nested itemizations
 
@@ -971,31 +969,42 @@ define procedure ( create all general and function descriptions in HTML )
 	    file name[] = destination path[] + plain file name[];
 
 
+	    // Load the template file
+
 	    table create( HTML function description );
 	    create function description in HTML( item[], HTML function description, content type[] );
 	    table load ( HTML template, "HTML Template.txt", TEXT );
-	    if (file existing("Navigator.csv"))	 
-	    {
-		   table load ( HTML navigator, "Navigator.csv" );
-	    }
-	    else:  	table initialize( HTML navigator, { { "<ul>", Level } } );
 
-	    table insert columns( HTML navigator, "Action" );
+
+	    // Load or initialize the navigator file 
+
+	    if (file existing("Navigator.csv"))		table load ( HTML navigator, "Navigator.csv" );
+	    else: 				 	table initialize( HTML navigator, { { "<ul>", Level } } );
+
+	    table insert columns			( HTML navigator, "Action" );
 
 		// ***************** SIMPLIFY ************************
-	    applicable row[] = table search row( HTML navigator, [0] = '*"' + soft(plain file name[]) + '"*' );
-	    applicable row 2[] = applicable row[];
+
+//	    applicable row[]		= table search row( HTML navigator, [0] = '*"' + soft(plain file name[]) + '"*' );  // Outdated
+	    applicable row[]		= table search row( HTML navigator, [Section Name] == name[] & [Level]!='' );
+	    applicable row 2[]		= applicable row[];
+
 	    if ( [HTML navigator:0,applicable row[] ] = '*Table of Contents*' ) 
 		{
 			applicable row[]= -1; // Skip on table of contents
 		}
 
-	// The following rules determin which of the navigator rows to show and to hide.	
+	    // The following rules determine which of the navigator rows to show and to hide.	
+
 
 	    if (applicable row[] > 0) // From applicable row to top: Mark all items at same level (local only) and superior levels visible
 	    {
+
+		// Step 1: Work upwards to hide all irrelvant entries
+
 		level[] = [HTML navigator:Level,applicable row[]];
 		prev action[] = '';
+
 		for (i[] = applicable row[], i[]>0, i[]--) with table( HTML navigator, i[] )
 		{
 		    if (([Level] > level[]) & ([Level]>1)) // Here you can choose level 1 base, level 2 base, etc. which shall always been shown.  Identified deeper places. Hide them.  But show level 1 and level 2 sections
@@ -1011,12 +1020,15 @@ define procedure ( create all general and function descriptions in HTML )
 		    }
 		}
 
+		// Step 2: Work downwards to hide all irrelvant entries
+
 		level[] = [HTML navigator:Level,applicable row[]]+1;
 		for (i[] = applicable row[]+1, i[]<table length(HTML navigator), i[]++) with table( HTML navigator, i[] )
 		{
 		    if (([Level] > level[]) & ([Level]>1)) // Identified deeper places. Hide them.  But show level 1 and level 2 sections
 		    {
 			[Action] = Hide; 
+
 			prev action[] = Hide;
 		    }  
 		    else
@@ -1027,28 +1039,20 @@ define procedure ( create all general and function descriptions in HTML )
 		}
 	    }
 
-
 	    table process ( HTML navigator, 
 		if ( [Action,row()+1]==Hide & [Action]!=Hide )
 		{
-		    substitute( [0], '<div class="navi">', '<div class="navi">+ ' ); // Add a plus sign (possibly to open up hidden subsections) (&#9655;)
+		    substitute( [0], '<div class="navi">', '<div class="navi">+ ' ); // Add a plus sign (to show following subsections)
 		}
 		else: if ( [Action,row()+1]!=Hide & [Action]!=Hide & ([Level,row()+1]-[Level]=1) )
 		{
-		    substitute( [0], '<div class="navi">', '<div class="navi"+>- ' ); // Add a triangle down &#9661;
+		    substitute( [0], '<div class="navi">', '<div class="navi"+>- ' ); // Add a minus sign (to show visible subsections)
 		}
 		else: if ( [Level]>1 )
 		{
-		    substitute( [0], '<div class="navi">', '<div class="navi"> &nbsp; ' ); // Indentation
+		    substitute( [0], '<div class="navi">', '<div class="navi"> &nbsp; ' ); // Indentation for placeholder of + / - sign
 		} );
-/*
-//	    table process selected rows ( HTML navigator, [Action,row()+1]==Hide & [Action]!=Hide, substitute( [0], '<div class="navi">', '<div class="navi">+ ' ) ); // Add a plus sign
-	    table process selected rows ( HTML navigator, [Action,row()+1]==Hide & [Action]!=Hide, substitute( [0], '<div class="navi">', '<div class="navi">&#9655; ' ) ); // Add a plus sign
 
-table save( HTML navigator, test.csv); interactive;
-	    table process selected rows ( HTML navigator, [Action,row()+1]!=Hide & [Action]!=Hide & ([Level,row()+1]-[Level]=1), substitute( [0], '<div class="navi">', '<div class="navi">&#9661; ' ) ); // Add a triangle down sign
-
-*/
 
 	    table process	( HTML template,
 		switch( [0] )
@@ -1065,8 +1069,12 @@ table save( HTML navigator, test.csv); interactive;
 
 		    case ('*$Navigation$*') // Shall be referenced only once and after $PrevNext$
 		    {
+
 			table delete selected rows( HTML navigator, [Action]==Hide );
-			table process selected rows( HTML navigator, [Section Name]==name[], [0] = replace([0], 'div class="navi"', 'div class="navi navi-selected"') );
+
+			// Following statement highlights the CHOSEN BOOK and the SECTION.  If INDEX is chosen, then do not highlight the chosen book as the index is the same all time
+
+			table process selected rows( HTML navigator, [Section Name]==name[] | ([Section Name]==chosen book[title] & [Level]=='' & name[]!=Index), [0] = replace([0], 'div class="navi"', 'div class="navi navi-selected"') );
 			[0..] = [HTML navigator:0,];
 		    }
 
@@ -1084,7 +1092,7 @@ table save( HTML navigator, test.csv); interactive;
 			    }
 			}
 
-			i[] = applicable row 2[]; // Look upwards for previous entry
+			i[] = applicable row 2[]; // Look upwards for next entry
 			while (++i[] < table length(HTML navigator)) with table ( HTML navigator, i[] )
 			{
 			    if ( [HTML File Name] != '')
@@ -1111,12 +1119,14 @@ define procedure ( create combined TOC )
 	abbreviations[] 		= trim([ books: Abbreviation, .. ]) - {''};
 	echo("Available abbreviations: ", abbreviations[]);
 
+
 	for all parameters( abbreviations[], abbreviation[] )
 	{
 		TOC name[]	= "Revolving TOC " + abbreviation[];
 		file name[] 	= choose recent file( "", "", TOC name[] + "*.xlsx", newest, 1 );
 		if (file name[] != '') 
 		{
+
 			table load excel file( toc, file name[] );
 			table merge( toc, master toc );
 		}
@@ -1177,7 +1187,7 @@ define procedure ( create combined TOC )
 //	if ( [RTOC:Category,Start] > 0 )  // Was old condition
 	if (chosen book[abbr]==MAS)
 	{
-		index html file name [] = [RTOC:Category,Body,HTML File Name];  // Body was Start before. Take 1st body item
+		index html file name [] = [RTOC:Level,'1',HTML File Name];  // Body was Start before. Take 1st body item
 		echo("Following HTML file name is duplicated to 'index.html': ", index html file name[] );
 		file copy overwrite ( destination path[] + index html file name [], destination path[] + index.html );
 	}
@@ -1193,7 +1203,8 @@ define procedure ( create combined TOC )
 	echo(new line, "Compress all code examples into B4P_Examples.zip" );
 	working directory ( Examples );
 	file delete silently( destination path[] + "B4P_Examples.zip" ); sleep( 0.3 ); // OS works in background, need to wait a bit
-	zip compress( "*.*", destination path[] + "B4P_Examples.zip" );	
+	zip compress( "*.*", "../" + destination path[] + "B4P_Examples.zip" );	
+
 
 	echo("Time elapsed: ", watch stop()/1000, " seconds." );
 

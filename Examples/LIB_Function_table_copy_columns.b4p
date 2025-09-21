@@ -1,13 +1,21 @@
 ﻿#!/usr/local/bin/b4p
-       table initialize ( table,
-               { { First Name, Last Name, Given Name, Birth Year },
-                 { Abel,       Adams,     A.,         1990 },
-                 { Betty,      Beavers,   B.,         1995 },
-                 { Charlie,    Collins,   C.,         2000 },
-                 { Daniela,    Douglas,   D.,         2005 } } );
+table initialize ( table,
+    { { First Name, Last Name, Given Name, Birth Year },
+      { Abel,       Adams,        A.,         1990 },
+      { Betty,      Beavers,   B.,         1995 },
+      { Charlie,    Collins,   C.,         2000 },
+      { Daniela,    Douglas,   D.,         2005 } } );
 
-       table copy columns selected rows( table, [Birth Year]<1998, {First Name, Last Name}, { Given Name, Family Name } );
-       // The specified columns in the first two rows will be copied
 
-       table list( table );
+table copy table ( table, example 1 );
 
+
+echo("Copy 2 columns for 2 selected rows:");
+
+table copy columns selected rows( example 1, [Birth Year]<1998, {First Name, Last Name}, { Given Name, Family Name } );
+table list( example 1);
+
+echo(new line, "Copy all columns into 5 new columns.  The 1st column is copied into columns A and E (modulo rule).");
+
+table copy columns ( table, '*', { A, B, C, D, E } );
+table list( table );

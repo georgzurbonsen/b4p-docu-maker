@@ -1,0 +1,19 @@
+﻿#!/usr/local/bin/b4p
+table initialize( t, { { Name, Street, '', '', Town, Postal Code, Town, Region, Country, Continent, Phone, 'E-Mail' } } );
+
+echo( "Table headers: ", [t:..,0], new line);
+
+echo( "Input: { Name, '', 3, Town, '>Town', '..', Continent, 1 }");
+
+echo( "   ", table resolve headers( t, { Name, '', 3, Town, '>Town', '..', Continent, 1 } ) );
+echo( "   ", table resolve headers( t, { Name, '', 3, Town, '>Town', '..', Continent, 1 }, prefer names ) ); // Same as above
+echo( "   ", table resolve headers( t, { Name, '', 3, Town, '>Town', '..', Continent, 1 }, use names    ) );
+echo( "   ", table resolve headers( t, { Name, '', 3, Town, '>Town', '..', Continent, 1 }, use numbers  ) );
+
+echo(new line, "And when all columns are selected:");
+
+echo( "   ", table resolve headers( t, '*',  prefer names ) );
+echo( "   ", table resolve headers( t, '..', prefer names ) ); // Same as above
+echo( "   ", table resolve headers( t, '*',  use names    ) );
+echo( "   ", table resolve headers( t, '*',  use numbers  ) );
+

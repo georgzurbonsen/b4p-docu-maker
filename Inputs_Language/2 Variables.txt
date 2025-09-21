@@ -59,7 +59,7 @@ B4PDOCU.START
 	Declaring variables:
 	* No explicit variable declarations are required, unless you want to fully initialize arrays or structures using __dim(__), __array(__), __structure(__) or similar functions.
 	* Variables are declared with their first assignment
-	* If no __variable protections__ apply, the values of different (i.e. changing) __basic data types__ can be written.
+	* If no __variable protections__ apply, the values of different (i.e. changing) __data types__ can be written.
 
 	See also next section on __variable scopes__ (global, regional, local and sysstem variables).
 
@@ -376,7 +376,7 @@ B4PDOCU.START
 	Attribute       | Description 
 	Variable Name   | A string of choice.  Exception: Array members have no names as they are just numbered
 	Value		| Stored value (Base Variable)
-	Data Type       | Variables can assume any __Basic Data Types__ and __subtypes__ such as __string__, __numeral__, etc.
+	Data Type       | Variables can assume any __Data Types__ and __subtypes__ such as __string__, __numeral__, etc.
 	Variable Form   | Distinguishes whether the variable is a __simple variable__, an __array__ or a __structure__, or a simple variable containing __zero members__
 	Members		| Contains all member variables (in __arrays__ and __structures__).  Every member is treated like an individual variable, too.
 	Member count	| Number of existing members (0 for simple variables)

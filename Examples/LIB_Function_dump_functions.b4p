@@ -12,6 +12,6 @@
     table transpose ( table ); // fits better in the output (wide table)
     table list( table );
 
-    // The bottom paramters are blank because they are not listed on the
+    // The bottom parameters are blank because they are not listed on the
     // same row as the function name.
 

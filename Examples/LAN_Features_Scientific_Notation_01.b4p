@@ -6,8 +6,10 @@ with table( table, 0, 0 ) // Partial table specification, [.] is row 0 / column 
     echo( [.],   '&tab12;Type: ', subtype([.]),   '&tab40;Note: Read in as text into a string' );
 
     table configure( table, scientific notation, yes );
-    echo( [.],   '&tab12;Type: ', subtype([.]),   '&tab40;Note: Text representation still preserved' );
-    echo( [.]+0, '&tab12;Type: ', subtype([.]+0), '&tab40;Note: Text representation destroyed by calculation' );
+    echo( [.],   '&tab24;', subtype([.]),   '&tab40;Original text representation is still preserved' );
+    echo( [.]+0, '&tab24;', subtype([.]+0), '&tab40;Text representation destroyed by calculation, but same value' );
+    echo( [.]+0, '&tab24;', subtype([.]+0), '&tab40;See above' );
+    echo( scientific([.]+0), '&tab24;', subtype(scientific([.]+0)), '&tab40;Forced use of scientific notation' );
 
     // Note: Explanatory text uses tabulation using dedicated character entities.
 }

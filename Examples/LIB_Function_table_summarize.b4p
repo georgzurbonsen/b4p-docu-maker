@@ -1,0 +1,62 @@
+﻿#!/usr/local/bin/b4p
+table initialize( base data, {
+       { Continent, Country, Town,         Year, Quarter, Score 1, Score 2 },
+       { Europe,    UK,      London,   2025, Q1,      100,     250 },
+       { Europe,    UK,      London,   2025, Q1,      120,     260 },
+       { Europe,    UK,      London,   2025, Q2,      110,     270 },
+       { Europe,    UK,      London,   2025, Q3,      100,     280 },
+       { Europe,    UK,      London,   2026, Q1,      110,     270 },
+       { Europe,    UK,      Bristol,  2026, Q1,      140,     250 },
+       { Europe,    France,  Paris,    2025, Q1,      120,     280 },
+       { Europe,    France,  Lyon,     2025, Q1,      150,     270 },
+       { Europe,    France,  Paris,    2025, Q2,      160,     250 },
+       { Europe,    France,  Lyon,     2025, Q3,      120,     280 },
+       { Europe,    France,  Lyon,     2026, Q1,      130,     290 },
+       { Europe,    France,  Lyon,     2026, Q1,      120,     250 },
+       { Asia,      Japan,   Tokyo,    2025, Q1,      110,     220 },
+       { Asia,      Japan,   Osaka,    2025, Q1,      120,     230 },
+       { Asia,      Japan,   Tokyo,    2025, Q1,      130,     240 },
+       { Asia,      Japan,   Osaka,    2025, Q1,      140,     250 } } );
+
+
+echo("Start pout simple, without any breakdown:");
+
+table summarize( base data, pivot table, {Score 1, Score 2}, {sum, min} );
+table list( pivot table );
+
+
+echo("Pivot table without subtotals:");
+
+table summarize( base data, pivot table, {Score 1, Score 2}, {sum, min}, {Continent, Country, Town}, {Year, Quarter}  );
+table list( pivot table );
+
+
+echo("Pivot table with subtotals:");
+
+table summarize( base data, pivot table, {Score 1, Score 2}, {sum, min}, {Continent, Country, Town}, {Year},
+                                { horizontal subtotals, -1, vertical subtotals, -1, single horizontal header, yes }  );
+table list( pivot table );
+
+
+echo("Pivot table with subtotals and subtotal levels (vertical only):");
+
+table summarize( base data, pivot table, {Score 1, Score 2}, {sum, min}, {Continent, Country, Town}, {},
+                                { vertical subtotals, -1,  subtotal levels, yes}  );
+table list( pivot table );
+
+
+echo("London and Tokyo only:");
+
+rv[] = table summarize selected rows( base data, ([Town]=London,Tokyo),
+                                 pivot table, {Score 1, Score 2}, {sum, min}, {Country, Town}, Year  );
+table list( pivot table );
+echo("Return value: ", rv[] );
+
+
+echo("Empty table:");
+
+rv[] = table summarize selected rows( base data, ([Town]=Madrid), // No Madrid inside, 0 rows summarized.
+                                 pivot table, {Score 1, Score 2}, {sum, min}, {Country, Town}, Year  );
+table list( pivot table );
+echo("Return value: ", rv[] );
+

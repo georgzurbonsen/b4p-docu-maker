@@ -10,8 +10,14 @@
 
        echo("Original table:");
        table list ( t );
+       table copy table ( t, u );
 
-       echo("2 cells inserted in columns A, B, C, D, E and column 7.");
+       echo("2 cells inserted in columns A, B, C, D, E and column 7 in row 2.");
        a[] = table insert cells in columns( t, {A..C,E,7}, 2, 2, ".." );
        table list ( t );
        echo("Number of columns affected: ", a[]);
+
+       echo("1 cell inserted in all columns where header is provided in row 3");
+       table insert cells in columns( u, '*', 3, 1, ".." );
+       table list ( u );
+

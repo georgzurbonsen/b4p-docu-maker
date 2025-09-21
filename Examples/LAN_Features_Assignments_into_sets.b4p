@@ -1,0 +1,6 @@
+﻿#!/usr/local/bin/b4p
+       a[] = { 0,1,2,3,4,5 };
+       a[]{1} = 11; // Replace an element
+       a[]{6} = 6; // Append an element
+       echo(a[]);
+

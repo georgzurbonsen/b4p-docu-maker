@@ -1,19 +1,15 @@
 ﻿#!/usr/local/bin/b4p
-       table load                     ( countries, temp.csv); // Hide!
+       table load                     ( c1, temp1.csv); // Hide!  Step 5 begins
 
-       // Some language specifications can be very long
+[c1:Country,{China,Denmark,'Timor-Leste'},Area] = {9597000,42952,14950}; // km2 
+//  (Denmark without Greenland, and CN without China South Sea, and area was missing for East Timor
 
-       echo(new line, "Example of long contents: ", [countries:Country name,Switzerland,Languages] );
-       echo(new line, "Let's cut to max. 25 characters, then remove last incomplete word and add '...' behind", new line);
+table insert columns            ( c1, { Inhabitants Variation, Inhabitants per km2 } );
+table process selected rows     ( c1, [Inhabitants] == '', [Inhabitants] = [Population]);
+table process                   ( c1, [Inhabitants per km2]   = [Inhabitants] / [Area];
+                                      [Inhabitants Variation] = ([Inhabitants] - [Population])/[Inhabitants] );
+echo( "Table C1: ");
+table list                      ( c1, briefly, 4, last col, 2 ); // List just 3 columns and first and last 4 rows
 
-       table process                  ( countries, while (find([Languages],'(')>=0) 
-                                                       [Languages] = trim( outside exclude ( [Languages], '(', ')' ))  );
-       max[] = 25;
-       table process selected rows    ( countries, [Languages]{}>max[], 
-                                                   [Languages] = left last match( left( [Languages], max[] ), ' ') + " ..." );
+       table save                     ( c1, temp1.csv); // Hide!  Step 5 ends
 
-       echo(new line, "Delete all countries without languages and vice versa...");
-       table delete selected rows     ( countries, ['Alpha-2 code']=='' | [Languages]=='' );
-
-       table list( countries, briefly, 8 ); // List first and last 8 rows only
-       table save                     ( countries, temp.csv); // Hide!  Step 5 ends

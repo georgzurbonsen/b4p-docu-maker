@@ -1,0 +1,26 @@
+﻿#!/usr/local/bin/b4p
+table initialize( base data, {
+                { Name,      Features 1,   Features 2,     Text,      Numbers, Gender },
+                { Nick,      "Hi/He/Hu",   "Me, You, He",  ABCDE,     2,       M },
+                { Jane,      "She/Her",    "1, 01",        A,         3,       F },
+                { Nobody,    "",           "",             '',        0,       ''},
+                { Sophie,    " He / She",  "{ He , She }", SO,        1,       F } } );
+
+table copy table( base data, copy );
+
+echo("Same, copy down Name and Features 1:");
+a[] = table extend( base data,
+                { Features 1, Features 2, Text,     Numbers },
+                { '/',        '#set',     '#chars', '#qty'  }, {Name, Features 1} , Index );
+
+table list( base data );
+echo("Number of rows extended: ", a[], new line);
+
+echo("Same, but copy all columns, count from zero, and Nick and Sophie only:");
+
+a[] = table extend selected rows( copy, ([Name]=Nick,Sophie),
+                    { Features 1, Features 2, Text,     Numbers },
+                    { '/',        '#set',     '#chars', '#zero' }, '*' , Index );
+
+table list( copy );
+echo("Number of rows extended: ", a[]);
