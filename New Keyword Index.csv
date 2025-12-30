@@ -1,106 +1,4 @@
 ﻿Abbreviation;Section Nr;Section Name;HTML File Name;Documentation Type;Feature Names;Keywords
-TAB;;Index;TAB_Features_Index.html;General Description;Index
-TAB;;Table of Contents;TAB_Features_Table_of_Contents.html;General Description;Table of Contents
-TAB;;Workflow;TAB_Features_Workflow.html;General Description;Workflow
-MAS;B 4.01;Analyzing Stock Data;MAS_Features_Use_case_-_Analyzing_Stock_Data.html;General Description;Use case - Analyzing Stock Data
-MAS;B 4.02;Comparing Bills of Material;MAS_Features_Use_case_-_Comparing_Bills_of_Material.html;General Description;Use case - Comparing Bills of Material
-MAS;B 4.03;Different Data From Different Sources;MAS_Features_Use_case_-_Different_data_from_different_sources.html;General Description;Use case - Different data from different sources
-MAS;B 3;Features and Benefits;MAS_Features_Features_and_Benefits.html;General Description;Features and Benefits
-MAS;;Index;MAS_Features_Index.html;General Description;Index
-MAS;;Introduction;MAS_Features_Introduction.html;General Description;Introduction
-MAS;B 4.04;Machine to Machine Data Transfer;MAS_Features_Use_case_-_Machine_to_Machine_Data_Transfer.html;General Description;Use case - Machine to Machine Data Transfer
-MAS;B 2;Problem Statement;MAS_Features_Problem_Statement.html;General Description;Problem Statement
-MAS;B 4;Use Cases;MAS_Features_Use_cases.html;General Description;Use cases
-GUI;B 5.01;A - Import;GUI_Features_Import_source_data.html;General Description;Import source data
-GUI;B 5.02;B - Clean;GUI_Features_Clean_Data.html;General Description;Clean Data
-GUI;B 4.04;Basic Commands;GUI_Features_Basic_Commands.html;General Description;Basic Commands
-GUI;B 5.03;C - Validate;GUI_Features_Validate_and_Explore.html;General Description;Validate and Explore
-GUI;B 3.05.01;Command Line Arguments;GUI_Features_Command_line_arguments.html;General Description;Command line arguments
-GUI;B 3.05;Command Line Arguments and Options;GUI_Features_Command_Line_Arguments_and_Options.html;General Description;Command Line Arguments and Options
-GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;Command line switches
-GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;;Command line switch
-GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;;Command line options
-GUI;B 5.04;D - Merge;GUI_Features_Merge_and_Consolidate.html;General Description;Merge and Consolidate
-GUI;B 5.05;E - Augment;GUI_Features_Enrichment.html;General Description;Enrichment
-GUI;B 4.02;Entering Interactive Mode;GUI_Features_entering_interactive_mode.html;General Description;entering interactive mode
-GUI;B 6;Examples;GUI_Features_Examples.html;General Description;Examples
-GUI;B 4.07;Execute B4P Expressions Interactively;GUI_Features_Execute_B4P_expressions_interactively.html;General Description;Execute B4P expressions interactively
-GUI;B 4.07;Execute B4P Expressions Interactively;GUI_Features_Execute_B4P_expressions_interactively.html;General Description;;interactive expressions
-GUI;B 4.06;Execute B4P Statements Interactively;GUI_Features_Execute_B4P_statements_interactively.html;General Description;Execute B4P statements interactively
-GUI;B 4.06;Execute B4P Statements Interactively;GUI_Features_Execute_B4P_statements_interactively.html;General Description;;interactive statements
-GUI;B 5.06;F - Analyze;GUI_Features_Align_and_Process.html;General Description;Align and Process
-GUI;B 6.01;Football Club Merger - Interactive;GUI_Features_Example__Merging_football_clubs_-_interactive_approach.html;General Description;Example: Merging football clubs - interactive approach
-GUI;B 6.02;Football Club Merger - Program;GUI_Features_Example__Merge_football_clubs.html;General Description;Example: Merge football clubs
-GUI;B 5.07;G - Format;GUI_Features_Format_the_results.html;General Description;Format the results
-GUI;B 3;Getting Started;GUI_Features_Getting_Started.html;General Description;Getting Started
-GUI;B 5.08;H - Export;GUI_Features_Save_and_Export.html;General Description;Save and Export
-GUI;;Index;GUI_Features_Index.html;General Description;Index
-GUI;B 2;Installation;GUI_Features_Installation.html;General Description;Installation
-GUI;B 4.03;Interactive Help;GUI_Features_Interactive_help.html;General Description;Interactive help
-GUI;B 4.01;Interactive Input and Editing;GUI_Features_Interactive_input.html;General Description;Interactive input
-GUI;B 4.01;Interactive Input and Editing;GUI_Features_Interactive_input.html;General Description;Interactive editing
-GUI;B 4;Interactive Mode;GUI_Features_interactive_mode.html;General Description;interactive mode
-GUI;B 4.08.01;Interactive Visualization;GUI_Features_Interactive_Visualization.html;General Description;Interactive Visualization
-GUI;B 2.02;Linux;GUI_Features_Installation_on_Linux.html;General Description;Installation on Linux
-GUI;B 2.02.04;Linux - Batch Installation;GUI_Features_Linux_-_Batch_Installation.html;General Description;Linux - Batch Installation
-GUI;B 2.02.02;Linux - Download;GUI_Features_Linux_Download.html;General Description;Linux Download
-GUI;B 2.02.03;Linux - Installation;GUI_Features_Linux_Installation.html;General Description;Linux Installation
-GUI;B 2.02.01;Linux - Prerequisites;GUI_Features_Linux_Prerequisites.html;General Description;Linux Prerequisites
-GUI;B 3.02.01;Linux Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_Linux.html;General Description;Edit B4P Programs under Linux
-GUI;B 3.02.03;Linux Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_Linux.html;General Description;Starting B4P Directly under Linux
-GUI;B 3.02.02;Linux Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_Linux.html;General Description;Starting a B4P Program under Linux
-GUI;B 3.02.02.01;Linux Start B4P Programs as Executables;GUI_Features_Start_B4P_Programs_as_Executables_under_Linux.html;General Description;Start B4P Programs as Executables under Linux
-GUI;B 3.02.02.02;Linux Start B4P to run B4P programs;GUI_Features_Linux_Start_B4P_to_run_B4P_programs.html;General Description;Linux Start B4P to run B4P programs
-GUI;B 3.05.03;Long Options;GUI_Features_Long_Options.html;General Description;Long Options
-GUI;B 3.05.03;Long Options;GUI_Features_Long_Options.html;General Description;;Long command line options
-GUI;B 2.03;MacOS;GUI_Features_Installation_on_MacOS.html;General Description;Installation on MacOS
-GUI;B 2.03.04;MacOS - Batch Installation;GUI_Features_MacOS_-_Batch_Installation.html;General Description;MacOS - Batch Installation
-GUI;B 2.03.02;MacOS - Download;GUI_Features_MacOS_Download.html;General Description;MacOS Download
-GUI;B 2.03.03;MacOS - Installation;GUI_Features_MacOS_Installation.html;General Description;MacOS Installation
-GUI;B 2.03.01;MacOS - Prerequisites;GUI_Features_MacOS_Prerequisites.html;General Description;MacOS Prerequisites
-GUI;B 3.03.01;MacOS Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_MacOS.html;General Description;Edit B4P Programs under MacOS
-GUI;;MacOS Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_MacOS.html;General Description;Starting B4P Directly under MacOS
-GUI;B 3.03.02;MacOS Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_MacOS.html;General Description;Starting a B4P Program under MacOS
-GUI;B 3.03.02.01;MacOS Start B4P Programs as Executables;GUI_Features_Start_B4P_Programs_as_Executables_under_MacOS.html;General Description;Start B4P Programs as Executables under MacOS
-GUI;B 3.03.02.02;MacOS Start B4P to run B4P programs;GUI_Features_MacOS_Start_B4P_to_run_B4P_programs.html;General Description;MacOS Start B4P to run B4P programs
-GUI;B 4.05;Operating System Commands;GUI_Features_Operating_System_Commands.html;General Description;Operating System Commands
-GUI;B 4.05;Operating System Commands;GUI_Features_Operating_System_Commands.html;General Description;;OS Commands
-GUI;B 7.01;Release 11.00;GUI_Features_Release_11.00_-_Sydney_Opera_House.html;General Description;Release 11.00 - Sydney Opera House
-GUI;B 7.02;Release 11.02;GUI_Features_Release_11.02_-_Yellowstone.html;General Description;Release 11.02 - Yellowstone
-GUI;B 7.03;Release 12.00;GUI_Features_Release_12.00_-_Johann_C._F._Gauss.html;General Description;Release 12.00 - Johann C. F. Gauss
-GUI;B 7.04;Release 12.01;GUI_Features_Release_12.01_-_The_Last_Duck.html;General Description;Release 12.01 - The Last Duck
-GUI;B 7.05;Release 12.02;GUI_Features_Release_12.02_-_The_Last_Duck.html;General Description;Release 12.02 - The Last Duck
-GUI;B 7;Release History;GUI_Features_Release_History.html;General Description;Release History
-GUI;B 3.02;Starting B4P under Linux;GUI_Features_Starting_B4P_under_Linux.html;General Description;Starting B4P under Linux
-GUI;B 3.03;Starting B4P under MacOS;GUI_Features_Starting_B4P_under_MacOS.html;General Description;Starting B4P under MacOS
-GUI;B 3.01;Starting B4P under Windows;GUI_Features_Starting_B4P_under_Windows.html;General Description;Starting B4P under Windows
-GUI;B 3.04.01;Starting Behavior Advanced;GUI_Features_Starting_Behavior_Advanced.html;General Description;Starting Behavior Advanced
-GUI;B 3.04;Starting Behavior Basics;GUI_Features_Starting_Behavior.html;General Description;Starting Behavior
-GUI;;Table of Contents;GUI_Features_Table_of_Contents.html;General Description;Table of Contents
-GUI;B 2.07;Terms and Conditions;GUI_Features_Terms_and_Conditions.html;General Description;Terms and Conditions
-GUI;B 5.09;The Whole Program;GUI_Features_The_Whole_Program.html;General Description;The Whole Program
-GUI;B 2.06;Uninstallation;GUI_Features_Uninstallation.html;General Description;Uninstallation
-GUI;B 2.05;Updates and Upgrades;GUI_Features_Updates_and_Upgrades.html;General Description;Updates and Upgrades
-GUI;;User Guide;GUI_Features_User_Guide.html;General Description;User Guide
-GUI;;User Guide;GUI_Features_User_Guide.html;General Description;B4P Interpreter
-GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;User initialization program
-GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;;custom initialization program
-GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;;My B4P Init.b4p
-GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;VS Code Extension for B4P
-GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;;Visual Studio Code
-GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;;VS Code
-GUI;B 4.08;View Directory Listings;GUI_Features_View_directory_listings.html;General Description;View directory listings
-GUI;B 4.09;View Tables Interactively;GUI_Features_View_Tables_Interactively.html;General Description;View Tables Interactively
-GUI;B 4.10;View Variables Interactively;GUI_Features_View_variables_interactively.html;General Description;View variables interactively
-GUI;B 2.01;Windows;GUI_Features_Installation_on_Windows.html;General Description;Installation on Windows
-GUI;B 2.01.04;Windows - Batch Installation;GUI_Features_Windows_-_Batch_Installation.html;General Description;Windows - Batch Installation
-GUI;B 2.01.02;Windows - Download;GUI_Features_Windows_Download.html;General Description;Windows Download
-GUI;B 2.01.03;Windows - Installation;GUI_Features_Windows_Installation.html;General Description;Windows Installation
-GUI;B 2.01.01;Windows - Prerequisites;GUI_Features_Windows_Prerequisites.html;General Description;Windows Prerequisites
-GUI;B 3.01.01;Windows Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_Windows.html;General Description;Edit B4P Programs under Windows
-GUI;B 3.01.03;Windows Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_Windows.html;General Description;Starting B4P Directly under Windows
-GUI;B 3.01.02;Windows Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_Windows.html;General Description;Starting a B4P Program under Windows
-GUI;B 5;Workflow Steps;GUI_Features_Workflow_Steps.html;General Description;Workflow Steps
 LIB;B 9.04;Accessing Table Information;LIB_Features_Accessing_table_information.html;General Description;Accessing table information
 LIB;B 9.07.04.05.01;Addt'l Info on fast rows processing;LIB_Features_Additional_info_on_fast_processing_of_rows.html;General Description;Additional info on fast processing of rows
 LIB;B 5.03.01;Arithmetic and Boolean Series Functions;LIB_Function_add.html;Function Description;add
@@ -149,10 +47,10 @@ LIB;B 6.02;Character Encoding and Decoding;LIB_Features_character_coding.html;Ge
 LIB;B 9.07.01;Checking and Processing Headers;LIB_Features_Checking_headers.html;General Description;Checking headers
 LIB;B 9.07.01;Checking and Processing Headers;LIB_Features_Checking_headers.html;General Description;Processing headers
 LIB;B 2.07;Code Execution Functions;LIB_Features_Code_Execution_Functions.html;General Description;Code Execution Functions
-LIB;B 9.08.02.29;Collecting Lookup Feedback Information;LIB_Features_Lookup_Feedback_Information.html;General Description;Lookup Feedback Information
+LIB;B 9.08.02.35;Collecting Lookup Feedback Information;LIB_Features_Lookup_Feedback_Information.html;General Description;Lookup Feedback Information
 LIB;B 9.09.01.01;Color Palettes;LIB_Features_Color_Palettes.html;General Description;Color Palettes
 LIB;B 9.09.01.01;Color Palettes;LIB_Features_Color_Palettes.html;General Description;;Color Palette
-LIB;B 9.08.02.30;Combining Multiple Tables;LIB_Features_Combining_multiple_tables.html;General Description;Combining multiple tables
+LIB;B 9.08.02.36;Combining Multiple Tables;LIB_Features_Combining_multiple_tables.html;General Description;Combining multiple tables
 LIB;B 9.08.01;Comparing and Validating Tables;LIB_Features_Comparing_and_validating_tables.html;General Description;Comparing and validating tables
 LIB;B 2.06;Comparison and Selection Functions;LIB_Features_Comparison_and_selection_functions.html;General Description;Comparison and selection functions
 LIB;B 5.06;Conditional Combination Functions;LIB_Function_sum_if.html;Function Description;sum if
@@ -329,7 +227,7 @@ LIB;B 3.03;Inspection and Debugging;LIB_Features_Inspection_and_debugging.html;G
 LIB;B 5.05.06.01;Interpolation Examples Visualized;LIB_Features_Interpolation_Examples.html;General Description;Interpolation Examples
 LIB;B 5.05.06.01;Interpolation Examples Visualized;LIB_Features_Interpolation_Examples.html;General Description;;interpolation examples
 LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;linear interpolation
-LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;nearest neighbor interpolation
+LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;nearest left neighbor interpolation
 LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;nearest right neighbor interpolation
 LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;spline interpolation
 LIB;B 5.05.06;Interpolation Functions;LIB_Function_linear_interpolation.html;Function Description;polynomial interpolation
@@ -409,7 +307,7 @@ LIB;B 12;System Functions;LIB_Features_system_functions.html;General Description
 LIB;B 9.08.01.01.02;Table Comparison Reports;LIB_Features_Table_comparison_reports.html;General Description;Table comparison reports
 LIB;B 9.08.01.01.01;Table Comparison Strategy;LIB_Features_Table_comparison_strategy.html;General Description;Table comparison strategy
 LIB;B 9;Table Functions;LIB_Features_table_functions.html;General Description;table functions
-LIB;B 9.08.02.28;Table Integration Operation Identifiers;LIB_Features_Table_integration_operation_identifiers.html;General Description;Table integration operation identifiers
+LIB;B 9.08.02.34;Table Integration Operation Identifiers;LIB_Features_Table_integration_operation_identifiers.html;General Description;Table integration operation identifiers
 LIB;;Table of Contents;LIB_Features_Table_of_Contents.html;General Description;Table of Contents
 LIB;B 3.01;Text Input / Output;LIB_Features_text_input_output.html;General Description;text input/output
 LIB;B 7.02;Time and Stopwatch Functions;LIB_Features_time_and_stopwatch_functions.html;General Description;time and stopwatch functions
@@ -1105,9 +1003,9 @@ LIB;B 9.03.02.01;table append ...;LIB_Function_table_append.html;Function Descri
 LIB;B 9.03.02.01;table append ...;LIB_Function_table_append.html;Function Description;table append on same field
 LIB;B 9.03.02.01;table append ...;LIB_Function_table_append.html;Function Description;;Writing tables
 LIB;B 9.03.02.02;table append blank rows;LIB_Function_table_append_blank_rows.html;Function Description;table append blank rows
-LIB;B 9.08.02.38;table arrange ...;LIB_Function_table_arrange.html;Function Description;table arrange
-LIB;B 9.08.02.38;table arrange ...;LIB_Function_table_arrange.html;Function Description;table arrange with spacing
-LIB;B 9.08.02.38;table arrange ...;LIB_Function_table_arrange.html;Function Description;;Arrange multiple tables side-by-side
+LIB;B 9.08.02.44;table arrange ...;LIB_Function_table_arrange.html;Function Description;table arrange
+LIB;B 9.08.02.44;table arrange ...;LIB_Function_table_arrange.html;Function Description;table arrange with spacing
+LIB;B 9.08.02.44;table arrange ...;LIB_Function_table_arrange.html;Function Description;;Arrange multiple tables side-by-side
 LIB;B 2.07.07;table assign;LIB_Function_table_assign.html;Function Description;table assign
 LIB;B 2.07.07;table assign;LIB_Function_table_assign.html;Function Description;;table assign
 LIB;B 9.08.01.03;table check duplicates ...;LIB_Function_table_check_duplicates.html;Function Description;table check duplicates
@@ -1173,55 +1071,67 @@ LIB;B 9.07.03.03;table delete rows (if needed);LIB_Function_table_delete_rows.ht
 LIB;B 9.07.03.03;table delete rows (if needed);LIB_Function_table_delete_rows.html;Function Description;table delete rows if needed
 LIB;B 9.07.03.03;table delete rows (if needed);LIB_Function_table_delete_rows.html;Function Description;;Deleting table rows
 LIB;B 9.07.03.05;table delete selected rows;LIB_Function_table_delete_selected_rows.html;Function Description;table delete selected rows
-LIB;B 9.08.02.27;table describe ...;LIB_Function_table_describe.html;Function Description;table describe
-LIB;B 9.08.02.27;table describe ...;LIB_Function_table_describe.html;Function Description;table describe ignore case
-LIB;B 9.08.02.27;table describe ...;LIB_Function_table_describe.html;Function Description;table describe selected rows
-LIB;B 9.08.02.27;table describe ...;LIB_Function_table_describe.html;Function Description;table describe selected rows ignore case
-LIB;B 9.08.02.23;table digest ...;LIB_Function_table_digest.html;Function Description;table digest
-LIB;B 9.08.02.23;table digest ...;LIB_Function_table_digest.html;Function Description;table digest ignore case
-LIB;B 9.08.02.23;table digest ...;LIB_Function_table_digest.html;Function Description;;Looking up data from other tables
-LIB;B 9.08.02.23;table digest ...;LIB_Function_table_digest.html;Function Description;;Integrate results from one or more matching row into target table row
-LIB;B 9.08.02.24;table digest smart ...;LIB_Function_table_digest_smart.html;Function Description;table digest smart
-LIB;B 9.08.02.24;table digest smart ...;LIB_Function_table_digest_smart.html;Function Description;table digest smart ignore case
-LIB;B 9.08.02.25;table digest with rules ...;LIB_Function_table_digest_with_rules.html;Function Description;table digest with rules
-LIB;B 9.08.02.25;table digest with rules ...;LIB_Function_table_digest_with_rules.html;Function Description;table digest with rules ignore case
-LIB;B 9.08.02.26;table digest with rules once ...;LIB_Function_table_digest_with_rules_once.html;Function Description;table digest with rules once
-LIB;B 9.08.02.26;table digest with rules once ...;LIB_Function_table_digest_with_rules_once.html;Function Description;table digest with rules ignore case once
+LIB;B 9.08.02.33;table describe ...;LIB_Function_table_describe.html;Function Description;table describe
+LIB;B 9.08.02.33;table describe ...;LIB_Function_table_describe.html;Function Description;table describe ignore case
+LIB;B 9.08.02.33;table describe ...;LIB_Function_table_describe.html;Function Description;table describe selected rows
+LIB;B 9.08.02.33;table describe ...;LIB_Function_table_describe.html;Function Description;table describe selected rows ignore case
+LIB;B 9.08.02.27;table digest ...;LIB_Function_table_digest.html;Function Description;table digest
+LIB;B 9.08.02.27;table digest ...;LIB_Function_table_digest.html;Function Description;table digest ignore case
+LIB;B 9.08.02.27;table digest ...;LIB_Function_table_digest.html;Function Description;;Looking up data from other tables
+LIB;B 9.08.02.27;table digest ...;LIB_Function_table_digest.html;Function Description;;Integrate results from one or more matching row into target table row
+LIB;B 9.08.02.28;table digest once ...;LIB_Function_table_digest_once.html;Function Description;table digest once
+LIB;B 9.08.02.28;table digest once ...;LIB_Function_table_digest_once.html;Function Description;table digest once ignore case
+LIB;B 9.08.02.29;table digest smart ...;LIB_Function_table_digest_smart.html;Function Description;table digest smart
+LIB;B 9.08.02.29;table digest smart ...;LIB_Function_table_digest_smart.html;Function Description;table digest smart ignore case
+LIB;B 9.08.02.30;table digest smart once ...;LIB_Function_table_digest_smart_once.html;Function Description;table digest smart once
+LIB;B 9.08.02.30;table digest smart once ...;LIB_Function_table_digest_smart_once.html;Function Description;table digest smart once ignore case
+LIB;B 9.08.02.31;table digest with rules ...;LIB_Function_table_digest_with_rules.html;Function Description;table digest with rules
+LIB;B 9.08.02.31;table digest with rules ...;LIB_Function_table_digest_with_rules.html;Function Description;table digest with rules ignore case
+LIB;B 9.08.02.32;table digest with rules once ...;LIB_Function_table_digest_with_rules_once.html;Function Description;table digest with rules once
+LIB;B 9.08.02.32;table digest with rules once ...;LIB_Function_table_digest_with_rules_once.html;Function Description;table digest with rules ignore case once
 LIB;B 9.07.05.11;table distribute ...;LIB_Function_table_distribute.html;Function Description;table distribute
 LIB;B 9.07.05.11;table distribute ...;LIB_Function_table_distribute.html;Function Description;table distribute advance
 LIB;B 9.07.05.11;table distribute ...;LIB_Function_table_distribute.html;Function Description;table distribute accumulate
 LIB;B 9.07.05.11;table distribute ...;LIB_Function_table_distribute.html;Function Description;table distribute advance accumulate
 LIB;B 9.07.05.11;table distribute ...;LIB_Function_table_distribute.html;Function Description;;Distribute quantities over timeline
-LIB;B 9.08.02.37;table divide ...;LIB_Function_table_divide.html;Function Description;table divide
-LIB;B 9.08.02.37;table divide ...;LIB_Function_table_divide.html;Function Description;table divide selected rows
-LIB;B 9.08.02.37;table divide ...;LIB_Function_table_divide.html;Function Description;;Relational division of two tables
+LIB;B 9.08.02.43;table divide ...;LIB_Function_table_divide.html;Function Description;table divide
+LIB;B 9.08.02.43;table divide ...;LIB_Function_table_divide.html;Function Description;table divide selected rows
+LIB;B 9.08.02.43;table divide ...;LIB_Function_table_divide.html;Function Description;;Relational division of two tables
 LIB;B 9.07.02.04;table duplicate columns;LIB_Function_table_duplicate_columns.html;Function Description;table duplicate columns
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude extend columns
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude exclude columns
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude columns
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude exclusive columns
-LIB;B 9.08.02.35;table exclude ...;LIB_Function_table_exclude.html;Function Description;;Derive disjoint union from both tables
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude extend columns
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude exclude columns
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude columns
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;table exclude exclusive columns
+LIB;B 9.08.02.41;table exclude ...;LIB_Function_table_exclude.html;Function Description;;Derive disjoint union from both tables
 LIB;B 9.04.02;table existing;LIB_Function_table_existing.html;Function Description;table existing
 LIB;B 9.08.02.15;table expand ...;LIB_Function_table_expand.html;Function Description;table expand
 LIB;B 9.08.02.15;table expand ...;LIB_Function_table_expand.html;Function Description;table expand ignore case
 LIB;B 9.08.02.15;table expand ...;LIB_Function_table_expand.html;Function Description;;Looking up data from other tables
 LIB;B 9.08.02.15;table expand ...;LIB_Function_table_expand.html;Function Description;;integrate results
 LIB;B 9.08.02.15;table expand ...;LIB_Function_table_expand.html;Function Description;;add rows in case of multiple matches
-LIB;B 9.08.02.16;table expand fast ...;LIB_Function_table_expand_fast.html;Function Description;table expand fast
-LIB;B 9.08.02.16;table expand fast ...;LIB_Function_table_expand_fast.html;Function Description;table expand fast ignore case
-LIB;B 9.08.02.18;table expand fast smart ...;LIB_Function_table_expand_fast_smart.html;Function Description;table expand fast smart
-LIB;B 9.08.02.18;table expand fast smart ...;LIB_Function_table_expand_fast_smart.html;Function Description;table expand fast smart ignore case
-LIB;B 9.08.02.21;table expand fast with rules ...;LIB_Function_table_expand_fast_with_rules.html;Function Description;table expand fast with rules
-LIB;B 9.08.02.21;table expand fast with rules ...;LIB_Function_table_expand_fast_with_rules.html;Function Description;table expand fast with rules ignore case
-LIB;B 9.08.02.22;table expand fast with rules once ...;LIB_Function_table_expand_fast_with_rules_once.html;Function Description;table expand fast with rules once
-LIB;B 9.08.02.22;table expand fast with rules once ...;LIB_Function_table_expand_fast_with_rules_once.html;Function Description;table expand fast with rules ignore case once
-LIB;B 9.08.02.17;table expand smart ...;LIB_Function_table_expand_smart.html;Function Description;table expand smart
-LIB;B 9.08.02.17;table expand smart ...;LIB_Function_table_expand_smart.html;Function Description;table expand smart ignore case
-LIB;B 9.08.02.19;table expand with rules ...;LIB_Function_table_expand_with_rules.html;Function Description;table expand with rules
-LIB;B 9.08.02.19;table expand with rules ...;LIB_Function_table_expand_with_rules.html;Function Description;table expand with rules ignore case
-LIB;B 9.08.02.20;table expand with rules once ...;LIB_Function_table_expand_with_rules_once.html;Function Description;table expand with rules once
-LIB;B 9.08.02.20;table expand with rules once ...;LIB_Function_table_expand_with_rules_once.html;Function Description;table expand with rules once ignore case
+LIB;B 9.08.02.17;table expand fast ...;LIB_Function_table_expand_fast.html;Function Description;table expand fast
+LIB;B 9.08.02.17;table expand fast ...;LIB_Function_table_expand_fast.html;Function Description;table expand fast ignore case
+LIB;B 9.08.02.18;table expand fast once ...;LIB_Function_table_expand_fast_once.html;Function Description;table expand fast once
+LIB;B 9.08.02.18;table expand fast once ...;LIB_Function_table_expand_fast_once.html;Function Description;table expand fast once ignore case
+LIB;B 9.08.02.21;table expand fast smart ...;LIB_Function_table_expand_fast_smart.html;Function Description;table expand fast smart
+LIB;B 9.08.02.21;table expand fast smart ...;LIB_Function_table_expand_fast_smart.html;Function Description;table expand fast smart ignore case
+LIB;B 9.08.02.22;table expand fast smart once ...;LIB_Function_table_expand_fast_smart_once.html;Function Description;table expand fast smart once
+LIB;B 9.08.02.22;table expand fast smart once ...;LIB_Function_table_expand_fast_smart_once.html;Function Description;table expand fast smart once ignore case
+LIB;B 9.08.02.25;table expand fast with rules ...;LIB_Function_table_expand_fast_with_rules.html;Function Description;table expand fast with rules
+LIB;B 9.08.02.25;table expand fast with rules ...;LIB_Function_table_expand_fast_with_rules.html;Function Description;table expand fast with rules ignore case
+LIB;B 9.08.02.26;table expand fast with rules once ...;LIB_Function_table_expand_fast_with_rules_once.html;Function Description;table expand fast with rules once
+LIB;B 9.08.02.26;table expand fast with rules once ...;LIB_Function_table_expand_fast_with_rules_once.html;Function Description;table expand fast with rules ignore case once
+LIB;B 9.08.02.16;table expand once ...;LIB_Function_table_expand_once.html;Function Description;table expand once
+LIB;B 9.08.02.16;table expand once ...;LIB_Function_table_expand_once.html;Function Description;table expand once ignore case
+LIB;B 9.08.02.19;table expand smart ...;LIB_Function_table_expand_smart.html;Function Description;table expand smart
+LIB;B 9.08.02.19;table expand smart ...;LIB_Function_table_expand_smart.html;Function Description;table expand smart ignore case
+LIB;B 9.08.02.20;table expand smart once ...;LIB_Function_table_expand_smart_once.html;Function Description;table expand smart once
+LIB;B 9.08.02.20;table expand smart once ...;LIB_Function_table_expand_smart_once.html;Function Description;table expand smart once ignore case
+LIB;B 9.08.02.23;table expand with rules ...;LIB_Function_table_expand_with_rules.html;Function Description;table expand with rules
+LIB;B 9.08.02.23;table expand with rules ...;LIB_Function_table_expand_with_rules.html;Function Description;table expand with rules ignore case
+LIB;B 9.08.02.24;table expand with rules once ...;LIB_Function_table_expand_with_rules_once.html;Function Description;table expand with rules once
+LIB;B 9.08.02.24;table expand with rules once ...;LIB_Function_table_expand_with_rules_once.html;Function Description;table expand with rules once ignore case
 LIB;B 9.05.02.01;table explore;LIB_Function_table_explore.html;Function Description;table explore
 LIB;B 9.05.02.01;table explore;LIB_Function_table_explore.html;Function Description;;Explore
 LIB;B 9.05.02.01;table explore;LIB_Function_table_explore.html;Function Description;;filter and extract tables
@@ -1282,12 +1192,12 @@ LIB;B 9.08.02.13;table integrate with rules ...;LIB_Function_table_integrate_wit
 LIB;B 9.08.02.13;table integrate with rules ...;LIB_Function_table_integrate_with_rules.html;Function Description;table integrate with rules ignore case
 LIB;B 9.08.02.14;table integrate with rules once ...;LIB_Function_table_integrate_with_rules_once.html;Function Description;table integrate with rules once
 LIB;B 9.08.02.14;table integrate with rules once ...;LIB_Function_table_integrate_with_rules_once.html;Function Description;table integrate with rules once ignore case
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect extend columns
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect intersect columns
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect columns
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect exclusive columns
-LIB;B 9.08.02.33;table intersect ...;LIB_Function_table_intersect.html;Function Description;;Row-wise intersection made from two tables
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect extend columns
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect intersect columns
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect columns
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;table intersect exclusive columns
+LIB;B 9.08.02.39;table intersect ...;LIB_Function_table_intersect.html;Function Description;;Row-wise intersection made from two tables
 LIB;B 9.07.02.07;table keep ... columns;LIB_Function_table_keep_columns.html;Function Description;table keep columns
 LIB;B 9.07.02.07;table keep ... columns;LIB_Function_table_keep_columns.html;Function Description;table keep existing columns
 LIB;B 9.07.02.07;table keep ... columns;LIB_Function_table_keep_columns.html;Function Description;;Keeping and deleting table columns
@@ -1324,26 +1234,26 @@ LIB;B 9.07.04.06;table manipulate (selected rows);LIB_Function_table_manipulate.
 LIB;B 9.07.04.06;table manipulate (selected rows);LIB_Function_table_manipulate.html;Function Description;;Manipulate table contents
 LIB;B 9.02.02;table menu, table menu quick;LIB_Function_table_menu.html;Function Description;table menu
 LIB;B 9.02.02;table menu, table menu quick;LIB_Function_table_menu.html;Function Description;table menu quick
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;table merge
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;table merge extend columns
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;table merge intersect columns
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;table merge subtract columns
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;table merge exclusive columns
-LIB;B 9.08.02.31;table merge ...;LIB_Function_table_merge.html;Function Description;;Merge two tables with union-set principle
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;table merge
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;table merge extend columns
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;table merge intersect columns
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;table merge subtract columns
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;table merge exclusive columns
+LIB;B 9.08.02.37;table merge ...;LIB_Function_table_merge.html;Function Description;;Merge two tables with union-set principle
 LIB;B 9.04.05;table min/max width;LIB_Function_table_min_width.html;Function Description;table min width
 LIB;B 9.04.05;table min/max width;LIB_Function_table_min_width.html;Function Description;table max width
 LIB;B 9.07.03.09;table move rows;LIB_Function_table_move_rows.html;Function Description;table move rows
 LIB;B 9.07.03.09;table move rows;LIB_Function_table_move_rows.html;Function Description;;Move and rearrange table rows
 LIB;B 9.07.03.10;table move selected rows;LIB_Function_table_move_selected_rows.html;Function Description;table move selected rows
-LIB;B 9.08.02.36;table multiply ...;LIB_Function_table_multiply.html;Function Description;table multiply
-LIB;B 9.08.02.36;table multiply ...;LIB_Function_table_multiply.html;Function Description;table multiply selected rows
-LIB;B 9.08.02.36;table multiply ...;LIB_Function_table_multiply.html;Function Description;;Relational multiplication of two tables
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay extend columns
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay intersect columns
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay columns
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay exclusive columns
-LIB;B 9.08.02.32;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;;Table overlays the other table
+LIB;B 9.08.02.42;table multiply ...;LIB_Function_table_multiply.html;Function Description;table multiply
+LIB;B 9.08.02.42;table multiply ...;LIB_Function_table_multiply.html;Function Description;table multiply selected rows
+LIB;B 9.08.02.42;table multiply ...;LIB_Function_table_multiply.html;Function Description;;Relational multiplication of two tables
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay extend columns
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay intersect columns
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay columns
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;table overlay exclusive columns
+LIB;B 9.08.02.38;table overlay/subtract ...;LIB_Function_table_overlay.html;Function Description;;Table overlays the other table
 LIB;B 9.07.04.03;table process (selected) columns;LIB_Function_table_process_columns.html;Function Description;table process columns
 LIB;B 9.07.04.03;table process (selected) columns;LIB_Function_table_process_columns.html;Function Description;table process selected columns
 LIB;B 9.07.04.03;table process (selected) columns;LIB_Function_table_process_columns.html;Function Description;;Process table columns
@@ -1441,12 +1351,12 @@ LIB;B 9.07.04.10;table substitute horizontally ...;LIB_Function_table_substitute
 LIB;B 9.07.04.10;table substitute horizontally ...;LIB_Function_table_substitute_horizontally.html;Function Description;table substitute horizontally selected rows
 LIB;B 9.07.04.09;table substitute vertically ...;LIB_Function_table_substitute_vertically.html;Function Description;table substitute vertically
 LIB;B 9.07.04.09;table substitute vertically ...;LIB_Function_table_substitute_vertically.html;Function Description;table substitute vertically selected rows
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract extend columns
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract subtract columns
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract columns
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract exclusive columns
-LIB;B 9.08.02.34;table subtract ...;LIB_Function_table_subtract.html;Function Description;;One table does row-subtraction on other table
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract extend columns
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract subtract columns
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract columns
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;table subtract exclusive columns
+LIB;B 9.08.02.40;table subtract ...;LIB_Function_table_subtract.html;Function Description;;One table does row-subtraction on other table
 LIB;B 9.07.05.10;table summarize ...;LIB_Function_table_summarize.html;Function Description;table summarize
 LIB;B 9.07.05.10;table summarize ...;LIB_Function_table_summarize.html;Function Description;table summarize selected rows
 LIB;B 9.07.05.10;table summarize ...;LIB_Function_table_summarize.html;Function Description;;Create summaries
@@ -1556,6 +1466,18 @@ LIB;B 11.04.01;zip compress;LIB_Function_zip_compress.html;Function Description;
 LIB;B 11.04.01;zip compress;LIB_Function_zip_compress.html;Function Description;;File comporession and decompression
 LIB;B 11.04.03;zip extract all;LIB_Function_zip_extract_all.html;Function Description;zip extract all
 LIB;B 11.04.02;zip extract files;LIB_Function_zip_extract_files.html;Function Description;zip extract files
+TAB;B 1.01;A - Import;TAB_Features_Import_source_data.html;General Description;Import source data
+TAB;B 1.02;B - Clean;TAB_Features_Clean_Data.html;General Description;Clean Data
+TAB;B 1.03;C - Validate;TAB_Features_Validate_and_Explore.html;General Description;Validate and Explore
+TAB;B 1.04;D - Merge;TAB_Features_Merge_and_Consolidate.html;General Description;Merge and Consolidate
+TAB;B 1.05;E - Augment;TAB_Features_Enrichment.html;General Description;Enrichment
+TAB;B 1.06;F - Analyze;TAB_Features_Align_and_Process.html;General Description;Align and Process
+TAB;B 1.07;G - Format;TAB_Features_Format_the_results.html;General Description;Format the results
+TAB;B 1.08;H - Export;TAB_Features_Save_and_Export.html;General Description;Save and Export
+TAB;;Index;TAB_Features_Index.html;General Description;Index
+TAB;;Table of Contents;TAB_Features_Table_of_Contents.html;General Description;Table of Contents
+TAB;B 1.09;The Whole Program;TAB_Features_The_Whole_Program.html;General Description;The Whole Program
+TAB;;Workflow;TAB_Features_Workflow.html;General Description;Workflow
 LAN;B 9.05;"&#43; Transaction Assignment Operators";LAN_Features_Transactions_with_ADD_assignment_operator.html;General Description;Transactions with ADD assignment operator
 LAN;B 9.05.04;"&#43; Transactions between Tables";LAN_Features_ADD_Transactions_between_tables.html;General Description;ADD Transactions between tables
 LAN;B 9.05.01;"&#43; Transactions between Variables";LAN_Features_ADD_Transactions_between_variables.html;General Description;ADD Transactions between variables
@@ -1887,3 +1809,92 @@ LAN;B 3.05;Voids;LAN_Features_data_types_voids.html;General Description;;voids
 LAN;B 6.01.05.01;Wildcards;LAN_Features_wildcards.html;General Description;wildcards
 LAN;B 6.01.05.01;Wildcards;LAN_Features_wildcards.html;General Description;;wildcard symbols
 LAN;B 4.05.04;Zero Members Variables;LAN_Features_zero_members.html;General Description;zero members
+GUI;B 4.04;Basic Commands;GUI_Features_Basic_Commands.html;General Description;Basic Commands
+GUI;B 3.05.01;Command Line Arguments;GUI_Features_Command_line_arguments.html;General Description;Command line arguments
+GUI;B 3.05;Command Line Arguments and Options;GUI_Features_Command_Line_Arguments_and_Options.html;General Description;Command Line Arguments and Options
+GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;Command line switches
+GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;;Command line switch
+GUI;B 3.05.02;Command Line Switches;GUI_Features_Command_line_switches.html;General Description;;Command line options
+GUI;B 4.02;Entering Interactive Mode;GUI_Features_entering_interactive_mode.html;General Description;entering interactive mode
+GUI;B 5;Examples;GUI_Features_Examples.html;General Description;Examples
+GUI;B 4.07;Execute B4P Expressions Interactively;GUI_Features_Execute_B4P_expressions_interactively.html;General Description;Execute B4P expressions interactively
+GUI;B 4.07;Execute B4P Expressions Interactively;GUI_Features_Execute_B4P_expressions_interactively.html;General Description;;interactive expressions
+GUI;B 4.06;Execute B4P Statements Interactively;GUI_Features_Execute_B4P_statements_interactively.html;General Description;Execute B4P statements interactively
+GUI;B 4.06;Execute B4P Statements Interactively;GUI_Features_Execute_B4P_statements_interactively.html;General Description;;interactive statements
+GUI;B 5.01;Football Club Merger - Interactive;GUI_Features_Example__Merging_football_clubs_-_interactive_approach.html;General Description;Example: Merging football clubs - interactive approach
+GUI;B 5.02;Football Club Merger - Program;GUI_Features_Example__Merge_football_clubs.html;General Description;Example: Merge football clubs
+GUI;B 3;Getting Started;GUI_Features_Getting_Started.html;General Description;Getting Started
+GUI;;Index;GUI_Features_Index.html;General Description;Index
+GUI;B 2;Installation;GUI_Features_Installation.html;General Description;Installation
+GUI;B 4.03;Interactive Help;GUI_Features_Interactive_help.html;General Description;Interactive help
+GUI;B 4.01;Interactive Input and Editing;GUI_Features_Interactive_input.html;General Description;Interactive input
+GUI;B 4.01;Interactive Input and Editing;GUI_Features_Interactive_input.html;General Description;Interactive editing
+GUI;B 4;Interactive Mode;GUI_Features_interactive_mode.html;General Description;interactive mode
+GUI;B 4.08.01;Interactive Visualization;GUI_Features_Interactive_Visualization.html;General Description;Interactive Visualization
+GUI;B 2.02;Linux;GUI_Features_Installation_on_Linux.html;General Description;Installation on Linux
+GUI;B 2.02.04;Linux - Batch Installation;GUI_Features_Linux_-_Batch_Installation.html;General Description;Linux - Batch Installation
+GUI;B 2.02.02;Linux - Download;GUI_Features_Linux_Download.html;General Description;Linux Download
+GUI;B 2.02.03;Linux - Installation;GUI_Features_Linux_Installation.html;General Description;Linux Installation
+GUI;B 2.02.01;Linux - Prerequisites;GUI_Features_Linux_Prerequisites.html;General Description;Linux Prerequisites
+GUI;B 3.02.01;Linux Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_Linux.html;General Description;Edit B4P Programs under Linux
+GUI;B 3.02.03;Linux Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_Linux.html;General Description;Starting B4P Directly under Linux
+GUI;B 3.02.02;Linux Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_Linux.html;General Description;Starting a B4P Program under Linux
+GUI;B 3.02.02.01;Linux Start B4P Programs as Executables;GUI_Features_Start_B4P_Programs_as_Executables_under_Linux.html;General Description;Start B4P Programs as Executables under Linux
+GUI;B 3.02.02.02;Linux Start B4P to run B4P programs;GUI_Features_Linux_Start_B4P_to_run_B4P_programs.html;General Description;Linux Start B4P to run B4P programs
+GUI;B 3.05.03;Long Options;GUI_Features_Long_Options.html;General Description;Long Options
+GUI;B 3.05.03;Long Options;GUI_Features_Long_Options.html;General Description;;Long command line options
+GUI;B 2.03;MacOS;GUI_Features_Installation_on_MacOS.html;General Description;Installation on MacOS
+GUI;B 2.03.04;MacOS - Batch Installation;GUI_Features_MacOS_-_Batch_Installation.html;General Description;MacOS - Batch Installation
+GUI;B 2.03.02;MacOS - Download;GUI_Features_MacOS_Download.html;General Description;MacOS Download
+GUI;B 2.03.03;MacOS - Installation;GUI_Features_MacOS_Installation.html;General Description;MacOS Installation
+GUI;B 2.03.01;MacOS - Prerequisites;GUI_Features_MacOS_Prerequisites.html;General Description;MacOS Prerequisites
+GUI;B 3.03.01;MacOS Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_MacOS.html;General Description;Edit B4P Programs under MacOS
+GUI;;MacOS Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_MacOS.html;General Description;Starting B4P Directly under MacOS
+GUI;B 3.03.02;MacOS Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_MacOS.html;General Description;Starting a B4P Program under MacOS
+GUI;B 3.03.02.01;MacOS Start B4P Programs as Executables;GUI_Features_Start_B4P_Programs_as_Executables_under_MacOS.html;General Description;Start B4P Programs as Executables under MacOS
+GUI;B 3.03.02.02;MacOS Start B4P to run B4P programs;GUI_Features_MacOS_Start_B4P_to_run_B4P_programs.html;General Description;MacOS Start B4P to run B4P programs
+GUI;B 4.05;Operating System Commands;GUI_Features_Operating_System_Commands.html;General Description;Operating System Commands
+GUI;B 4.05;Operating System Commands;GUI_Features_Operating_System_Commands.html;General Description;;OS Commands
+GUI;B 6.01;Release 11.00;GUI_Features_Release_11.00_-_Sydney_Opera_House.html;General Description;Release 11.00 - Sydney Opera House
+GUI;B 6.02;Release 11.02;GUI_Features_Release_11.02_-_Yellowstone.html;General Description;Release 11.02 - Yellowstone
+GUI;B 6.03;Release 12.00;GUI_Features_Release_12.00_-_Johann_C._F._Gauss.html;General Description;Release 12.00 - Johann C. F. Gauss
+GUI;B 6.04;Release 12.01;GUI_Features_Release_12.01_-_The_Last_Duck.html;General Description;Release 12.01 - The Last Duck
+GUI;B 6.05;Release 12.02;GUI_Features_Release_12.02_-_The_Last_Duck.html;General Description;Release 12.02 - The Last Duck
+GUI;B 6;Release History;GUI_Features_Release_History.html;General Description;Release History
+GUI;B 3.02;Starting B4P under Linux;GUI_Features_Starting_B4P_under_Linux.html;General Description;Starting B4P under Linux
+GUI;B 3.03;Starting B4P under MacOS;GUI_Features_Starting_B4P_under_MacOS.html;General Description;Starting B4P under MacOS
+GUI;B 3.01;Starting B4P under Windows;GUI_Features_Starting_B4P_under_Windows.html;General Description;Starting B4P under Windows
+GUI;B 3.04.01;Starting Behavior Advanced;GUI_Features_Starting_Behavior_Advanced.html;General Description;Starting Behavior Advanced
+GUI;B 3.04;Starting Behavior Basics;GUI_Features_Starting_Behavior.html;General Description;Starting Behavior
+GUI;;Table of Contents;GUI_Features_Table_of_Contents.html;General Description;Table of Contents
+GUI;B 2.07;Terms and Conditions;GUI_Features_Terms_and_Conditions.html;General Description;Terms and Conditions
+GUI;B 2.06;Uninstallation;GUI_Features_Uninstallation.html;General Description;Uninstallation
+GUI;B 2.05;Updates and Upgrades;GUI_Features_Updates_and_Upgrades.html;General Description;Updates and Upgrades
+GUI;;User Guide;GUI_Features_User_Guide.html;General Description;User Guide
+GUI;;User Guide;GUI_Features_User_Guide.html;General Description;B4P Interpreter
+GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;User initialization program
+GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;;custom initialization program
+GUI;B 3.05.04;User Initialization Program;GUI_Features_User_initialization_program.html;General Description;;My B4P Init.b4p
+GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;VS Code Extension for B4P
+GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;;Visual Studio Code
+GUI;B 2.04;VS Code Extension for B4P;GUI_Features_VS_Code_Extension_for_B4P.html;General Description;;VS Code
+GUI;B 4.08;View Directory Listings;GUI_Features_View_directory_listings.html;General Description;View directory listings
+GUI;B 4.09;View Tables Interactively;GUI_Features_View_Tables_Interactively.html;General Description;View Tables Interactively
+GUI;B 4.10;View Variables Interactively;GUI_Features_View_variables_interactively.html;General Description;View variables interactively
+GUI;B 2.01;Windows;GUI_Features_Installation_on_Windows.html;General Description;Installation on Windows
+GUI;B 2.01.04;Windows - Batch Installation;GUI_Features_Windows_-_Batch_Installation.html;General Description;Windows - Batch Installation
+GUI;B 2.01.02;Windows - Download;GUI_Features_Windows_Download.html;General Description;Windows Download
+GUI;B 2.01.03;Windows - Installation;GUI_Features_Windows_Installation.html;General Description;Windows Installation
+GUI;B 2.01.01;Windows - Prerequisites;GUI_Features_Windows_Prerequisites.html;General Description;Windows Prerequisites
+GUI;B 3.01.01;Windows Edit B4P Programs;GUI_Features_Edit_B4P_Programs_under_Windows.html;General Description;Edit B4P Programs under Windows
+GUI;B 3.01.03;Windows Start B4P Directly;GUI_Features_Starting_B4P_Directly_under_Windows.html;General Description;Starting B4P Directly under Windows
+GUI;B 3.01.02;Windows Start B4P Programs;GUI_Features_Starting_a_B4P_Program_under_Windows.html;General Description;Starting a B4P Program under Windows
+MAS;B 4.01;Analyzing Stock Data;MAS_Features_Use_case_-_Analyzing_Stock_Data.html;General Description;Use case - Analyzing Stock Data
+MAS;B 4.02;Comparing Bills of Material;MAS_Features_Use_case_-_Comparing_Bills_of_Material.html;General Description;Use case - Comparing Bills of Material
+MAS;B 4.03;Different Data From Different Sources;MAS_Features_Use_case_-_Different_data_from_different_sources.html;General Description;Use case - Different data from different sources
+MAS;B 3;Features and Benefits;MAS_Features_Features_and_Benefits.html;General Description;Features and Benefits
+MAS;;Index;MAS_Features_Index.html;General Description;Index
+MAS;;Introduction;MAS_Features_Introduction.html;General Description;Introduction
+MAS;B 4.04;Machine to Machine Data Transfer;MAS_Features_Use_case_-_Machine_to_Machine_Data_Transfer.html;General Description;Use case - Machine to Machine Data Transfer
+MAS;B 2;Problem Statement;MAS_Features_Problem_Statement.html;General Description;Problem Statement
+MAS;B 4;Use Cases;MAS_Features_Use_cases.html;General Description;Use cases

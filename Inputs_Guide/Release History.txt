@@ -287,7 +287,7 @@ B4PDOCU.START
 
 	* __table extend(__) extends tables by breaking apart data in selected columns, e.g. comma separated contents
 	* __scientific(__) converts a numeral into a string containing scientific notation representation (16 decimal digits to preserve full precision)
-	* __working days(__), __holidays(__), __working day holidays(__), weekend days(__), weekend holidays(__) count number of days between \
+	* __working days(__), __holidays(__), __working day holidays(__), __weekend days(__), __weekend holidays(__) count number of days between \
 	  two different dates, taking into acout configurable working days, workload percentage, full-day and half-day holidays.
 	* __find dates(__) looks for dates in unstructured contents. Useful to retrieve dates from tables, etc.
 

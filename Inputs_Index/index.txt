@@ -55,7 +55,7 @@ Function Library Guide: 11.2.2 advanced directory listing ...<br><br>
 __align__<br>
 Function Library Guide: 6.3.3 pad, align ...<br><br>
 __Align and Process__<br>
-User Guide: 5.6 F - Analyze<br><br>
+Tables and Big Data: 1.6 F - Analyze<br><br>
 __align right__, __align strings__<br>
 Function Library Guide: 6.3.3 pad, align ...<br><br>
 __alternative execution of code blocks__<br>
@@ -77,7 +77,7 @@ Function Library Guide: 5.3.1 Arithmetic and Boolean Series Functions<br><br>
 __arithmetic calculations__, __arithmetic operator__, __arithmetic operators__<br>
 Language Guide: 6.1.3 Arithmetic Operators<br><br>
 __Arrange multiple tables side-by-side__<br>
-Function Library Guide: 9.8.2.38 table arrange ...<br><br>
+Function Library Guide: 9.8.2.44 table arrange ...<br><br>
 __array__<br>
 Function Library Guide: 10.2.3 array, array protect<br><br>
 __Array functions__<br>
@@ -226,8 +226,6 @@ __Check table rows__<br>
 Function Library Guide: 9.7.3.8 table check row<br><br>
 __Checking and processing headers__<br>
 Function Library Guide: 9.7.1.1 table check header<br><br>
-__Checking and processing headers__<br>
-Function Library Guide: 9.7.1.2 <br><br>
 __Checking headers__<br>
 Function Library Guide: 9.7.1 Checking and Processing Headers<br><br>
 __checking numbers__<br>
@@ -239,7 +237,7 @@ Function Library Guide: 6.2.1 chr<br><br>
 __clean__<br>
 Function Library Guide: 6.1.13 clean<br><br>
 __Clean Data__<br>
-User Guide: 5.2 B - Clean<br><br>
+Tables and Big Data: 1.2 B - Clean<br><br>
 __clean if num__, __clean num__, __clean numerals__<br>
 Function Library Guide: 4.3 clean num, clean if num<br><br>
 __clean up exotic spaces and line breaks in strings__<br>
@@ -275,7 +273,7 @@ Function Library Guide: 9.9.1 Defining User Specific Colors<br><br>
 __column ranges__<br>
 Language Guide: 10.4.2 Table Columns (Func. Param. Type)<br><br>
 __Combining multiple tables__<br>
-Function Library Guide: 9.8.2.30 Combining Multiple Tables<br><br>
+Function Library Guide: 9.8.2.36 Combining Multiple Tables<br><br>
 __Command line arguments__<br>
 User Guide: 3.5.1 Command Line Arguments<br><br>
 __Command Line Arguments and Options__<br>
@@ -514,7 +512,7 @@ Function Library Guide: 9.7.3.3 table delete rows (if needed)<br><br>
 __depth__<br>
 Function Library Guide: 10.2.7 depth<br><br>
 __Derive disjoint union from both tables__<br>
-Function Library Guide: 9.8.2.35 table exclude ...<br><br>
+Function Library Guide: 9.8.2.41 table exclude ...<br><br>
 __describe__<br>
 Function Library Guide: 6.3.5 describe<br><br>
 __Detects dates correctly in strings__<br>
@@ -609,7 +607,7 @@ Function Library Guide: 6.2.4 encode entities<br><br>
 __end__<br>
 Function Library Guide: 2.5.5 end<br><br>
 __Enrichment__<br>
-User Guide: 5.5 E - Augment<br><br>
+Tables and Big Data: 1.5 E - Augment<br><br>
 __entering interactive mode__<br>
 User Guide: 4.2 Entering Interactive Mode<br><br>
 __Entity__<br>
@@ -623,11 +621,11 @@ Language Guide: 2.2.4 Reserved Keywords<br><br>
 __even__, __even numbers__<br>
 Function Library Guide: 5.1.2 even, odd, whole<br><br>
 __Example: Merge football clubs__<br>
-User Guide: 6.2 Football Club Merger - Program<br><br>
+User Guide: 5.2 Football Club Merger - Program<br><br>
 __Example: Merging football clubs - interactive approach__<br>
-User Guide: 6.1 Football Club Merger - Interactive<br><br>
+User Guide: 5.1 Football Club Merger - Interactive<br><br>
 __Examples__<br>
-User Guide: 6 Examples<br><br>
+User Guide: 5 Examples<br><br>
 __excel column__<br>
 Function Library Guide: 4.15 excel column<br><br>
 __excel coordinates__<br>
@@ -822,7 +820,7 @@ Function Library Guide: 9.3.1.4 forget memorized table columns<br><br>
 __format__, __format print__<br>
 Function Library Guide: 3.1.3 format, format print<br><br>
 __Format the results__<br>
-User Guide: 5.7 G - Format<br><br>
+Tables and Big Data: 1.7 G - Format<br><br>
 __Formatting and styling tables__<br>
 Function Library Guide: 9.9 Formatting and Styling Tables<br><br>
 __Formatting Coverages__, __Formatting Precedences__<br>
@@ -957,7 +955,7 @@ Function Library Guide: 5.4.1 identity<br><br>
 __if__<br>
 Function Library Guide: 2.1.1 if, unless<br><br>
 __Import source data__<br>
-User Guide: 5.1 A - Import<br><br>
+Tables and Big Data: 1.1 A - Import<br><br>
 __include__, __include B4P program__<br>
 Function Library Guide: 2.4.2 include<br><br>
 __include if__, __include if any__<br>
@@ -1007,7 +1005,7 @@ User Guide: 2.1 Windows<br><br>
 __integrate results__<br>
 Function Library Guide: 9.8.2.15 table expand ...<br><br>
 __Integrate results from one or more matching row into target table row__<br>
-Function Library Guide: 9.8.2.23 table digest ...<br><br>
+Function Library Guide: 9.8.2.27 table digest ...<br><br>
 __interactive__<br>
 Function Library Guide: 2.5.3 interactive<br><br>
 __Interactive editing__<br>
@@ -1194,7 +1192,7 @@ Function Library Guide: 9.8.2.1 table lookup ...<br><br>
 __Looking up data from other tables__<br>
 Function Library Guide: 9.8.2.15 table expand ...<br><br>
 __Looking up data from other tables__<br>
-Function Library Guide: 9.8.2.23 table digest ...<br><br>
+Function Library Guide: 9.8.2.27 table digest ...<br><br>
 __Looking up data from other tables and integrating their results__<br>
 Function Library Guide: 9.8.2.8 table integrate ...<br><br>
 __Looking up other tables__<br>
@@ -1202,7 +1200,7 @@ Function Library Guide: 9.8.2 Looking up Other Tables<br><br>
 __lookup access exception handling__<br>
 Language Guide: 5.5.9 Lookup Access Exception Handling<br><br>
 __Lookup Feedback Information__<br>
-Function Library Guide: 9.8.2.29 Collecting Lookup Feedback Information<br><br>
+Function Library Guide: 9.8.2.35 Collecting Lookup Feedback Information<br><br>
 __Loops__<br>
 Function Library Guide: 2.2 Loops<br><br>
 __Loops__<br>
@@ -1307,9 +1305,9 @@ Language Guide: 4.5 Variable Forms and Trees<br><br>
 __memory effect__<br>
 Language Guide: 5.6 Header Names - Memory Effect<br><br>
 __Merge and Consolidate__<br>
-User Guide: 5.4 D - Merge<br><br>
+Tables and Big Data: 1.4 D - Merge<br><br>
 __Merge two tables with union-set principle__<br>
-Function Library Guide: 9.8.2.31 table merge ...<br><br>
+Function Library Guide: 9.8.2.37 table merge ...<br><br>
 __middle__<br>
 Function Library Guide: 6.1.10 middle ... (string function)<br><br>
 __middle__<br>
@@ -1421,7 +1419,7 @@ User Guide: 3.5.4 User Initialization Program<br><br>
 "Description 15:N"::
 __name__<br>
 Function Library Guide: 10.1.5 name<br><br>
-__nearest neighbor interpolation__, __nearest right neighbor interpolation__<br>
+__nearest left neighbor interpolation__, __nearest right neighbor interpolation__<br>
 Function Library Guide: 5.5.6 Interpolation Functions<br><br>
 __negative indexing__<br>
 Language Guide: 11.3.3 Negative Indexing<br><br>
@@ -1449,7 +1447,7 @@ Function Library Guide: 11.2.9 office document properties<br><br>
 __once__<br>
 Function Library Guide: 2.1.3 once<br><br>
 __One table does row-subtraction on other table__<br>
-Function Library Guide: 9.8.2.34 table subtract ...<br><br>
+Function Library Guide: 9.8.2.40 table subtract ...<br><br>
 __one-time execution__<br>
 Function Library Guide: 2.1.3 once<br><br>
 __open__<br>
@@ -1640,25 +1638,25 @@ Function Library Guide: 12.3 Registry Access Functions<br><br>
 __regression__<br>
 Function Library Guide: 5.5.5 Linear and Exponential Regression<br><br>
 __Relational division of two tables__<br>
-Function Library Guide: 9.8.2.37 table divide ...<br><br>
+Function Library Guide: 9.8.2.43 table divide ...<br><br>
 __Relational multiplication of two tables__<br>
-Function Library Guide: 9.8.2.36 table multiply ...<br><br>
+Function Library Guide: 9.8.2.42 table multiply ...<br><br>
 __release__<br>
 Function Library Guide: 10.4.1 release<br><br>
 __Release 11.00 - Sydney Opera House__<br>
-User Guide: 7.1 Release 11.00<br><br>
+User Guide: 6.1 Release 11.00<br><br>
 __Release 11.02 - Yellowstone__<br>
-User Guide: 7.2 Release 11.02<br><br>
+User Guide: 6.2 Release 11.02<br><br>
 __Release 12.00 - Johann C. F. Gauss__<br>
-User Guide: 7.3 Release 12.00<br><br>
+User Guide: 6.3 Release 12.00<br><br>
 __Release 12.01 - The Last Duck__<br>
-User Guide: 7.4 Release 12.01<br><br>
+User Guide: 6.4 Release 12.01<br><br>
 __Release 12.02 - The Last Duck__<br>
-User Guide: 7.5 Release 12.02<br><br>
+User Guide: 6.5 Release 12.02<br><br>
 __release all__<br>
 Function Library Guide: 10.4.2 release all<br><br>
 __Release History__<br>
-User Guide: 7 Release History<br><br>
+User Guide: 6 Release History<br><br>
 __Release references to variables__<br>
 Function Library Guide: 10.4.1 release<br><br>
 __Releasing references__<br>
@@ -1740,10 +1738,10 @@ Function Library Guide: 5.1.5 round, round up / down<br><br>
 __row__<br>
 Function Library Guide: 9.4.6 row<br><br>
 __Row-wise intersection made from two tables__<br>
-Function Library Guide: 9.8.2.33 table intersect ...<br><br>
+Function Library Guide: 9.8.2.39 table intersect ...<br><br>
 "Description 20:S"::
 __Save and Export__<br>
-User Guide: 5.8 H - Export<br><br>
+Tables and Big Data: 1.8 H - Export<br><br>
 __saving files__<br>
 Language Guide: 12.3 Saving Files - Character sets<br><br>
 __Saving JSON files__<br>
@@ -1992,15 +1990,13 @@ Function Library Guide: 9.3.2.2 table append blank rows<br><br>
 __table append on same field__, __table append on same row__<br>
 Function Library Guide: 9.3.2.1 table append ...<br><br>
 __table arrange__, __table arrange with spacing__<br>
-Function Library Guide: 9.8.2.38 table arrange ...<br><br>
+Function Library Guide: 9.8.2.44 table arrange ...<br><br>
 __table assign__<br>
 Function Library Guide: 2.7.7 table assign<br><br>
 __table check duplicates__, __table check duplicates ignore blanks__, __table check duplicates ignore blanks selected rows__, __table check duplicates ignore case__, __table check duplicates ignore case selected rows__, __table check duplicates ingore both__, __table check duplicates ingore both selected rows__, __table check duplicates selected rows__<br>
 Function Library Guide: 9.8.1.3 table check duplicates ...<br><br>
 __table check header__<br>
 Function Library Guide: 9.7.1.1 table check header<br><br>
-__table check header__<br>
-Function Library Guide: 9.7.1.2 §<br><br>
 __table check headers__, __table check headers silently__<br>
 Function Library Guide: 9.7.1.4 table check headers ...<br><br>
 __table check row__<br>
@@ -2009,6 +2005,8 @@ __table clean__<br>
 Function Library Guide: 9.7.4.18 table clean<br><br>
 __table clear__<br>
 Function Library Guide: 9.3.4.1 table clear ...<br><br>
+__table column number__<br>
+Function Library Guide: 9.7.1.2 table column number<br><br>
 __table column numbers__<br>
 Function Library Guide: 9.7.1.3 table column numbers<br><br>
 __Table columns__, __table columns as function parameters__<br>
@@ -2066,45 +2064,57 @@ Function Library Guide: 9.3.4.2 table delete ...<br><br>
 __table delete unnamed columns__<br>
 Function Library Guide: 9.7.2.10 table delete blank/empty/unnamed columns<br><br>
 __table describe__, __table describe ignore case__, __table describe selected rows__, __table describe selected rows ignore case__<br>
-Function Library Guide: 9.8.2.27 table describe ...<br><br>
+Function Library Guide: 9.8.2.33 table describe ...<br><br>
 __table digest__, __table digest ignore case__<br>
-Function Library Guide: 9.8.2.23 table digest ...<br><br>
+Function Library Guide: 9.8.2.27 table digest ...<br><br>
+__table digest once__, __table digest once ignore case__<br>
+Function Library Guide: 9.8.2.28 table digest once ...<br><br>
 __table digest smart__, __table digest smart ignore case__<br>
-Function Library Guide: 9.8.2.24 table digest smart ...<br><br>
+Function Library Guide: 9.8.2.29 table digest smart ...<br><br>
+__table digest smart once__, __table digest smart once ignore case__<br>
+Function Library Guide: 9.8.2.30 table digest smart once ...<br><br>
 __table digest with rules__, __table digest with rules ignore case__<br>
-Function Library Guide: 9.8.2.25 table digest with rules ...<br><br>
+Function Library Guide: 9.8.2.31 table digest with rules ...<br><br>
 __table digest with rules ignore case once__, __table digest with rules once__<br>
-Function Library Guide: 9.8.2.26 table digest with rules once ...<br><br>
+Function Library Guide: 9.8.2.32 table digest with rules once ...<br><br>
 __table distribute__, __table distribute accumulate__, __table distribute advance__, __table distribute advance accumulate__<br>
 Function Library Guide: 9.7.5.11 table distribute ...<br><br>
 __table divide__, __table divide selected rows__<br>
-Function Library Guide: 9.8.2.37 table divide ...<br><br>
+Function Library Guide: 9.8.2.43 table divide ...<br><br>
 __table duplicate columns__<br>
 Function Library Guide: 9.7.2.4 table duplicate columns<br><br>
 __table exclude__, __table exclude columns__, __table exclude exclude columns__, __table exclude exclusive columns__, __table exclude extend columns__<br>
-Function Library Guide: 9.8.2.35 table exclude ...<br><br>
+Function Library Guide: 9.8.2.41 table exclude ...<br><br>
 __table existing__<br>
 Function Library Guide: 9.4.2 table existing<br><br>
 __table expand__<br>
 Function Library Guide: 9.8.2.15 table expand ...<br><br>
 __table expand fast__, __table expand fast ignore case__<br>
-Function Library Guide: 9.8.2.16 table expand fast ...<br><br>
+Function Library Guide: 9.8.2.17 table expand fast ...<br><br>
+__table expand fast once__, __table expand fast once ignore case__<br>
+Function Library Guide: 9.8.2.18 table expand fast once ...<br><br>
 __table expand fast smart__, __table expand fast smart ignore case__<br>
-Function Library Guide: 9.8.2.18 table expand fast smart ...<br><br>
+Function Library Guide: 9.8.2.21 table expand fast smart ...<br><br>
+__table expand fast smart once__, __table expand fast smart once ignore case__<br>
+Function Library Guide: 9.8.2.22 table expand fast smart once ...<br><br>
 __table expand fast with rules__, __table expand fast with rules ignore case__<br>
-Function Library Guide: 9.8.2.21 table expand fast with rules ...<br><br>
+Function Library Guide: 9.8.2.25 table expand fast with rules ...<br><br>
 __table expand fast with rules ignore case once__, __table expand fast with rules once__<br>
-Function Library Guide: 9.8.2.22 table expand fast with rules once ...<br><br>
+Function Library Guide: 9.8.2.26 table expand fast with rules once ...<br><br>
 __table expand headers__<br>
 Function Library Guide: 9.7.1.5 table resolve headers<br><br>
 __table expand ignore case__<br>
 Function Library Guide: 9.8.2.15 table expand ...<br><br>
+__table expand once__, __table expand once ignore case__<br>
+Function Library Guide: 9.8.2.16 table expand once ...<br><br>
 __table expand smart__, __table expand smart ignore case__<br>
-Function Library Guide: 9.8.2.17 table expand smart ...<br><br>
+Function Library Guide: 9.8.2.19 table expand smart ...<br><br>
+__table expand smart once__, __table expand smart once ignore case__<br>
+Function Library Guide: 9.8.2.20 table expand smart once ...<br><br>
 __table expand with rules__, __table expand with rules ignore case__<br>
-Function Library Guide: 9.8.2.19 table expand with rules ...<br><br>
+Function Library Guide: 9.8.2.23 table expand with rules ...<br><br>
 __table expand with rules once__, __table expand with rules once ignore case__<br>
-Function Library Guide: 9.8.2.20 table expand with rules once ...<br><br>
+Function Library Guide: 9.8.2.24 table expand with rules once ...<br><br>
 __table explore__<br>
 Function Library Guide: 9.5.2.1 table explore<br><br>
 __table extend__, __table extend selected rows__<br>
@@ -2174,9 +2184,9 @@ Function Library Guide: 9.8.2.13 table integrate with rules ...<br><br>
 __table integrate with rules once__, __table integrate with rules once ignore case__<br>
 Function Library Guide: 9.8.2.14 table integrate with rules once ...<br><br>
 __Table integration operation identifiers__<br>
-Function Library Guide: 9.8.2.28 Table Integration Operation Identifiers<br><br>
+Function Library Guide: 9.8.2.34 Table Integration Operation Identifiers<br><br>
 __table intersect__, __table intersect columns__, __table intersect exclusive columns__, __table intersect extend columns__, __table intersect intersect columns__<br>
-Function Library Guide: 9.8.2.33 table intersect ...<br><br>
+Function Library Guide: 9.8.2.39 table intersect ...<br><br>
 __table keep columns__, __table keep existing columns__<br>
 Function Library Guide: 9.7.2.7 table keep ... columns<br><br>
 __table keep selected rows__<br>
@@ -2218,7 +2228,7 @@ Function Library Guide: 9.4.5 table min/max width<br><br>
 __table menu__, __table menu quick__<br>
 Function Library Guide: 9.2.2 table menu, table menu quick<br><br>
 __table merge__, __table merge exclusive columns__, __table merge extend columns__, __table merge intersect columns__, __table merge subtract columns__<br>
-Function Library Guide: 9.8.2.31 table merge ...<br><br>
+Function Library Guide: 9.8.2.37 table merge ...<br><br>
 __table min width__<br>
 Function Library Guide: 9.4.5 table min/max width<br><br>
 __table move rows__<br>
@@ -2226,7 +2236,7 @@ Function Library Guide: 9.7.3.9 table move rows<br><br>
 __table move selected rows__<br>
 Function Library Guide: 9.7.3.10 table move selected rows<br><br>
 __table multiply__, __table multiply selected rows__<br>
-Function Library Guide: 9.8.2.36 table multiply ...<br><br>
+Function Library Guide: 9.8.2.42 table multiply ...<br><br>
 __Table names__<br>
 Language Guide: 5.2 Tables - Naming Rules<br><br>
 __Table of Contents__<br>
@@ -2238,7 +2248,7 @@ Tables and Big Data: 1 Workflow<br><br>
 __Table of Contents__<br>
 Function Library Guide: 1 Function Library<br><br>
 __table overlay__, __table overlay columns__, __table overlay exclusive columns__, __table overlay extend columns__, __table overlay intersect columns__, __Table overlays the other table__<br>
-Function Library Guide: 9.8.2.32 table overlay/subtract ...<br><br>
+Function Library Guide: 9.8.2.38 table overlay/subtract ...<br><br>
 __table process__<br>
 Function Library Guide: 9.7.4.1 table process ...<br><br>
 __table process all cells__<br>
@@ -2342,7 +2352,7 @@ Function Library Guide: 9.7.4.10 table substitute horizontally ...<br><br>
 __table substitute vertically__, __table substitute vertically selected rows__<br>
 Function Library Guide: 9.7.4.9 table substitute vertically ...<br><br>
 __table subtract__, __table subtract columns__, __table subtract exclusive columns__, __table subtract extend columns__, __table subtract subtract columns__<br>
-Function Library Guide: 9.8.2.34 table subtract ...<br><br>
+Function Library Guide: 9.8.2.40 table subtract ...<br><br>
 __table summarize__, __table summarize selected rows__<br>
 Function Library Guide: 9.7.5.10 table summarize ...<br><br>
 __table transpose__<br>
@@ -2394,7 +2404,7 @@ Function Library Guide: 6.1.7 text row<br><br>
 __Text to standard output__<br>
 Function Library Guide: 3.1.1 echo, print ...<br><br>
 __The Whole Program__<br>
-User Guide: 5.9 The Whole Program<br><br>
+Tables and Big Data: 1.9 The Whole Program<br><br>
 __through-referencing__<br>
 Language Guide: 4.6.2 Through-Referencing<br><br>
 __throw__, __Throw and catch__<br>
@@ -2486,8 +2496,8 @@ __Use case - Analyzing Stock Data__<br>
 Master Document: 4.1 Analyzing Stock Data<br><br>
 __Use case - Comparing Bills of Material__<br>
 Master Document: 4.2 Comparing Bills of Material<br><br>
-__Use case - Comparing Bills of Material__<br>
-Master Document: 4.3 Different data from different sources<br><br>
+__Use case - Different data from different sources__<br>
+Master Document: 4.3 Different Data From Different Sources<br><br>
 __Use case - Machine to Machine Data Transfer__<br>
 Master Document: 4.4 Machine to Machine Data Transfer<br><br>
 __Use cases__<br>
@@ -2510,7 +2520,7 @@ __User-specific colors__<br>
 Function Library Guide: 9.9.1 Defining User Specific Colors<br><br>
 "Description 23:V"::
 __Validate and Explore__<br>
-User Guide: 5.3 C - Validate<br><br>
+Tables and Big Data: 1.3 C - Validate<br><br>
 __validating tables group results__, __validating tables row results__<br>
 Function Library Guide: 9.8.1.2.1 table validate - Row and Group Results<br><br>
 __Validation functions__<br>
@@ -2658,8 +2668,6 @@ __Windows Prerequisites__<br>
 User Guide: 2.1.1 Windows - Prerequisites<br><br>
 __with table__<br>
 Function Library Guide: 9.6.1 with table<br><br>
-__Workflow Steps__<br>
-User Guide: 5 Workflow Steps<br><br>
 __working day holidays__, __working days__<br>
 Function Library Guide: 7.1.11 working / wekeend days, ... holidays<br><br>
 __working directory__<br>

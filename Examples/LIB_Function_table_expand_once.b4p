@@ -1,0 +1,26 @@
+﻿#!/usr/local/bin/b4p
+
+       table load( lookup, "Table Lookup Example 1.csv" );
+
+       table initialize( target, { { Name, Favorite Country },
+          { Antonio,  Italy}, { Fritz, Germany }, { Andreas, Germany }, { Pascale, France}, { Mike, USA } } );
+
+       echo("Target table before looking up with 'table digest':");
+       table list ( target );
+
+       echo("Lookup table:");
+       table list ( lookup );
+
+       count[] = table expand once ( target, Favorite Country, {Meal, Rating Sum},
+                         lookup, Country, { Recommendation, Rating }, { append with space, add }, true, {Counter,Counter} );
+
+
+       echo("Target table after looking up with 'table digest':");
+       table list ( target );
+
+       echo("Lookup table after looking up to check the 'Counter' column:");
+       table list ( lookup );
+
+       echo("Number of accesses: ", count[] );
+
+

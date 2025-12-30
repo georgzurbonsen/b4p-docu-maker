@@ -6,7 +6,7 @@
        table initialize( target, { Seating, inside, balcony, outside, bar } );
 
        count[] = table digest smart ignore case
-                        ( target,   Seating, Place to go, lookup, Ambience, Restaurant Name, append with comma, true, Counter );
+                        ( target,   Seating, Place to go, lookup, Ambience, Restaurant Name, append with comma, true, {Counter,Counter} );
 
        echo("Lookup table:");
        table list( lookup );

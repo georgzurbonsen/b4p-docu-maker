@@ -7,9 +7,9 @@
        echo("Target table before lookup:");
        table list( target );
 
-       count[] = table expand fast smart ignore case
+       count[] = table expand fast smart once ignore case
                  ( target,   Seating, {Place to go, Table size},
-                       lookup, Ambience, {Restaurant Name, Table size}, {}, true, Counter );
+                       lookup, Ambience, {Restaurant Name, Table size}, {}, true, {Counter,Counter} );
 
        echo("Lookup table:");
        table list( lookup );
