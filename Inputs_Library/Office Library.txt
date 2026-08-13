@@ -538,7 +538,7 @@ B4PDOCU.START
 			+++
 		},
 		{ "Number": "2",
-		  "Name": "Corresonding sheet names",
+		  "Name": "Corresponding sheet names",
 		  "Direction": "input",
 		  "Types": [ "set or string" ],
 		  "Description"::
